@@ -1,4 +1,5 @@
 import ProfilePicture from "../../assets/profile-picture.png";
+import Foto from "../../assets/foto2.png";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -10,7 +11,7 @@ function index() {
   return (
     <header>
       <div className="header-jumbotron">
-        <img src={ProfilePicture} />
+        <img src={Foto} className="profile-picture" />
         <h3>Rafi Rachmawan</h3>
         <p>Programmer - FrontEndDevelopers - Researcher</p>
         <div className="socialMedia">

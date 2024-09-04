@@ -1,22 +1,39 @@
+import { useState } from "react";
 import "./style.css";
+import { FaBars } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 
 function index() {
+  const [statusTampil, setStatusTampil] = useState("");
+
+  function tampilMenu() {
+    if (statusTampil == "") {
+      setStatusTampil("tampil");
+    } else {
+      setStatusTampil("");
+    }
+  }
   return (
     <nav>
       <div className="wrapper">
         <div className="logo">
-          <a href="#">Rafi Rachmawan </a>
+          <Link to="/">RafiRachmawan</Link>
         </div>
-        <div className="menu">
+        <button onClick={tampilMenu}>
+          {statusTampil == "" ? <FaBars /> : <IoMdClose />}
+        </button>
+        <div className={`menu ${statusTampil}`} onClick={tampilMenu}>
           <ul>
             <li>
-              <a href="portofoilo">Portofolio</a>
+              <HashLink to="/#portfolio">Portfolio</HashLink>
             </li>
             <li>
-              <a href="about">About</a>
+              <HashLink to="/#about">About</HashLink>
             </li>
             <li>
-              <a href="experience">Experience</a>
+              <Link to="/experience">Experience</Link>
             </li>
           </ul>
         </div>
