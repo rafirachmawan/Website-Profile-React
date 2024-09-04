@@ -9,20 +9,22 @@ function index() {
   const [statusTampil, setStatusTampil] = useState("");
 
   function tampilMenu() {
-    if (statusTampil == "") {
+    if (statusTampil === "") {
       setStatusTampil("tampil");
     } else {
       setStatusTampil("");
     }
   }
+
   return (
     <nav>
       <div className="wrapper">
         <div className="logo">
-          <Link to="/">RafiRachmawan</Link>
+          {/* HashLink untuk kembali ke bagian atas halaman */}
+          <HashLink to="/#">RafiRachmawan</HashLink>
         </div>
         <button onClick={tampilMenu}>
-          {statusTampil == "" ? <FaBars /> : <IoMdClose />}
+          {statusTampil === "" ? <FaBars /> : <IoMdClose />}
         </button>
         <div className={`menu ${statusTampil}`} onClick={tampilMenu}>
           <ul>
