@@ -130,7 +130,7 @@ header {
   }
 
   .header-jumbotron > p {
-    font-size: 0.8rem; /* Adjust font size for very small screens */
+    font-size: 0.5rem; /* Adjust font size for very small screens */
   }
 
   .socialMedia > a {
