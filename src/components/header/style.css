@@ -101,3 +101,45 @@ header {
     font-size: 1rem;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .header-jumbotron > h3 {
+    font-size: 2rem; /* Adjust font size for even smaller screens */
+    line-height: 2.5rem;
+  }
+
+  .header-jumbotron > p {
+    font-size: 0.875rem; /* Adjust font size for even smaller screens */
+  }
+
+  .socialMedia > a {
+    width: 50px;
+    height: 50px;
+  }
+
+  .socialMedia > a > svg {
+    height: 20px;
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header-jumbotron > h3 {
+    font-size: 1.5rem; /* Adjust font size for very small screens */
+    line-height: 2rem;
+  }
+
+  .header-jumbotron > p {
+    font-size: 0.75rem; /* Adjust font size for very small screens */
+  }
+
+  .socialMedia > a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialMedia > a > svg {
+    height: 15px;
+    width: auto;
+  }
+}
