@@ -1,17 +1,28 @@
 header {
-  background-color: #39404a;
-  height: 100vh;
-  background-position: center center;
   position: relative;
+  height: 100vh;
+  background-image: url("../../assets/frontend.png");
+  background-position: center center;
+  background-size: cover;
+  background-color: #39404a;
   font-family: "Kanit", sans-serif;
   letter-spacing: 5px;
   text-shadow: 0 0 4px #000;
 }
 
-.header-jumbotron {
+.blur-overlay {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px); /* Adjust blur amount here */
+  z-index: 1;
+}
+
+.header-jumbotron {
+  position: relative;
+  z-index: 2; /* Ensure this content is above the blur overlay */
   display: flex;
   width: 100%;
   height: 100%;
@@ -20,12 +31,15 @@ header {
   flex-direction: column;
   text-align: center;
 }
-.header-jumbotron > img {
+
+.profile-picture {
   width: 150px;
+  border-radius: 50%;
 }
+
 .header-jumbotron > h3 {
   color: #fff;
-  margin: 30px 0px 0px 0px;
+  margin: 30px 0 0 0;
   padding: 5px;
   font-size: 3.5rem;
   line-height: 4rem;
@@ -34,10 +48,11 @@ header {
 
 .header-jumbotron > p {
   padding: 5px;
-  margin: 0px 5px 20px 5px;
+  margin: 0 5px 20px 5px;
   color: #fff;
   font-size: 1.2rem;
 }
+
 .socialMedia {
   color: #fff;
   display: flex;
@@ -54,10 +69,12 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 .socialMedia > a > svg {
   height: 30px;
   width: auto;
 }
+
 .socialMedia > a:hover {
   background-color: #aa392d;
 }

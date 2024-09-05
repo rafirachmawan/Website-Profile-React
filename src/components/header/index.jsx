@@ -1,20 +1,23 @@
 import ProfilePicture from "../../assets/profile-picture.png";
 import Foto from "../../assets/foto2.png";
-import { FaInstagram } from "react-icons/fa";
-import { FaTiktok } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-// import "../styles/Header.css";
+import {
+  FaInstagram,
+  FaTiktok,
+  FaTwitter,
+  FaFacebookF,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
 import "./style.css";
 
-function index() {
+function Index() {
   return (
     <header>
+      <div className="blur-overlay"></div>
       <div className="header-jumbotron">
-        <img src={Foto} className="profile-picture" />
+        <img src={Foto} className="profile-picture" alt="Profile" />
         <h3>Rafi Rachmawan</h3>
-        <p>Programmer - FrontEndDevelopers - Researcher</p>
+        <p>Programmer - FrontEndDeveloper - Researcher</p>
         <div className="socialMedia">
           <a
             href="https://www.instagram.com/rrrafi.rachmawan"
@@ -50,4 +53,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
