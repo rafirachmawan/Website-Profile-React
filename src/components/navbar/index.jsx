@@ -29,7 +29,7 @@ function index() {
         <div className={`menu ${statusTampil}`} onClick={tampilMenu}>
           <ul>
             <li>
-              <HashLink to="/#portfolio">Portfolio</HashLink>
+              <HashLink to="/#portfolio">Portofolio</HashLink>
             </li>
             <li>
               <HashLink to="/#about">About</HashLink>

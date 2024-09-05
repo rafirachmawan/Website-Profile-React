@@ -1,19 +1,19 @@
 import { portfolioList } from "../data/index";
-import { Link } from "react-router-dom";
 import "./style.css";
 
-function index() {
+function Index() {
   return (
     <section id="portfolio">
       <div className="wrapper">
-        <h3>Portfolio</h3>
+        <h3>Portofolio</h3>
         <div className="grid">
           {portfolioList.map((item) => {
             return (
               <div className="item" key={item.id}>
-                <Link to={`/portfolio/${item.id}`}>
-                  <img src={item.image} />
-                </Link>
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <img src={item.image} alt={item.title} />
+                </a>
+                <h4>{item.title}</h4> {/* Menampilkan judul */}
               </div>
             );
           })}
@@ -23,4 +23,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
