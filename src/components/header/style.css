@@ -89,4 +89,15 @@ header {
     height: 30px;
     width: auto;
   }
+  header h3 {
+    font-size: 1rem;
+  }
+
+  header p {
+    font-size: 0.75rem;
+  }
+
+  .socialMedia a {
+    font-size: 1rem;
+  }
 }
