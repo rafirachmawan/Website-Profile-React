@@ -11,6 +11,8 @@ import {
 import "./style.css";
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Index() {
   const headingRef = useRef(null);
@@ -44,6 +46,13 @@ function Index() {
 
     animateText(descriptionRef);
   }, []);
+  // konfigurasi Aos Animasi
+  AOS.init({
+    duration: 1000, // durasi animasi dalam milidetik
+    easing: "ease-in-out", // tipe easing
+    once: true, // animasi hanya terjadi sekali
+  });
+
   return (
     <header>
       <div className="blur-overlay"></div>
@@ -53,6 +62,7 @@ function Index() {
         <p ref={descriptionRef}>Programmer - FrontEndDeveloper - Researcher</p>
         <div className="socialMedia">
           <a
+            data-aos="fade-down"
             href="https://www.instagram.com/rrrafi.rachmawan"
             target="_blank"
             rel="noopener noreferrer"
@@ -60,6 +70,7 @@ function Index() {
             <FaInstagram />
           </a>
           <a
+            data-aos="fade-up"
             href="https://www.tiktok.com/@notyoursgb?_t=8pTUdZRSnfk&_r=1"
             target="_blank"
             rel="noopener noreferrer"
@@ -67,6 +78,7 @@ function Index() {
             <FaTiktok />
           </a>
           <a
+            data-aos="fade-down"
             href="https://www.linkedin.com/in/rafi-rachmawan-2a8728233/"
             target="_blank"
             rel="noopener noreferrer"
@@ -74,6 +86,7 @@ function Index() {
             <FaLinkedin />
           </a>
           <a
+            data-aos="fade-up"
             href="https://github.com/rafirachmawan"
             target="_blank"
             rel="noopener noreferrer"
