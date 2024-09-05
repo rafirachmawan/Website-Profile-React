@@ -58,7 +58,7 @@ function Index() {
       <div className="blur-overlay"></div>
       <div className="header-jumbotron">
         <img src={Foto} className="profile-picture" alt="Profile" />
-        <h3>Rafi Rachmawan</h3>
+        <h3 data-aos="fade-down">Rafi Rachmawan</h3>
         <p ref={descriptionRef}>Programmer - FrontEndDeveloper - Researcher</p>
         <div className="socialMedia">
           <a
