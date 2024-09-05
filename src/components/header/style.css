@@ -126,11 +126,11 @@ header {
 @media only screen and (max-width: 480px) {
   .header-jumbotron > h3 {
     font-size: 1rem; /* Adjust font size for very small screens */
-    line-height: 2rem;
+    line-height: 5rem;
   }
 
   .header-jumbotron > p {
-    font-size: 0.5rem; /* Adjust font size for very small screens */
+    font-size: 0.8rem; /* Adjust font size for very small screens */
   }
 
   .socialMedia > a {
