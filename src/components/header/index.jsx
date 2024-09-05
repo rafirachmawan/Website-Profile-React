@@ -45,13 +45,15 @@ function Index() {
     };
 
     animateText(descriptionRef);
+
+    // Inisialisasi dan refresh AOS
+    AOS.init({
+      duration: 1000, // durasi animasi dalam milidetik
+      easing: "ease-in-out", // tipe easing
+      once: true, // animasi hanya terjadi sekali
+    });
+    AOS.refresh(); // Menyegarkan AOS agar animasi bekerja pada halaman pertama
   }, []);
-  // konfigurasi Aos Animasi
-  AOS.init({
-    duration: 1000, // durasi animasi dalam milidetik
-    easing: "ease-in-out", // tipe easing
-    once: true, // animasi hanya terjadi sekali
-  });
 
   return (
     <header>
