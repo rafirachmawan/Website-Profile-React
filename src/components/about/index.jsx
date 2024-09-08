@@ -21,13 +21,27 @@ function index() {
       <div className="wrapper">
         <h3>About</h3>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, alias.
+          Halo! Saya Rafi Rachmawan, seorang Front-End Developer dengan
+          pengalaman mendalam dalam membangun aplikasi web interaktif dan
+          responsif. Saya memiliki keahlian di berbagai teknologi front-end
+          modern seperti HTML, CSS, JavaScript, React, serta alat pengembangan
+          seperti Vite. Dalam pekerjaan saya, saya sangat berfokus pada
+          performa, aksesibilitas, dan desain yang user-friendly.
         </p>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Voluptatibus, saepe velit, blanditiis suscipit odio non architecto
-          ratione magnam cum porro id nesciunt repudiandae optio assumenda ab
-          ducimus. Nesciunt, eligendi ullam!
+          Sebagai seorang pengembang, saya memiliki minat besar pada animasi
+          web, terutama menggunakan GSAP untuk memberikan sentuhan dinamis pada
+          antarmuka pengguna. Selain itu, saya juga aktif dalam melakukan riset
+          untuk menemukan solusi inovatif yang memadukan estetika dan
+          fungsionalitas.
+        </p>
+        <p>
+          Saat ini, saya mengelola sebuah e-commerce yang menjual hijab, dan
+          saya senang menerapkan fitur-fitur unik seperti integrasi WhatsApp
+          langsung dengan produk yang dijual. Tujuan saya adalah selalu
+          memberikan pengalaman digital yang memuaskan pengguna dan menjaga agar
+          setiap proyek yang saya kerjakan tetap up-to-date dengan teknologi
+          terbaru.
         </p>
         <h4>Programming Language & Tools</h4>
         <div className="skills">
