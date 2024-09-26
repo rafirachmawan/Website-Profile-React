@@ -1,9 +1,9 @@
-import portfolio1 from "../../assets/portfolio1.png";
-import portfolio2 from "../../assets/portfolio2.png";
-import portfolio3 from "../../assets/portfolio3.png";
-import portfolio4 from "../../assets/portfolio4.png";
-import portfolio5 from "../../assets/portfolio5.png";
-import portfolio6 from "../../assets/portfolio6.png";
+import portfolio1 from "../../assets/SistemRekapitulasiDosen1.jpeg";
+import portfolio2 from "../../assets/Portofolio1.jpeg";
+import portfolio3 from "../../assets/ErtigaStore1.jpeg";
+import portfolio4 from "../../assets/Undangan1.jpeg";
+import portfolio5 from "../../assets/RentalMobil1.jpeg";
+import portfolio6 from "../../assets/Galery1.jpeg";
 // import ProfilePicture from "../../assets/profile-picture.png";
 
 export const portfolioList = [
