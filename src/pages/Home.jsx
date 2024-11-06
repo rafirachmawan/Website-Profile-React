@@ -3,6 +3,7 @@ import Header from "../components/header/index";
 import Portofolio from "../components/portofolio/index";
 import About from "../components/about/index";
 import Footer from "../components/footer/index";
+import FormInput from "../components/Form/FormInput";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <Header />
       <Portofolio />
       <About />
+      <FormInput />
       <Footer />
     </>
   );
