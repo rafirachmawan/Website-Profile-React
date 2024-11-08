@@ -81,7 +81,7 @@ function Index() {
     const profilePictureAnimation = () => {
       gsap.to(profilePictureRef.current, {
         x: 10,
-        duration: 1,
+        duration: 0.5,
         ease: "sine.inOut",
         yoyo: true,
         repeat: -1,
