@@ -44,15 +44,45 @@ function Index() {
       );
     };
 
+    // Animasi teks deskripsi
     animateText(descriptionRef);
+
+    // Animasi nama seperti efek mengetik
+    const animateHeading = (elementRef) => {
+      const element = elementRef.current;
+      const text = element.innerText;
+      const letters = text
+        .split("")
+        .map((letter) =>
+          letter === " " ? "&nbsp;" : `<span class="letter">${letter}</span>`
+        )
+        .join("");
+      element.innerHTML = letters;
+
+      gsap.fromTo(
+        element.querySelectorAll(".letter"),
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.1,
+          ease: "power1.inOut",
+          stagger: 0.1,
+          repeat: -1,
+          repeatDelay: 1,
+          yoyo: true,
+        }
+      );
+    };
+
+    animateHeading(headingRef);
 
     // Inisialisasi dan refresh AOS
     AOS.init({
-      duration: 1000, // durasi animasi dalam milidetik
-      easing: "ease-in-out", // tipe easing
-      once: true, // animasi hanya terjadi sekali
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
     });
-    AOS.refresh(); // Menyegarkan AOS agar animasi bekerja pada halaman pertama
+    AOS.refresh();
   }, []);
 
   return (
@@ -60,7 +90,9 @@ function Index() {
       <div className="blur-overlay"></div>
       <div className="header-jumbotron">
         <img src={Foto} className="profile-picture" alt="Profile" />
-        <h3 data-aos="fade-down">Rafi Rachmawan</h3>
+        <h3 ref={headingRef} data-aos="fade-down">
+          Rafi Rachmawan
+        </h3>
         <p ref={descriptionRef}>Programmer - FrontEndDeveloper - Researcher</p>
         <div className="socialMedia">
           <a

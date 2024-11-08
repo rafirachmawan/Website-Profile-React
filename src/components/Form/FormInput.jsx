@@ -7,6 +7,7 @@ function FormInput() {
     name: "",
     email: "",
     phone: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -29,7 +30,7 @@ function FormInput() {
     XLSX.writeFile(wb, "data.xlsx");
 
     // Reset form setelah submit
-    setFormData({ name: "", email: "", phone: "" });
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
@@ -57,7 +58,7 @@ function FormInput() {
         />
       </div>
       <div>
-        <label>Number :</label>
+        <label>Number:</label>
         <input
           type="tel"
           name="phone"
@@ -68,16 +69,17 @@ function FormInput() {
         />
       </div>
       <div>
-        <label>Message :</label>
+        <label>Message:</label>
         <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
+          type="text"
+          name="message"
+          value={formData.message}
           onChange={handleChange}
           required
           className="border p-2 w-full"
         />
       </div>
+
       <button type="submit" className="bg-blue-500 text-white p-2 rounded">
         Send
       </button>
