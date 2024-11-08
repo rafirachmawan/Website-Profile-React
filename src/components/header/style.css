@@ -34,7 +34,9 @@ header {
 
 .profile-picture {
   width: 150px;
-  border-radius: 50%;
+  border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+  /* box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); Bayangan merah */
+  /* object-fit: cover; Agar gambar menyesuaikan dalam lingkaran */
 }
 
 .header-jumbotron > h3 {

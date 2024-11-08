@@ -17,6 +17,7 @@ import "aos/dist/aos.css";
 function Index() {
   const headingRef = useRef(null);
   const descriptionRef = useRef(null);
+  const profilePictureRef = useRef(null); // Referensi untuk gambar profil
 
   useEffect(() => {
     const animateText = (elementRef) => {
@@ -76,6 +77,19 @@ function Index() {
 
     animateHeading(headingRef);
 
+    // Animasi gambar profil
+    const profilePictureAnimation = () => {
+      gsap.to(profilePictureRef.current, {
+        x: 10,
+        duration: 1,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    };
+
+    profilePictureAnimation();
+
     // Inisialisasi dan refresh AOS
     AOS.init({
       duration: 1000,
@@ -89,7 +103,12 @@ function Index() {
     <header>
       <div className="blur-overlay"></div>
       <div className="header-jumbotron">
-        <img src={Foto} className="profile-picture" alt="Profile" />
+        <img
+          src={Foto}
+          className="profile-picture"
+          alt="Profile"
+          ref={profilePictureRef} // Tambahkan ref ke gambar profil
+        />
         <h3 ref={headingRef} data-aos="fade-down">
           Rafi Rachmawan
         </h3>
