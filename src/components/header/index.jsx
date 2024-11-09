@@ -103,12 +103,16 @@ function Index() {
     <header>
       <div className="blur-overlay"></div>
       <div className="header-jumbotron">
-        <img
-          src={Foto}
-          className="profile-picture"
-          alt="Profile"
-          ref={profilePictureRef} // Tambahkan ref ke gambar profil
-        />
+        <div className="profile-picture-wrapper">
+          <img
+            src={Foto}
+            className="profile-picture"
+            alt="Profile"
+            ref={profilePictureRef}
+          />
+          <div class="l-shape-bottom-right"></div>
+        </div>
+
         <h3 ref={headingRef} data-aos="fade-down">
           Rafi Rachmawan
         </h3>

@@ -31,12 +31,60 @@ header {
   flex-direction: column;
   text-align: center;
 }
+.profile-picture-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 15px 5px rgba(255, 0, 255, 0.5); /* Bayangan ungu */
+}
 
+.profile-picture-wrapper::before,
+.profile-picture-wrapper::after {
+  content: "";
+  position: absolute;
+  background-color: magenta;
+}
+
+.profile-picture-wrapper::before {
+  top: -10px;
+  left: -10px;
+  width: 20px; /* Panjang garis horizontal kiri atas */
+  height: 3px; /* Ketebalan garis */
+}
+
+.profile-picture-wrapper::after {
+  top: -10px;
+  left: -10px;
+  width: 3px; /* Ketebalan garis */
+  height: 20px; /* Panjang garis vertikal kiri atas */
+}
+
+/*  */
+
+.profile-picture-wrapper .l-shape-bottom-right::before {
+  content: "";
+  position: absolute;
+  background-color: magenta;
+  bottom: -10px;
+  right: -10px;
+  width: 20px; /* Panjang garis horizontal kanan bawah */
+  height: 3px; /* Ketebalan garis */
+}
+
+.profile-picture-wrapper .l-shape-bottom-right::after {
+  content: "";
+  position: absolute;
+  background-color: magenta;
+  bottom: -10px;
+  right: -10px;
+  width: 3px; /* Ketebalan garis vertikal kanan bawah */
+  height: 20px; /* Panjang garis vertikal kanan bawah */
+}
 .profile-picture {
-  width: 150px;
-  border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
-  /* box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); Bayangan merah */
-  /* object-fit: cover; Agar gambar menyesuaikan dalam lingkaran */
+  border-radius: 50%;
+  width: 150px; /* Ubah ukuran sesuai kebutuhan */
+  height: 150px;
 }
 
 .header-jumbotron > h3 {
