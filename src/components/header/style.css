@@ -34,7 +34,7 @@ header {
 .profile-picture-wrapper {
   position: relative;
   display: inline-block;
-  padding: 10px;
+  padding: 40px;
   border-radius: 50%;
   box-shadow: 0px 0px 15px 5px rgba(255, 0, 255, 0.5); /* Bayangan ungu */
 }
@@ -50,13 +50,13 @@ header {
   top: -10px;
   left: -10px;
   width: 20px; /* Panjang garis horizontal kiri atas */
-  height: 3px; /* Ketebalan garis */
+  height: 4px; /* Ketebalan garis */
 }
 
 .profile-picture-wrapper::after {
   top: -10px;
   left: -10px;
-  width: 3px; /* Ketebalan garis */
+  width: 4px; /* Ketebalan garis */
   height: 20px; /* Panjang garis vertikal kiri atas */
 }
 
@@ -69,7 +69,7 @@ header {
   bottom: -10px;
   right: -10px;
   width: 20px; /* Panjang garis horizontal kanan bawah */
-  height: 3px; /* Ketebalan garis */
+  height: 4px; /* Ketebalan garis */
 }
 
 .profile-picture-wrapper .l-shape-bottom-right::after {
@@ -78,13 +78,13 @@ header {
   background-color: magenta;
   bottom: -10px;
   right: -10px;
-  width: 3px; /* Ketebalan garis vertikal kanan bawah */
+  width: 4px; /* Ketebalan garis vertikal kanan bawah */
   height: 20px; /* Panjang garis vertikal kanan bawah */
 }
 .profile-picture {
   border-radius: 50%;
-  width: 150px; /* Ubah ukuran sesuai kebutuhan */
-  height: 150px;
+  width: 200px; /* Ubah ukuran sesuai kebutuhan */
+  height: 200px;
 }
 
 .header-jumbotron > h3 {
