@@ -79,15 +79,18 @@ function Index() {
 
     // Animasi gambar profil
     const profilePictureAnimation = () => {
-      gsap.to(profilePictureRef.current, {
-        x: 10,
-        duration: 0.5,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
+      gsap.fromTo(
+        profilePictureRef.current,
+        { x: -3 },
+        {
+          x: 3,
+          duration: 0.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        }
+      );
     };
-
     profilePictureAnimation();
 
     // Inisialisasi dan refresh AOS
