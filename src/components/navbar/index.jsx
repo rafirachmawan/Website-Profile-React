@@ -24,13 +24,6 @@ function index() {
 
   return (
     <nav>
-      {/*  */}
-      <div className="App">
-        <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
-          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-          {darkMode ? "" : ""}
-        </button>
-      </div>
       <div className="wrapper">
         <div className="logo">
           {/* HashLink untuk kembali ke bagian atas halaman */}
@@ -51,6 +44,13 @@ function index() {
               <Link to="/experience">Experience</Link>
             </li>
           </ul>
+        </div>
+        {/*  */}
+        <div className="App">
+          <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
+            <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+            {darkMode ? "" : ""}
+          </button>
         </div>
       </div>
     </nav>

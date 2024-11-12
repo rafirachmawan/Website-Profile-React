@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import "./App.css";
 import Experience from "./pages/Experience";
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
