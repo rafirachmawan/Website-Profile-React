@@ -45,7 +45,7 @@ nav > .wrapper {
   align-items: center;
 }
 .logo > a {
-  color: #fff;
+  color: rgb(17, 0, 255);
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
@@ -61,7 +61,7 @@ nav > .wrapper {
 
 .menu > ul > li > a {
   text-decoration: none;
-  color: #fff;
+  color: rgb(17, 0, 255);
 }
 nav > .wrapper > button {
   cursor: pointer;
