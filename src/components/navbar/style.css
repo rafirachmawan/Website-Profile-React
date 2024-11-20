@@ -5,12 +5,14 @@
 body.light {
   background-color: #ffffff;
   color: #000000;
+  --navbar-text-color: #000; /* Warna teks navbar untuk light mode */
 }
 
 /* Style untuk Dark Mode */
 body.dark {
   background-color: #1a1a1a;
   color: #f5f5f5;
+  --navbar-text-color: #fff; /* Warna teks navbar untuk dark mode */
 }
 
 /* Style tambahan jika perlu */
@@ -24,11 +26,25 @@ button {
 
 nav {
   background-color: #222831;
-  color: #fff;
+  color: var(--navbar-text-color); /* Warna teks navbar mengikuti mode */
   position: sticky;
   top: 0;
   z-index: 100;
   text-transform: uppercase;
+}
+
+nav .logo a {
+  text-decoration: none;
+  color: var(--navbar-text-color); /* Warna teks logo mengikuti mode */
+}
+
+nav .menu ul li a {
+  text-decoration: none;
+  color: var(--navbar-text-color); /* Warna teks menu mengikuti mode */
+}
+
+nav button {
+  color: var(--navbar-text-color); /* Warna tombol menu mengikuti mode */
 }
 nav > .wrapper {
   display: flex;
