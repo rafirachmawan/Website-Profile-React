@@ -5,17 +5,19 @@ import About from "../components/about/index";
 import Footer from "../components/footer/index";
 import FormInput from "../components/Form/FormInput";
 // import Coba from "../components/coba/index";
+import Header2 from "../components/header2/index";
 
 function Home() {
   return (
     <>
       {/* <Coba /> */}
-      <Navbar />
+      <Header2 />
+      {/* <Navbar />
       <Header />
       <Portofolio />
       <About />
       <FormInput />
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
