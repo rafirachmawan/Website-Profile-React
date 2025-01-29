@@ -26,13 +26,13 @@ function Experience() {
             iconStyle={{ background: "#222831", color: "#fff" }}
             icon={<RiNextjsFill />}
           >
-            <h3 className="vertical-timeline-element-title">Art Director</h3>
+            <h3 className="vertical-timeline-element-title">Staff IT</h3>
             <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
+              Rumah Sakit Era Medika
             </h4>
             <p>
-              Creative Direction, User Experience, Visual Design, SEO, Online
-              Marketing
+              Bekerja sebagai Staff IT , Maitance Software maupun Hardware, Dan
+              Mengelola Data base Rumah Sakit menggunakan Postgree
             </p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
