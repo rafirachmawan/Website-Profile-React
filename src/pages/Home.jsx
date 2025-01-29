@@ -6,12 +6,14 @@ import Footer from "../components/footer/index";
 import FormInput from "../components/Form/FormInput";
 // import Coba from "../components/coba/index";
 import Header2 from "../components/header2/index";
+import About2 from "../components/about2/index";
 
 function Home() {
   return (
     <>
       {/* <Coba /> */}
       <Header2 />
+      <About2 />
       {/* <Navbar />
       <Header />
       <Portofolio />
