@@ -1,9 +1,3 @@
-@import "tailwindcss";
-
-nav {
-  background-color: transparent !important; /* Pastikan navbar transparan */
-}
-
 nav a {
   color: white; /* Warna teks link */
 }

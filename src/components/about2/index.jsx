@@ -5,18 +5,9 @@ import ProfileImage from "../../assets/profil.jpeg";
 const Index = () => {
   return (
     <section id="about" className="py-16 px-6 bg-gray-800">
-      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-8">
-        {/* Gambar di kanan */}
-        <div className="lg:w-1/2 flex justify-center">
-          <img
-            src={ProfileImage}
-            alt="Profile"
-            className="rounded-lg shadow-lg w-full max-w-sm"
-          />
-        </div>
-
-        {/* Teks di kiri */}
-        <div className="lg:w-1/2 text-left">
+      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
+        {/* Kolom Kiri - Teks */}
+        <div className="w-full lg:w-1/2 text-left">
           <h2 className="text-3xl font-bold mb-4 text-white">About</h2>
           <p className="text-gray-400 mb-4">
             Halo! Saya Rafi Rachmawan, seorang Front-End Developer dengan
@@ -31,6 +22,15 @@ const Index = () => {
             Programming Language & Tools
           </p>
           <p className="text-gray-400 font-semibold">Full Stack Developer</p>
+        </div>
+
+        {/* Kolom Kanan - Gambar */}
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <img
+            src={ProfileImage}
+            alt="Profile"
+            className="rounded-lg shadow-lg w-full max-w-xs lg:max-w-sm"
+          />
         </div>
       </div>
     </section>
