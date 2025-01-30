@@ -7,6 +7,7 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import Walpaper from "../../assets/walpaper.jpeg";
 
 const Index = () => {
   return (
@@ -15,8 +16,7 @@ const Index = () => {
       <section
         className="min-h-screen bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage:
-            "url('https://source.unsplash.com/1600x900/?workspace')",
+          backgroundImage: `url(${Walpaper})`,
         }}
       >
         <div className="text-center">
@@ -33,16 +33,32 @@ const Index = () => {
             </button>
           </div>
           <div className="mt-6 flex justify-center gap-4">
-            <a href="#" className="text-xl">
+            <a
+              href="https://facebook.com/username"
+              className="text-xl"
+              title="Facebook"
+            >
               <FontAwesomeIcon icon={faFacebook} />
             </a>
-            <a href="#" className="text-xl">
+            <a
+              href="https://linkedin.com/in/username"
+              className="text-xl"
+              title="LinkedIn"
+            >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
-            <a href="#" className="text-xl">
+            <a
+              href="https://instagram.com/username"
+              className="text-xl"
+              title="Instagram"
+            >
               <FontAwesomeIcon icon={faInstagram} />
             </a>
-            <a href="#" className="text-xl">
+            <a
+              href="https://twitter.com/username"
+              className="text-xl"
+              title="Twitter"
+            >
               <FontAwesomeIcon icon={faTwitter} />
             </a>
           </div>
