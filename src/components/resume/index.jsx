@@ -29,6 +29,17 @@ const index = () => {
               </div>
             </div>
           </div>
+          {/* Experience */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Experience</h3>
+            <ul className="text-gray-400 space-y-4">
+              <li>Art Director - White Fish Advertising Co. (2023)</li>
+              <li>
+                Senior Graphic Designer - Pyramids Sun Advertising Co. (2021)
+              </li>
+              <li>Graphic Designer - Play Graphic Advertising Agency (2019)</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
