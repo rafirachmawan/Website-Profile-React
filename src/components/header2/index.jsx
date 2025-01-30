@@ -12,26 +12,6 @@ import Walpaper from "../../assets/walpaper.jpeg";
 const Index = () => {
   return (
     <div className="bg-gray-900 text-white">
-      {/* Navbar Section */}
-      <nav className="fixed top-0 left-0 right-0 z-50 p-4 bg-transparent">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-xl font-bold text-white">
-            RAFI <span className="text-blue-500">RACHMAWAN</span>
-          </div>
-          <div className="flex gap-4">
-            <a href="#about" className="text-white hover:text-blue-500">
-              About
-            </a>
-            <a href="#portfolio" className="text-white hover:text-blue-500">
-              Portfolio
-            </a>
-            <a href="#contact" className="text-white hover:text-blue-500">
-              Contact
-            </a>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section
         className="min-h-screen bg-cover bg-center flex items-center justify-center"

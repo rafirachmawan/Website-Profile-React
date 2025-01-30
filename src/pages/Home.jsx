@@ -8,11 +8,13 @@ import FormInput from "../components/Form/FormInput";
 import Header2 from "../components/header2/index";
 import About2 from "../components/about2/index";
 import Section from "../components/resume/index";
+import Navbar2 from "../components/navbar2/index";
 
 function Home() {
   return (
     <>
       {/* <Coba /> */}
+      <Navbar2 />
       <Header2 />
       <About2 />
       <Section />
