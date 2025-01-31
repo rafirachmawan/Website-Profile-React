@@ -10,6 +10,7 @@ import About2 from "../components/about2/index";
 import Section from "../components/resume/index";
 import Navbar2 from "../components/navbar2/index";
 import Project from "../components/project/index";
+import Contact from "../components/contact/index";
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
       <About2 />
       <Project />
       <Section />
+      <Contact />
       {/* <Navbar />
       <Header />
       <Portofolio />
