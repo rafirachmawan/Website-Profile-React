@@ -1,125 +1,71 @@
 import React, { useState } from "react";
 import "./style.css";
+import Image1 from "../../assets/RentalMobil.jpeg";
+import Image2 from "../../assets/SistemRekapitulasiDosen.jpeg";
+import Image3 from "../../assets/ErtigaStore.jpeg";
 
-const ImageSlider = ({ images }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const projects = [
+  { id: 1, image: Image1, link: "#" },
+  { id: 2, image: Image1, link: "#" },
+  { id: 3, image: Image1, link: "#" },
+  { id: 4, image: Image2, link: "#" },
+  { id: 5, image: Image1, link: "#" },
+  { id: 6, image: Image3, link: "#" },
+];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  return (
-    <div className="relative h-48 overflow-hidden">
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Slide ${index + 1}`}
-          className={`absolute w-full h-full object-cover transition-opacity duration-300 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
-
-      {/* Navigation buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full hover:bg-black/80"
-      >
-        ❮
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full hover:bg-black/80"
-      >
-        ❯
-      </button>
-
-      {/* Slide indicators */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-2 w-2 rounded-full ${
-              index === currentSlide ? "bg-white" : "bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const Index = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "Project 1",
-      description: "Deskripsi Project 1...",
-      images: [
-        "https://via.placeholder.com/400x300/FF0000",
-        "https://via.placeholder.com/400x300/00FF00",
-        "https://via.placeholder.com/400x300/0000FF",
-      ],
-      projectLink: "#",
-    },
-    {
-      id: 2,
-      title: "Project 2",
-      description: "Deskripsi Project 2...",
-      images: [
-        "https://via.placeholder.com/400x300/FFA500",
-        "https://via.placeholder.com/400x300/800080",
-      ],
-      projectLink: "#",
-    },
-    {
-      id: 2,
-      title: "Project 2",
-      description: "Deskripsi Project 2...",
-      images: [
-        "https://via.placeholder.com/400x300/FFA500",
-        "https://via.placeholder.com/400x300/800080",
-      ],
-      projectLink: "#",
-    },
-
-    // Tambahkan proyek lain
-  ];
+const ProjectGallery = () => {
+  const [zoomedImage, setZoomedImage] = useState(null);
 
   return (
     <section className="py-12 bg-gray-800 text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Proyek Saya</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
-            >
-              <ImageSlider images={project.images} />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <a
-                  href={project.projectLink}
-                  className="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+            <div key={project.id} className="relative group overflow-hidden">
+              <img
+                src={project.image}
+                alt={`Project ${project.id}`}
+                className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-yellow-500/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  onClick={() => setZoomedImage(project.image)}
+                  className="bg-white text-black px-4 py-2 m-2 rounded shadow hover:bg-gray-200"
                 >
-                  Lihat Proyek
+                  Zoom
+                </button>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-black px-4 py-2 m-2 rounded shadow hover:bg-gray-200"
+                >
+                  View
                 </a>
               </div>
             </div>
           ))}
         </div>
+
+        {zoomedImage && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+            <img
+              src={zoomedImage}
+              alt="Zoomed"
+              className="max-w-3xl max-h-3xl"
+            />
+            <button
+              onClick={() => setZoomedImage(null)}
+              className="absolute top-4 right-4 bg-red-500 text-white p-2 rounded"
+            >
+              ✖
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
-export default Index;
+export default ProjectGallery;
