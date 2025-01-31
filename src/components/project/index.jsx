@@ -8,9 +8,9 @@ const projects = [
   { id: 1, image: Image1, link: "#" },
   { id: 2, image: Image1, link: "#" },
   { id: 3, image: Image1, link: "#" },
-  { id: 4, image: Image2, link: "#" },
+  { id: 4, image: Image1, link: "#" },
   { id: 5, image: Image1, link: "#" },
-  { id: 6, image: Image3, link: "#" },
+  { id: 6, image: Image1, link: "#" },
 ];
 
 const ProjectGallery = () => {
@@ -28,7 +28,7 @@ const ProjectGallery = () => {
                 alt={`Project ${project.id}`}
                 className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-yellow-500/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-0 bg-gray-800/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
                   onClick={() => setZoomedImage(project.image)}
                   className="bg-white text-black px-4 py-2 m-2 rounded shadow hover:bg-gray-200"
@@ -49,18 +49,15 @@ const ProjectGallery = () => {
         </div>
 
         {zoomedImage && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+          <div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+            onClick={() => setZoomedImage(null)}
+          >
             <img
               src={zoomedImage}
               alt="Zoomed"
               className="max-w-3xl max-h-3xl"
             />
-            <button
-              onClick={() => setZoomedImage(null)}
-              className="absolute top-4 right-4 bg-red-500 text-white p-2 rounded"
-            >
-              ✖
-            </button>
           </div>
         )}
       </div>
