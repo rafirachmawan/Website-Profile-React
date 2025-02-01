@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "./style.css";
 import Image1 from "../../assets/RentalMobil.jpeg";
-import Image2 from "../../assets/SistemRekapitulasiDosen.jpeg";
-import Image3 from "../../assets/ErtigaStore.jpeg";
 
 const projects = [
   { id: 1, image: Image1, link: "#" },
@@ -20,11 +19,18 @@ const ProjectGallery = () => {
     <section className="py-12 bg-gray-800 text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">
-          Proyek <span className="text-blue-400">Saya</span>{" "}
+          Proyek <span className="text-blue-400">Saya</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <div key={project.id} className="relative group overflow-hidden">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              className="relative group overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
               <img
                 src={project.image}
                 alt={`Project ${project.id}`}
@@ -46,7 +52,7 @@ const ProjectGallery = () => {
                   View
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
