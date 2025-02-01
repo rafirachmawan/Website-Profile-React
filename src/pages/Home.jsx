@@ -22,12 +22,7 @@ function Home() {
       <Project />
       <Section />
       <Contact />
-      {/* <Navbar />
-      <Header />
-      <Portofolio />
-      <About />
-      <FormInput />
-      <Footer /> */}
+      <Footer />
     </>
   );
 }
