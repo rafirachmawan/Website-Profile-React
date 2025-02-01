@@ -11,7 +11,9 @@ import "react-vertical-timeline-component/style.min.css";
 const Konsep = () => {
   return (
     <div className="wrapper">
-      <h1>Experience</h1>
+      <h1 className="text-center text-3xl font-bold m-6 text-blue-500">
+        Experience
+      </h1>
       <VerticalTimeline>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
@@ -35,11 +37,11 @@ const Konsep = () => {
           icon={<FaDatabase />}
         >
           <h3 className="vertical-timeline-element-title">
-            PostgreSQL & MongoDB
+            PostgreSQL & MongoDB & MYSQL
           </h3>
           <p>
-            Mengelola database dengan efisien menggunakan PostgreSQL dan
-            MongoDB.
+            Mengelola database dengan efisien menggunakan PostgreSQL, MongoDB
+            Dan MYSQL
           </p>
         </VerticalTimelineElement>
 
@@ -50,26 +52,24 @@ const Konsep = () => {
           icon={<FaServer />}
         >
           <h3 className="vertical-timeline-element-title">
-            Node.js & Express.js
+            Node.js & PHP & PHP
           </h3>
           <p>
-            Membangun API dengan performa tinggi menggunakan Node.js dan
-            Express.js.
+            Membangun API dengan performa tinggi menggunakan Node.js, Express.js
+            Dan PHP
           </p>
         </VerticalTimelineElement>
 
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          date="Software Engineering"
+          date="Ui UX Design"
           iconStyle={{ background: "#9333ea", color: "#fff" }}
           icon={<FaCode />}
         >
-          <h3 className="vertical-timeline-element-title">
-            Clean Code & Design Patterns
-          </h3>
+          <h3 className="vertical-timeline-element-title">Figma</h3>
           <p>
-            Menulis kode yang bersih, mudah dibaca, dan menggunakan prinsip
-            desain yang baik.
+            Mendesing Mokup UI/UX dengan menggunakan Design Pattern dan
+            interactive.
           </p>
         </VerticalTimelineElement>
       </VerticalTimeline>

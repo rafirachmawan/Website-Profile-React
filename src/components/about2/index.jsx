@@ -10,13 +10,13 @@ const Index = () => {
         <div className="w-full lg:w-1/2 text-left">
           <h2 className="text-3xl font-bold mb-4 text-white">About</h2>
           <p className="text-gray-400 mb-4">
-            Halo! Saya Rafi Rachmawan, seorang Front-End Developer dengan
-            pengalaman mendalam dalam membangun aplikasi web interaktif dan
-            responsif. Saya memiliki keahlian di berbagai teknologi front-end
-            modern seperti HTML, CSS, JavaScript, React, serta alat pengembangan
-            seperti Vite dan sekarang saya lagi memperdalam ilmu saya di
-            Backend. Dalam pekerjaan saya, saya sangat berfokus pada performa,
-            aksesibilitas, dan desain yang user-friendly.
+            Hi! I am Rafi Rachmawan, a Front-End Developer with extensive
+            experience in building interactive and responsive web applications.
+            I have expertise in various modern front-end technologies such as
+            HTML, CSS, JavaScript, React, as well as development tools such as
+            Vite and now I am deepening my knowledge in Backend. In my work, I
+            focus heavily on performance, accessibility, and user-friendly
+            design.
           </p>
           <p className="text-gray-400 font-semibold">
             Programming Language & Tools
