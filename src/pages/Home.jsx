@@ -21,12 +21,12 @@ function Home() {
       <Navbar2 />
       <Header2 />
       <About2 />
+      <Timeline />
       <Experience />
       <Project />
       <Section />
       <Contact />
       <Footer />
-      <Timeline />
     </>
   );
 }

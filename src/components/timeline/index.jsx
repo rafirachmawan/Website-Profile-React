@@ -11,9 +11,14 @@ const index = () => {
     { year: 2025, description: "Target Karir" },
   ];
   return (
-    <div className="relative container mx-auto px-6 flex flex-col space-y-8">
+    <div className="relative container mx-auto px-6 flex flex-col space-y-8 mt-15">
+      {/* Judul Timeline */}
+      <h2 className="text-center text-3xl font-bold text-gray-800 mb-10">
+        TIMELINE
+      </h2>
+
       {/* Garis Timeline */}
-      <div className="absolute left-1/2 w-1 h-full bg-gray-300 transform -translate-x-1/2"></div>
+      <div className="absolute left-1/2 w-1 h-[calc(100%-3rem)] bg-gray-300 transform -translate-x-1/2 top-12"></div>
 
       {/* Loop untuk setiap event */}
       {events.map((event, index) => (
