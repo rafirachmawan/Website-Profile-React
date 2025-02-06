@@ -11,7 +11,7 @@ import "react-vertical-timeline-component/style.min.css";
 const Konsep = () => {
   return (
     <div className="wrapper">
-      <h1 className="text-center text-3xl font-bold m-6 text-blue-500">
+      <h1 className="text-center text-3xl font-bold m-6 text-gray-800">
         Experience
       </h1>
       <VerticalTimeline>
