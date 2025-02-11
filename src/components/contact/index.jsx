@@ -6,7 +6,7 @@ import Github from "../../assets/github.png";
 
 const ContactMe = () => {
   return (
-    <section className="py-12 bg-gray-800 text-white">
+    <section id="contact" className="py-12 bg-gray-800 text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">
           Contact <span className="text-blue-400">Me</span>{" "}

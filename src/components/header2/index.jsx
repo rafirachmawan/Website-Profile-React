@@ -11,7 +11,7 @@ import Walpaper from "../../assets/walpaper.jpeg";
 
 const Index = () => {
   return (
-    <div className="bg-gray-900 text-white">
+    <div id="home" className="bg-gray-900 text-white">
       {/* Hero Section */}
       <section
         className="min-h-screen bg-cover bg-center flex items-center justify-center"
