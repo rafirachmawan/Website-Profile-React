@@ -18,7 +18,7 @@ function Home() {
   return (
     <>
       {/* <Coba /> */}
-      <Navbar2 />
+      {/* <Navbar2 /> */}
       <Header2 />
       <About2 />
       <Timeline />

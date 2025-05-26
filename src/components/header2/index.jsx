@@ -7,6 +7,7 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { Typewriter } from "react-simple-typewriter";
 import Walpaper from "../../assets/walpaper.jpeg";
 
 const Index = () => {
@@ -23,7 +24,21 @@ const Index = () => {
           <h1 className="text-4xl font-bold">
             RAFI <span className="text-blue-500">RACHMAWAN</span>
           </h1>
-          <p className="text-lg mt-4">Full Stack Developer Junior</p>
+          <p className="text-lg mt-4">
+            <Typewriter
+              words={[
+                "Full Stack Developer",
+                "React Enthusiast",
+                "UI/UX Learner",
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="_"
+              typeSpeed={80}
+              deleteSpeed={60}
+              delaySpeed={1000}
+            />
+          </p>
           <div className="mt-8 flex justify-center gap-4">
             <button className="px-6 py-2 bg-blue-500 text-white rounded-full">
               Resume
