@@ -14,42 +14,42 @@ const Timeline = () => {
       description: "🎓 Lulus SMA",
       detail:
         "Saya lulus dari SMA Negeri 1 dengan jurusan IPA dan mulai mengejar passion di dunia teknologi.",
-      image: "https://unsplash.it/400/250?image=1050",
+      image: "https://cdn-icons-png.flaticon.com/512/3135/3135768.png", // ikon education
     },
     {
       year: 2018,
       description: "🏫 Mulai Kuliah",
       detail:
         "Memulai kuliah di jurusan Teknik Informatika, belajar dasar-dasar pemrograman dan pengembangan web.",
-      image: "https://unsplash.it/400/250?image=1025",
+      image: "https://cdn-icons-png.flaticon.com/512/201/201623.png", // ikon university
     },
     {
       year: 2020,
       description: "🧑‍💻 Magang Pertama",
       detail:
         "Melakukan magang di perusahaan startup, memperdalam frontend development.",
-      image: "https://unsplash.it/400/250?image=1011",
+      image: "https://cdn-icons-png.flaticon.com/512/1046/1046857.png", // ikon internship
     },
     {
       year: 2022,
       description: "🎓 Lulus Sarjana",
       detail:
         "Lulus dari perguruan tinggi dengan IPK yang memuaskan dan skripsi tentang UI/UX.",
-      image: "https://unsplash.it/400/250?image=999",
+      image: "https://cdn-icons-png.flaticon.com/512/3135/3135789.png", // ikon graduation
     },
     {
       year: 2023,
       description: "💼 Mulai Bekerja",
       detail:
         "Mulai bekerja sebagai Frontend Developer di perusahaan teknologi.",
-      image: "https://unsplash.it/400/250?image=950",
+      image: "https://cdn-icons-png.flaticon.com/512/1689/1689170.png", // ikon kerja
     },
     {
       year: 2025,
       description: "🎯 Target Karir",
       detail:
         "Mengejar posisi senior developer atau lead di bidang pengembangan web.",
-      image: "https://unsplash.it/400/250?image=930",
+      image: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png", // ikon target career
     },
   ];
 
@@ -140,7 +140,7 @@ const Timeline = () => {
             <img
               src={selectedEvent.image}
               alt={selectedEvent.description}
-              className="rounded-lg mb-4 w-full h-auto object-cover"
+              className="rounded-lg mb-4 w-full h-auto object-contain max-h-60"
             />
             <h3 className="text-2xl font-bold mb-2 text-blue-600">
               {selectedEvent.description}
