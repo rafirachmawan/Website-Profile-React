@@ -5,6 +5,7 @@ import About from "../components/about/index";
 import Footer from "../components/footer/index";
 import FormInput from "../components/Form/FormInput";
 // import Coba from "../components/coba/index";
+
 import Header2 from "../components/header2/index";
 import About2 from "../components/about2/index";
 import Section from "../components/resume/index";
@@ -17,15 +18,32 @@ import Timeline from "../components/timeline/index";
 function Home() {
   return (
     <>
-      {/* <Coba /> */}
+      {/* Navbar jika ingin digunakan */}
+      {/* <Navbar /> */}
       {/* <Navbar2 /> */}
+
+      {/* HERO SECTION (sudah ada 3D nanti di Header2) */}
       <Header2 />
+
+      {/* ABOUT */}
       <About2 />
+
+      {/* TIMELINE */}
       <Timeline />
+
+      {/* EXPERIENCE */}
       <Experience />
+
+      {/* PROJECT */}
       <Project />
+
+      {/* RESUME */}
       <Section />
+
+      {/* CONTACT */}
       <Contact />
+
+      {/* FOOTER */}
       <Footer />
     </>
   );

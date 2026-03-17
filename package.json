@@ -14,6 +14,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
     "@tailwindcss/vite": "^4.0.0",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
@@ -30,6 +32,7 @@
     "react-vertical-timeline-component": "^3.6.0",
     "swiper": "^11.2.1",
     "tailwindcss": "^4.0.0",
+    "three": "^0.160.1",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

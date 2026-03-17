@@ -1,142 +1,215 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import { FaReact, FaDatabase, FaServer, FaCode } from "react-icons/fa";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-import AOS from "aos";
 
 const Konsep = () => {
+  const experiences = [
+    {
+      title: "Frontend Developer",
+      desc: "React, Tailwind, UI Modern",
+      icon: <FaReact />,
+      color: "from-blue-500 to-cyan-400",
+      company: "Freelance / Client Project",
+    },
+    {
+      title: "Database",
+      desc: "PostgreSQL, MongoDB",
+      icon: <FaDatabase />,
+      color: "from-green-500 to-emerald-400",
+      company: "Project Internal",
+    },
+    {
+      title: "Backend",
+      desc: "Node.js, Express",
+      icon: <FaServer />,
+      color: "from-orange-500 to-yellow-400",
+      company: "API Development",
+    },
+    {
+      title: "UI/UX Design",
+      desc: "Figma, Design System",
+      icon: <FaCode />,
+      color: "from-purple-500 to-pink-400",
+      company: "UI Research",
+    },
+  ];
+
+  const skills = [
+    { name: "HTML", value: 90 },
+    { name: "JavaScript", value: 85 },
+    { name: "React", value: 88 },
+    { name: "Node.js", value: 75 },
+  ];
+
+  const refs = useRef([]);
+  const skillRef = useRef(null);
+
+  const [visible, setVisible] = useState([]);
+  const [skillProgress, setSkillProgress] = useState(skills.map(() => 0));
+
+  // 🔥 REVEAL EXPERIENCE
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.dataset.index);
+
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setVisible((prev) =>
+                prev.includes(index) ? prev : [...prev, index],
+              );
+            }, index * 150);
+          } else {
+            setVisible((prev) => prev.filter((i) => i !== index));
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    refs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
+  // 🔥 SKILL ANIMATION ON SCROLL
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          skills.forEach((skill, i) => {
+            let start = 0;
+
+            const interval = setInterval(() => {
+              start += 2;
+
+              setSkillProgress((prev) => {
+                const updated = [...prev];
+                updated[i] = Math.min(start, skill.value);
+                return updated;
+              });
+
+              if (start >= skill.value) {
+                clearInterval(interval);
+              }
+            }, 20);
+          });
+        } else {
+          // reset kalau keluar viewport (biar animasi ulang)
+          setSkillProgress(skills.map(() => 0));
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    if (skillRef.current) observer.observe(skillRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // 🔥 3D TILT
+  const handleTilt = (e, el) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+
+    const rx = -((y - cy) / cy) * 10;
+    const ry = ((x - cx) / cx) * 10;
+
+    el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.05)`;
+  };
+
+  const resetTilt = (el) => {
+    el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+  };
+
+  // 🔥 SPOTLIGHT
+  const handleMouseMove = (e, el) => {
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
+
   return (
-    <div className="wrapper relative">
-      {/* Transition Wave Top */}
-      <div className="relative">
-        <svg
-          className="w-full h-32 md:h-48 lg:h-56"
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="waveGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#22d3ee" />
-              <stop offset="100%" stopColor="#3b82f6" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#waveGradient)"
-            d="M0,64L60,90.7C120,117,240,171,360,165.3C480,160,600,96,720,80C840,64,960,96,1080,117.3C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-          />
-        </svg>
+    <section className="relative py-20 px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <h1 className="text-center text-4xl font-bold text-white mb-16">
+        My <span className="text-blue-500">Experience</span>
+      </h1>
+
+      {/* EXPERIENCE */}
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        {experiences.map((exp, index) => {
+          const isVisible = visible.includes(index);
+
+          return (
+            <div
+              key={index}
+              data-index={index}
+              ref={(el) => (refs.current[index] = el)}
+              className={`transition-all duration-700
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            >
+              <div
+                onMouseMove={(e) => {
+                  handleTilt(e, e.currentTarget);
+                  handleMouseMove(e, e.currentTarget);
+                }}
+                onMouseLeave={(e) => resetTilt(e.currentTarget)}
+                className="relative backdrop-blur-md bg-white/5 border border-white/10 p-6 rounded-2xl shadow-xl cursor-pointer transition-all duration-300 overflow-hidden group"
+              >
+                {/* SPOTLIGHT */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(circle at var(--x) var(--y), rgba(59,130,246,0.25), transparent 40%)",
+                  }}
+                />
+
+                <div
+                  className={`w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r ${exp.color} text-white text-xl mb-4`}
+                >
+                  {exp.icon}
+                </div>
+
+                <h3 className="text-white font-semibold text-lg">
+                  {exp.title}
+                </h3>
+
+                <p className="text-gray-400 text-sm mt-1">{exp.company}</p>
+
+                <p className="text-gray-300 text-sm mt-3">{exp.desc}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* Experience Section */}
-      <div className="bg-white -mt-16 pb-12 px-4">
-        <h1
-          className="text-center text-3xl font-bold mb-8 text-blue-600"
-          data-aos="fade-down"
-        >
-          Experience
-        </h1>
+      {/* SKILLS */}
+      <div ref={skillRef} className="max-w-3xl mx-auto">
+        <h2 className="text-white text-2xl font-bold mb-6 text-center">
+          Skills
+        </h2>
 
-        <div className="mt-4">
-          <VerticalTimeline lineColor="#3b82f6">
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              date="Front-End Development"
-              iconStyle={{ background: "#2563eb", color: "#fff" }}
-              icon={<FaReact />}
-              contentStyle={{
-                transition: "transform 0.3s, box-shadow 0.3s",
-              }}
-              contentArrowStyle={{ borderRight: "7px solid #2563eb" }}
-            >
-              <div
-                className="transition-transform hover:scale-105 hover:shadow-lg"
-                data-aos="zoom-in"
-              >
-                <h3 className="vertical-timeline-element-title font-semibold">
-                  React & Tailwind CSS
-                </h3>
-                <p>
-                  Membangun UI yang modern dan responsif menggunakan React dan
-                  Tailwind CSS.
-                </p>
-              </div>
-            </VerticalTimelineElement>
+        {skills.map((skill, i) => (
+          <div key={i} className="mb-5">
+            <div className="flex justify-between text-gray-300 text-sm mb-1">
+              <span>{skill.name}</span>
+              <span>{skillProgress[i]}%</span>
+            </div>
 
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              date="Database Management"
-              iconStyle={{ background: "#16a34a", color: "#fff" }}
-              icon={<FaDatabase />}
-              contentArrowStyle={{ borderRight: "7px solid #16a34a" }}
-            >
+            <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
               <div
-                className="transition-transform hover:scale-105 hover:shadow-lg"
-                data-aos="zoom-in"
-              >
-                <h3 className="vertical-timeline-element-title font-semibold">
-                  PostgreSQL, MongoDB, & MySQL
-                </h3>
-                <p>
-                  Mengelola database dengan efisien menggunakan PostgreSQL,
-                  MongoDB, dan MySQL.
-                </p>
-              </div>
-            </VerticalTimelineElement>
-
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              date="Backend Development"
-              iconStyle={{ background: "#f97316", color: "#fff" }}
-              icon={<FaServer />}
-              contentArrowStyle={{ borderRight: "7px solid #f97316" }}
-            >
-              <div
-                className="transition-transform hover:scale-105 hover:shadow-lg"
-                data-aos="zoom-in"
-              >
-                <h3 className="vertical-timeline-element-title font-semibold">
-                  Node.js, Express & PHP
-                </h3>
-                <p>
-                  Membangun API dengan performa tinggi menggunakan Node.js,
-                  Express.js dan PHP.
-                </p>
-              </div>
-            </VerticalTimelineElement>
-
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              date="UI/UX Design"
-              iconStyle={{ background: "#9333ea", color: "#fff" }}
-              icon={<FaCode />}
-              contentArrowStyle={{ borderRight: "7px solid #9333ea" }}
-            >
-              <div
-                className="transition-transform hover:scale-105 hover:shadow-lg"
-                data-aos="zoom-in"
-              >
-                <h3 className="vertical-timeline-element-title font-semibold">
-                  Figma
-                </h3>
-                <p>
-                  Mendesain mockup UI/UX dengan menggunakan design pattern dan
-                  interaktif.
-                </p>
-              </div>
-            </VerticalTimelineElement>
-          </VerticalTimeline>
-        </div>
+                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
+                style={{ width: `${skillProgress[i]}%` }}
+              ></div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
