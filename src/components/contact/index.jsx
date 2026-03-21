@@ -19,7 +19,7 @@ const ContactMe = () => {
               className="mx-auto mb-4 w-16 h-16"
             />
             <h3 className="text-xl font-semibold">Call Me</h3>
-            <p className="text-gray-300">Reach me at +123 456 789</p>
+            <p className="text-gray-300">+62 857 0718 5783</p>
           </div>
           <div className="text-center">
             <img
@@ -28,7 +28,7 @@ const ContactMe = () => {
               className="mx-auto mb-4 w-16 h-16"
             />
             <h3 className="text-xl font-semibold">Contact Me</h3>
-            <p className="text-gray-300">Email me at example@email.com</p>
+            <p className="text-gray-300">rafirachmawan1987@gmail.com</p>
           </div>
           <div className="text-center">
             <img
@@ -40,7 +40,7 @@ const ContactMe = () => {
             <p className="text-gray-300">
               Check my projects at{" "}
               <a
-                href="https://github.com/yourprofile"
+                href="https://github.com/rafirachmawan"
                 className="text-blue-400"
               >
                 GitHub
