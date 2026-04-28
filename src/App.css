@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* 🔥 TAMBAHKAN INI DI BAWAH */
+.font-heading {
+  font-family: "Sora", sans-serif;
+}
+
+.font-body {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
