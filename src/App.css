@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* 🔥 TAMBAHKAN INI DI BAWAH */
 .font-heading {
   font-family: "Sora", sans-serif;
 }
@@ -9,6 +8,28 @@
   font-family: "Inter", sans-serif;
 }
 
+/* Global Reset & Base Viewport Page background */
+html,
 body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #030712; /* Fallback base color */
   font-family: "Inter", sans-serif;
+}
+
+/* 
+ * Perfect Stack Layering:
+ * #root sits at z-index 2 (relative) so all text, buttons, and content float
+ * perfectly on top of the z-index 1 WebGL canvas, while keeping background transparent.
+ */
+#root {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent !important;
+  min-height: 100vh;
 }

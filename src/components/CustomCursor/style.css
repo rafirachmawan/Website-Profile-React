@@ -1,0 +1,80 @@
+/* Custom Cursor Styling */
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00ffff;
+  z-index: 99999;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.15s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+  z-index: 99998;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(-100px, -100px, 0);
+  transition: 
+    opacity 0.2s ease, 
+    width 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+    height 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+    border-color 0.25s ease, 
+    background-color 0.25s ease, 
+    box-shadow 0.25s ease;
+}
+
+/* Hidden State */
+.hidden-cursor {
+  opacity: 0 !important;
+}
+
+/* Hover States (Scaling & Glowing) */
+.hovered-cursor.custom-cursor-ring {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(0, 255, 255, 0.95);
+  background-color: rgba(0, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.55), inset 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.hovered-cursor.custom-cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #ffffff;
+}
+
+/* Clicked States (Satisfying Physics) */
+.clicked-cursor.custom-cursor-ring {
+  width: 28px;
+  height: 28px;
+  border-color: #00ffff;
+  background-color: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+.clicked-cursor.custom-cursor-dot {
+  width: 14px;
+  height: 14px;
+  background-color: #00ffff;
+}
+
+/* Global Hide Original Cursor when custom cursor is active */
+@media (min-width: 769px) {
+  html, body, a, button, [role="button"], .clickable {
+    cursor: none !important;
+  }
+}

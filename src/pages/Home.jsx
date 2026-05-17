@@ -14,15 +14,19 @@ import Project from "../components/project/index";
 import Contact from "../components/contact/index";
 import Experience from "../components/experience/index";
 import Timeline from "../components/timeline/index";
+import ThreeBgScene from "../components/ThreeBgScene";
 
 function Home() {
   return (
     <>
+      {/* Global 3D Space Background Scene */}
+      <ThreeBgScene />
+
       {/* Navbar jika ingin digunakan */}
       {/* <Navbar /> */}
       {/* <Navbar2 /> */}
 
-      {/* HERO SECTION (sudah ada 3D nanti di Header2) */}
+      {/* HERO SECTION */}
       <Header2 />
 
       {/* ABOUT */}
@@ -50,3 +54,4 @@ function Home() {
 }
 
 export default Home;
+

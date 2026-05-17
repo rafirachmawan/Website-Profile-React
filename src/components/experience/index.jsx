@@ -139,14 +139,14 @@ const Konsep = () => {
   };
 
   return (
-    <section className="relative py-20 px-4 md:px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section className="relative py-20 px-4 md:px-6 bg-transparent overflow-hidden">
       {/* BACKGROUND */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 blur-3xl rounded-full"></div>
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
 
       <h1 className="text-center text-3xl md:text-4xl font-bold text-white mb-16">
         My{" "}
-        <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent animate-gradient">
+        <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,255,255,0.2)]">
           Experience
         </span>
       </h1>
@@ -175,7 +175,7 @@ const Konsep = () => {
                     handleMouseMove(e, e.currentTarget);
                   }}
                   onMouseLeave={(e) => resetTilt(e.currentTarget)}
-                  className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-5 md:p-6 h-full relative overflow-hidden"
+                  className="bg-slate-950/65 backdrop-blur-xl border border-white/10 rounded-2xl p-5 md:p-6 h-full relative overflow-hidden"
                 >
                   {/* ICON */}
                   <div
@@ -184,19 +184,19 @@ const Konsep = () => {
                     {exp.icon}
                   </div>
 
-                  <h3 className="text-white font-semibold text-base md:text-lg">
+                  <h3 className="text-white font-bold text-base md:text-lg">
                     {exp.title}
                   </h3>
 
-                  <p className="text-gray-400 text-xs md:text-sm mt-1">
+                  <p className="text-slate-200 text-xs md:text-sm mt-1 font-body">
                     {exp.company}
                   </p>
 
-                  <p className="text-gray-300 text-xs md:text-sm mt-3">
+                  <p className="text-slate-100 text-xs md:text-sm mt-3 font-body">
                     {exp.desc}
                   </p>
 
-                  <p className="text-xs text-blue-400 mt-3 font-semibold">
+                  <p className="text-xs text-cyan-300 mt-3 font-semibold font-body tracking-wider">
                     {exp.impact}
                   </p>
                 </div>

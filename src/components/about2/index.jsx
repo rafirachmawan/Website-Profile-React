@@ -99,15 +99,7 @@ const Index = () => {
   };
 
   return (
-    <section
-      id="about"
-      className="relative py-20 px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
-    >
-      {/* PARTICLES */}
-      <div className="absolute inset-0 z-0 opacity-30">
-        <BackgroundParticles />
-      </div>
-
+    <section id="about" className="relative py-20 px-6 bg-transparent">
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
         {/* LEFT */}
         <div
@@ -115,63 +107,63 @@ const Index = () => {
           data-aos="fade-right"
         >
           <h2 className="text-4xl font-bold mb-2 text-white">
-            Hi, I'm <span className="text-blue-500">Rafi</span> 👋
+            Hi, I'm <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]">Rafi</span> 👋
           </h2>
 
-          <p className="text-lg text-blue-400 font-medium h-6">
+          <p className="text-lg text-cyan-300 font-semibold h-6">
             {displayText}
             <span className="animate-pulse">|</span>
           </p>
 
-          <p className="text-gray-300 mt-4 mb-4 leading-relaxed">
+          <p className="text-slate-100 mt-4 mb-4 leading-relaxed font-body">
             Halo! Saya{" "}
             <span className="font-semibold text-white">Rafi Rachmawan</span>,
             seorang Front-End Developer yang fokus membuat UI modern, responsif,
             dan interaktif.
           </p>
 
-          <p className="text-gray-300 mb-4 leading-relaxed">
+          <p className="text-slate-100 mb-4 leading-relaxed font-body">
             Saya terbiasa menggunakan React, Tailwind, dan Vite, serta sedang
             mengembangkan skill Backend untuk menjadi Fullstack Developer.
           </p>
 
-          <p className="text-white font-semibold mt-6 mb-3">Tech Stack</p>
+          <p className="text-white font-semibold mt-6 mb-3 font-heading">Tech Stack</p>
           <div className="flex flex-wrap gap-3">
             {["HTML", "JavaScript", "React", "Vite", "Node.js"].map((tech) => (
               <span
                 key={tech}
-                className="bg-gray-700 hover:bg-blue-600 transition-all duration-300 text-white px-4 py-1 text-sm rounded-full cursor-pointer hover:scale-110"
+                className="bg-white/10 border border-white/10 text-white hover:bg-cyan-500/20 hover:border-cyan-400 hover:text-cyan-300 transition-all duration-300 px-4 py-1 text-sm rounded-full cursor-pointer hover:scale-110"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <p className="text-white font-semibold mt-8 mb-3">My Journey</p>
-          <ul className="border-l-2 border-blue-500 pl-4 text-gray-400 space-y-3 text-sm">
+          <p className="text-white font-semibold mt-8 mb-3 font-heading">My Journey</p>
+          <ul className="border-l-2 border-cyan-500 pl-4 text-slate-300 space-y-3 text-sm font-body">
             <li>
-              <span className="font-bold text-white">2022:</span> Belajar dasar
+              <span className="font-bold text-cyan-300">2022:</span> Belajar dasar
               web
             </li>
             <li>
-              <span className="font-bold text-white">2023:</span> Fokus React &
+              <span className="font-bold text-cyan-300">2023:</span> Fokus React &
               UI
             </li>
             <li>
-              <span className="font-bold text-white">2024:</span> Freelance
+              <span className="font-bold text-cyan-300">2024:</span> Freelance
               project
             </li>
             <li>
-              <span className="font-bold text-white">2025:</span> Backend &
+              <span className="font-bold text-cyan-300">2025:</span> Backend &
               Fullstack
             </li>
           </ul>
 
           <div className="mt-8 flex gap-4">
-            <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg text-white font-medium transition">
+            <button className="bg-white text-gray-950 font-bold hover:bg-cyan-50 hover:shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:scale-105 transition-all duration-300 px-6 py-2.5 rounded-lg font-medium cursor-pointer">
               Hire Me
             </button>
-            <button className="border border-gray-500 hover:border-white px-5 py-2 rounded-lg text-gray-300 hover:text-white transition">
+            <button className="border border-white/30 hover:border-white px-6 py-2.5 rounded-lg text-slate-200 hover:text-white transition hover:scale-105 duration-300 cursor-pointer">
               Contact
             </button>
           </div>

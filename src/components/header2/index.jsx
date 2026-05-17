@@ -106,25 +106,20 @@ function Hero3D() {
   );
 }
 
+
 const Index = () => {
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-transparent text-white">
       <section
-        className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${Walpaper})`,
-        }}
+        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
-        {/* THREEJS */}
-        <Hero3D />
-
         {/* CONTENT */}
-        <div className="relative z-10 flex flex-col items-center mt-48 text-center">
-          <h1 className="text-5xl font-bold tracking-wide">
-            RAFI <span className="text-blue-500">RACHMAWAN</span>
+        <div className="relative z-10 flex flex-col items-center mt-48 text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-wide leading-tight">
+            RAFI <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,255,255,0.2)]">RACHMAWAN</span>
           </h1>
 
-          <p className="text-lg mt-4">
+          <p className="text-lg md:text-xl mt-4 font-body text-slate-200">
             <Typewriter
               words={[
                 "Full Stack Developer",
@@ -141,29 +136,29 @@ const Index = () => {
           </p>
 
           <div className="mt-8 flex gap-4">
-            <button className="px-6 py-2 bg-blue-500 text-white rounded-full">
+            <button className="px-8 py-3 bg-white text-gray-950 font-bold rounded-full hover:bg-cyan-50 hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
               Resume
             </button>
 
-            <button className="px-6 py-2 border border-blue-500 text-blue-500 rounded-full">
+            <button className="px-8 py-3 border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
               Portfolio
             </button>
           </div>
 
-          <div className="mt-6 flex gap-5 text-xl">
-            <a href="#">
+          <div className="mt-8 flex gap-6 text-2xl">
+            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faFacebook} />
             </a>
 
-            <a href="#">
+            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
 
-            <a href="#">
+            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
 
-            <a href="#">
+            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faTwitter} />
             </a>
           </div>
@@ -174,3 +169,4 @@ const Index = () => {
 };
 
 export default Index;
+

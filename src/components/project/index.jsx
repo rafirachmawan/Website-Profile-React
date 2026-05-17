@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./style.css";
+import MobileEmulator from "./MobileEmulator";
 
 import Image1 from "../../assets/RentalMobil.jpeg";
 import tamiya from "../../assets/Tamiya.jpeg";
@@ -53,17 +54,18 @@ const projects = [
 
 const ProjectGallery = () => {
   const [zoomedImage, setZoomedImage] = useState(null);
+  const [selectedMobileProject, setSelectedMobileProject] = useState(null);
   const [filter, setFilter] = useState("all");
 
   const filteredProjects =
     filter === "all" ? projects : projects.filter((p) => p.type === filter);
 
   return (
-    <section className="py-16 bg-gray-900 text-white">
+    <section className="py-16 bg-transparent text-white">
       <div className="container mx-auto px-4">
         {/* TITLE */}
         <h2 className="text-3xl font-bold text-center mb-6">
-          Proyek <span className="text-blue-400">Saya</span>
+          Proyek <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,255,255,0.2)]">Saya</span>
         </h2>
 
         {/* FILTER */}
@@ -72,10 +74,11 @@ const ProjectGallery = () => {
             <button
               key={item}
               onClick={() => setFilter(item)}
-              className={`px-5 py-2 rounded-full text-sm transition ${
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 capitalize cursor-pointer
+              ${
                 filter === item
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                  ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white shadow-lg shadow-cyan-500/20 scale-105"
+                  : "bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20"
               }`}
             >
               {item.toUpperCase()}
@@ -88,14 +91,14 @@ const ProjectGallery = () => {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="bg-gray-800 rounded-xl overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition duration-300"
+              className="bg-slate-950/65 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden group hover:shadow-cyan-500/10 hover:shadow-xl hover:border-white/20 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               {/* IMAGE */}
-              <div className="h-52 flex items-center justify-center bg-gray-900">
+              <div className="h-52 flex items-center justify-center bg-slate-950/40 p-2">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -103,40 +106,58 @@ const ProjectGallery = () => {
                     project.type === "mobile"
                       ? "h-44 object-contain"
                       : "w-full h-full object-cover"
-                  } transition-transform duration-300 group-hover:scale-105`}
+                  } transition-transform duration-300 group-hover:scale-105 rounded-lg`}
                 />
               </div>
 
               {/* CONTENT */}
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">{project.title}</h3>
+              <div className="p-4 text-left flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="text-white text-lg font-bold font-heading">{project.title}</h3>
+                  <span className="text-xs text-cyan-300 font-bold tracking-wide mt-1 block">
+                    {project.type === "mobile" ? "Mobile App" : "Website"}
+                  </span>
+                </div>
 
-                <span className="text-xs text-blue-400">
-                  {project.type === "mobile" ? "Mobile App" : "Website"}
-                </span>
-
-                {/* BUTTON */}
-                <div className="flex gap-2 mt-3">
+                {/* BUTTONS */}
+                <div className="flex gap-2 mt-4">
                   <button
-                    onClick={() => setZoomedImage(project.image)}
-                    className="text-sm px-3 py-1 bg-gray-700 rounded hover:bg-gray-600"
+                    onClick={() => {
+                      if (project.type === "mobile") {
+                        setSelectedMobileProject(project);
+                      } else {
+                        setZoomedImage(project.image);
+                      }
+                    }}
+                    className="text-sm px-4 py-1.5 bg-white/10 border border-white/10 text-white rounded hover:bg-white/20 hover:border-white transition-all duration-200 cursor-pointer font-semibold flex-grow text-center"
                   >
-                    Preview
+                    {project.type === "mobile" ? "Try Demo" : "Preview"}
                   </button>
 
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm px-3 py-1 bg-blue-500 rounded hover:bg-blue-400"
+                  <button
+                    onClick={() => {
+                      if (project.type === "mobile") {
+                        setSelectedMobileProject(project);
+                      } else if (project.link !== "#") {
+                        window.open(project.link, "_blank");
+                      }
+                    }}
+                    className="text-sm px-4 py-1.5 bg-white text-gray-950 font-bold rounded hover:bg-cyan-50 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-200 cursor-pointer flex-grow text-center"
                   >
-                    Visit
-                  </a>
+                    {project.type === "mobile" ? "Emulator" : "Visit"}
+                  </button>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {selectedMobileProject && (
+          <MobileEmulator 
+            project={selectedMobileProject} 
+            onClose={() => setSelectedMobileProject(null)} 
+          />
+        )}
 
         {/* ZOOM MODAL */}
         {zoomedImage && (
@@ -157,3 +178,4 @@ const ProjectGallery = () => {
 };
 
 export default ProjectGallery;
+

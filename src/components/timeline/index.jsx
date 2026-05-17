@@ -98,16 +98,16 @@ export default function Timeline() {
   }, []);
 
   return (
-    <section className="relative py-24 px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <section className="relative py-24 px-6 bg-transparent">
       <div ref={containerRef} className="max-w-6xl mx-auto relative">
         <h2 className="font-heading text-center text-6xl font-semibold text-white mb-20 tracking-tight">
           My{" "}
-          <span className="bg-gradient-to-r from-blue-300 to-indigo-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,255,255,0.2)]">
             Journey
           </span>
         </h2>
 
-        <p className="font-body text-center text-gray-400 max-w-xl mx-auto -mt-10 mb-16 leading-relaxed">
+        <p className="font-body text-center text-slate-200 max-w-xl mx-auto -mt-10 mb-16 leading-relaxed">
           A timeline of my growth, learning, and career progression in tech.
         </p>
 
@@ -117,7 +117,7 @@ export default function Timeline() {
         {/* PROGRESS LINE */}
         <div
           ref={progressRef}
-          className="absolute left-1/2 w-[2px] bg-gradient-to-b from-blue-500 to-purple-500 -translate-x-1/2 transition-all duration-200"
+          className="absolute left-1/2 w-[2px] bg-gradient-to-b from-cyan-400 to-purple-500 -translate-x-1/2 transition-all duration-200 shadow-[0_0_10px_rgba(0,255,255,0.5)]"
           style={{ height: "0%" }}
         ></div>
 
@@ -143,14 +143,14 @@ export default function Timeline() {
               >
                 <div
                   className={`relative bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-xl p-6 rounded-xl shadow-lg max-w-sm w-full transition-all duration-300
-                  ${isActive ? "scale-105 shadow-blue-500/20" : "hover:scale-105"}`}
+                  ${isActive ? "scale-105 border-cyan-500/40 shadow-cyan-500/20" : "hover:border-white/20 hover:scale-105"}`}
                 >
                   {/* MINI TIMELINE LINE */}
                   <div className="absolute left-4 top-6 bottom-6 w-[2px] bg-white/10"></div>
 
                   <div className="ml-6 font-body">
                     {/* YEAR */}
-                    <p className="text-xs text-blue-400 font-semibold tracking-wide mb-1">
+                    <p className="text-xs text-cyan-300 font-bold tracking-wide mb-1">
                       {event.year}
                     </p>
 
@@ -160,7 +160,7 @@ export default function Timeline() {
                     </h3>
 
                     {/* DETAIL */}
-                    <p className="text-gray-400 text-sm mt-2 leading-relaxed font-body">
+                    <p className="text-slate-200 text-sm mt-2 leading-relaxed font-body">
                       {event.detail}
                     </p>
                   </div>
@@ -172,7 +172,7 @@ export default function Timeline() {
                 className={`absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold z-20 transition-all duration-300
                 ${
                   isActive
-                    ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-110 shadow-[0_0_25px_rgba(59,130,246,0.6)]"
+                    ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 scale-110 shadow-[0_0_25px_rgba(0,255,255,0.7)]"
                     : "bg-white/10 border border-white/20"
                 }`}
               >
