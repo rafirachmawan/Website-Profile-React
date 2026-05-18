@@ -102,7 +102,7 @@ export default function Timeline() {
       <div ref={containerRef} className="max-w-6xl mx-auto relative">
         <h2 className="font-heading text-center text-6xl font-semibold text-white mb-20 tracking-tight">
           My{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,255,255,0.2)]">
+          <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(168,85,247,0.2)]">
             Journey
           </span>
         </h2>
@@ -117,7 +117,7 @@ export default function Timeline() {
         {/* PROGRESS LINE */}
         <div
           ref={progressRef}
-          className="absolute left-1/2 w-[2px] bg-gradient-to-b from-cyan-400 to-purple-500 -translate-x-1/2 transition-all duration-200 shadow-[0_0_10px_rgba(0,255,255,0.5)]"
+          className="absolute left-1/2 w-[2px] bg-gradient-to-b from-purple-400 to-pink-500 -translate-x-1/2 transition-all duration-200 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
           style={{ height: "0%" }}
         ></div>
 
@@ -143,14 +143,14 @@ export default function Timeline() {
               >
                 <div
                   className={`relative bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-xl p-6 rounded-xl shadow-lg max-w-sm w-full transition-all duration-300
-                  ${isActive ? "scale-105 border-cyan-500/40 shadow-cyan-500/20" : "hover:border-white/20 hover:scale-105"}`}
+                  ${isActive ? "scale-105 border-purple-500/40 shadow-purple-500/20" : "hover:border-white/20 hover:scale-105"}`}
                 >
                   {/* MINI TIMELINE LINE */}
                   <div className="absolute left-4 top-6 bottom-6 w-[2px] bg-white/10"></div>
 
                   <div className="ml-6 font-body">
                     {/* YEAR */}
-                    <p className="text-xs text-cyan-300 font-bold tracking-wide mb-1">
+                    <p className="text-xs text-purple-300 font-bold tracking-wide mb-1">
                       {event.year}
                     </p>
 
@@ -172,7 +172,7 @@ export default function Timeline() {
                 className={`absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold z-20 transition-all duration-300
                 ${
                   isActive
-                    ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 scale-110 shadow-[0_0_25px_rgba(0,255,255,0.7)]"
+                    ? "bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 scale-110 shadow-[0_0_25px_rgba(168,85,247,0.7)]"
                     : "bg-white/10 border border-white/20"
                 }`}
               >

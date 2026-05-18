@@ -107,10 +107,14 @@ const Index = () => {
           data-aos="fade-right"
         >
           <h2 className="text-4xl font-bold mb-2 text-white">
-            Hi, I'm <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]">Rafi</span> 👋
+            Hi, I'm{" "}
+            <span className="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]">
+              Rafi
+            </span>{" "}
+            👋
           </h2>
 
-          <p className="text-lg text-cyan-300 font-semibold h-6">
+          <p className="text-lg text-purple-300 font-semibold h-6">
             {displayText}
             <span className="animate-pulse">|</span>
           </p>
@@ -127,46 +131,50 @@ const Index = () => {
             mengembangkan skill Backend untuk menjadi Fullstack Developer.
           </p>
 
-          <p className="text-white font-semibold mt-6 mb-3 font-heading">Tech Stack</p>
+          <p className="text-white font-semibold mt-6 mb-3 font-heading">
+            Tech Stack
+          </p>
           <div className="flex flex-wrap gap-3">
             {["HTML", "JavaScript", "React", "Vite", "Node.js"].map((tech) => (
               <span
                 key={tech}
-                className="bg-white/10 border border-white/10 text-white hover:bg-cyan-500/20 hover:border-cyan-400 hover:text-cyan-300 transition-all duration-300 px-4 py-1 text-sm rounded-full cursor-pointer hover:scale-110"
+                className="bg-white/10 border border-white/10 text-white hover:bg-purple-500/20 hover:border-purple-400 hover:text-purple-300 transition-all duration-300 px-4 py-1 text-sm rounded-full cursor-pointer hover:scale-110"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <p className="text-white font-semibold mt-8 mb-3 font-heading">My Journey</p>
-          <ul className="border-l-2 border-cyan-500 pl-4 text-slate-300 space-y-3 text-sm font-body">
+          <p className="text-white font-semibold mt-8 mb-3 font-heading">
+            My Journey
+          </p>
+          <ul className="border-l-2 border-purple-500 pl-4 text-slate-300 space-y-3 text-sm font-body">
             <li>
-              <span className="font-bold text-cyan-300">2022:</span> Belajar dasar
-              web
+              <span className="font-bold text-purple-300">2022:</span> Belajar
+              dasar web
             </li>
             <li>
-              <span className="font-bold text-cyan-300">2023:</span> Fokus React &
-              UI
+              <span className="font-bold text-purple-300">2023:</span> Fokus
+              React & UI
             </li>
             <li>
-              <span className="font-bold text-cyan-300">2024:</span> Freelance
+              <span className="font-bold text-purple-300">2024:</span> Freelance
               project
             </li>
             <li>
-              <span className="font-bold text-cyan-300">2025:</span> Backend &
+              <span className="font-bold text-purple-300">2025:</span> Backend &
               Fullstack
             </li>
           </ul>
 
-          <div className="mt-8 flex gap-4">
-            <button className="bg-white text-gray-950 font-bold hover:bg-cyan-50 hover:shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:scale-105 transition-all duration-300 px-6 py-2.5 rounded-lg font-medium cursor-pointer">
+          {/* <div className="mt-8 flex gap-4">
+            <button className="bg-white text-gray-950 font-bold hover:bg-purple-50 hover:shadow-[0_0_15px_rgba(168,85,247,0.6)] hover:scale-105 transition-all duration-300 px-6 py-2.5 rounded-lg font-medium cursor-pointer">
               Hire Me
             </button>
             <button className="border border-white/30 hover:border-white px-6 py-2.5 rounded-lg text-slate-200 hover:text-white transition hover:scale-105 duration-300 cursor-pointer">
               Contact
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* RIGHT */}
@@ -180,7 +188,7 @@ const Index = () => {
             onMouseLeave={handleMouseLeave}
           >
             {/* Glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 rounded-xl blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
 
             {/* SMOOTH 3D CARD */}
             <div
