@@ -5,7 +5,7 @@ import {
   faFacebook,
   faLinkedin,
   faInstagram,
-  faTwitter,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { Typewriter } from "react-simple-typewriter";
 import Walpaper from "../../assets/walpaper.jpeg";
@@ -135,31 +135,22 @@ const Index = () => {
             />
           </p>
 
-          <div className="mt-8 flex gap-4">
-            <button className="px-8 py-3 bg-white text-gray-950 font-bold rounded-full hover:bg-cyan-50 hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
-              Resume
-            </button>
-
-            <button className="px-8 py-3 border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
-              Portfolio
-            </button>
-          </div>
 
           <div className="mt-8 flex gap-6 text-2xl">
-            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+            <a href="https://www.facebook.com/profile.php?id=100081122267497&locale=id_ID" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faFacebook} />
             </a>
 
-            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+            <a href="https://www.linkedin.com/in/rafi-rachmawan-2a8728233/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
 
-            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+            <a href="https://www.instagram.com/rrrafi.rachmawan/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
 
-            <a href="#" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
-              <FontAwesomeIcon icon={faTwitter} />
+            <a href="https://github.com/rafirachmawan" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+              <FontAwesomeIcon icon={faGithub} />
             </a>
           </div>
         </div>
