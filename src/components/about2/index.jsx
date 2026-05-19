@@ -3,210 +3,216 @@ import "./style.css";
 import ProfileImage from "../../assets/profil.jpeg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import BackgroundParticles from "../Particles";
+
+const TECH_STACK = [
+  { name: "React",       color: "#61dafb", icon: "⚛" },
+  { name: "JavaScript",  color: "#f7df1e", icon: "JS" },
+  { name: "TypeScript",  color: "#3178c6", icon: "TS" },
+  { name: "Node.js",     color: "#68a063", icon: "🟢" },
+  { name: "Vite",        color: "#646cff", icon: "⚡" },
+  { name: "Tailwind",    color: "#38bdf8", icon: "🌊" },
+  { name: "HTML5",       color: "#e34c26", icon: "🔸" },
+  { name: "CSS3",        color: "#264de4", icon: "🎨" },
+  { name: "Laravel",     color: "#ff2d20", icon: "🔺" },
+  { name: "MySQL",       color: "#4479a1", icon: "🗄" },
+];
+
+const JOURNEY = [
+  { year: "2022", label: "Belajar dasar web", icon: "🌱", detail: "HTML, CSS, JavaScript" },
+  { year: "2023", label: "Fokus React & UI",  icon: "⚛",  detail: "React, Tailwind, Figma" },
+  { year: "2024", label: "Freelance project", icon: "💼", detail: "Website & Landing Page" },
+  { year: "2025", label: "Backend & Fullstack",icon: "🚀", detail: "Node.js, Laravel, MySQL" },
+];
 
 const Index = () => {
-  // AOS
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
+    AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
   }, []);
 
-  // Typing Animation
-  const texts = ["Front-End Developer", "UI Designer", "React Developer"];
+  /* ── Typewriter ── */
+  const texts = ["Front-End Developer", "UI/UX Designer", "React Developer", "Fullstack Learner"];
   const [displayText, setDisplayText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [txtIndex, setTxtIndex]       = useState(0);
+  const [charIndex, setCharIndex]     = useState(0);
+  const [isDeleting, setIsDeleting]   = useState(false);
 
   useEffect(() => {
-    const speed = isDeleting ? 50 : 100;
-
+    const speed = isDeleting ? 45 : 90;
     const timeout = setTimeout(() => {
-      const current = texts[index];
-
+      const current = texts[txtIndex];
       if (!isDeleting) {
         setDisplayText(current.substring(0, charIndex + 1));
         setCharIndex(charIndex + 1);
-
-        if (charIndex + 1 === current.length) {
-          setIsDeleting(true);
-        }
+        if (charIndex + 1 === current.length) setIsDeleting(true);
       } else {
         setDisplayText(current.substring(0, charIndex - 1));
         setCharIndex(charIndex - 1);
-
-        if (charIndex === 0) {
-          setIsDeleting(false);
-          setIndex((index + 1) % texts.length);
-        }
+        if (charIndex === 0) { setIsDeleting(false); setTxtIndex((txtIndex + 1) % texts.length); }
       }
     }, speed);
-
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, index]);
+  }, [charIndex, isDeleting, txtIndex]);
 
-  // 🔥 SMOOTH 3D TILT (NO LAG)
-  const cardRef = useRef(null);
-  const frame = useRef(null);
-
-  const target = useRef({ x: 0, y: 0 });
-  const current = useRef({ x: 0, y: 0 });
-
-  const animate = () => {
-    current.current.x += (target.current.x - current.current.x) * 0.1;
-    current.current.y += (target.current.y - current.current.y) * 0.1;
-
-    if (cardRef.current) {
-      cardRef.current.style.transform = `
-        perspective(1000px)
-        rotateX(${current.current.x}deg)
-        rotateY(${current.current.y}deg)
-        scale(1.05)
-      `;
-
-      const img = cardRef.current.querySelector("img");
-      if (img) {
-        img.style.transform = `
-          translateX(${current.current.y * 0.5}px)
-          translateY(${current.current.x * 0.5}px)
-        `;
-      }
-    }
-
-    frame.current = requestAnimationFrame(animate);
-  };
+  /* ── 3D Tilt Card ── */
+  const cardRef   = useRef(null);
+  const frameRef  = useRef(null);
+  const target    = useRef({ x: 0, y: 0 });
+  const currentT  = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    frame.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame.current);
+    const animate = () => {
+      currentT.current.x += (target.current.x - currentT.current.x) * 0.08;
+      currentT.current.y += (target.current.y - currentT.current.y) * 0.08;
+      if (cardRef.current) {
+        cardRef.current.style.transform = `perspective(1000px) rotateX(${currentT.current.x}deg) rotateY(${currentT.current.y}deg) scale(1.03)`;
+      }
+      frameRef.current = requestAnimationFrame(animate);
+    };
+    frameRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameRef.current);
   }, []);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    target.current.x = -((y - centerY) / centerY) * 12;
-    target.current.y = ((x - centerX) / centerX) * 12;
+    target.current.x = -((e.clientY - rect.top  - rect.height / 2) / rect.height) * 18;
+    target.current.y =  ((e.clientX - rect.left - rect.width  / 2) / rect.width)  * 18;
   };
+  const handleMouseLeave = () => { target.current = { x: 0, y: 0 }; };
 
-  const handleMouseLeave = () => {
-    target.current.x = 0;
-    target.current.y = 0;
-  };
+  /* ── Active journey ── */
+  const [activeJourney, setActiveJourney] = useState(null);
 
   return (
-    <section id="about" className="relative py-20 px-6 bg-transparent">
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
-        {/* LEFT */}
-        <div
-          className="w-full lg:w-1/2 text-left backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl"
-          data-aos="fade-right"
-        >
-          <h2 className="text-4xl font-bold mb-2 text-white">
-            Hi, I'm{" "}
-            <span className="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]">
-              Rafi
-            </span>{" "}
-            👋
-          </h2>
+    <section id="about" className="about2-section">
+      <div className="about2-container">
 
-          <p className="text-lg text-purple-300 font-semibold h-6">
-            {displayText}
-            <span className="animate-pulse">|</span>
-          </p>
+        {/* ═══ LEFT ═══ */}
+        <div className="about2-left" data-aos="fade-right">
 
-          <p className="text-slate-100 mt-4 mb-4 leading-relaxed font-body">
-            Halo! Saya{" "}
-            <span className="font-semibold text-white">Rafi Rachmawan</span>,
-            seorang Front-End Developer yang fokus membuat UI modern, responsif,
-            dan interaktif.
-          </p>
-
-          <p className="text-slate-100 mb-4 leading-relaxed font-body">
-            Saya terbiasa menggunakan React, Tailwind, dan Vite, serta sedang
-            mengembangkan skill Backend untuk menjadi Fullstack Developer.
-          </p>
-
-          <p className="text-white font-semibold mt-6 mb-3 font-heading">
-            Tech Stack
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {["HTML", "JavaScript", "React", "Vite", "Node.js"].map((tech) => (
-              <span
-                key={tech}
-                className="bg-white/10 border border-white/10 text-white hover:bg-purple-500/20 hover:border-purple-400 hover:text-purple-300 transition-all duration-300 px-4 py-1 text-sm rounded-full cursor-pointer hover:scale-110"
-              >
-                {tech}
-              </span>
-            ))}
+          {/* Header */}
+          <div className="about2-header">
+            <span className="about2-tag">About Me</span>
+            <h2 className="about2-title">
+              Hi, I'm <span className="about2-name">Rafi</span> 👋
+            </h2>
+            <p className="about2-typewriter">
+              <span className="about2-tw-text">{displayText}</span>
+              <span className="about2-cursor">|</span>
+            </p>
           </div>
 
-          <p className="text-white font-semibold mt-8 mb-3 font-heading">
-            My Journey
-          </p>
-          <ul className="border-l-2 border-purple-500 pl-4 text-slate-300 space-y-3 text-sm font-body">
-            <li>
-              <span className="font-bold text-purple-300">2022:</span> Belajar
-              dasar web
-            </li>
-            <li>
-              <span className="font-bold text-purple-300">2023:</span> Fokus
-              React & UI
-            </li>
-            <li>
-              <span className="font-bold text-purple-300">2024:</span> Freelance
-              project
-            </li>
-            <li>
-              <span className="font-bold text-purple-300">2025:</span> Backend &
-              Fullstack
-            </li>
-          </ul>
+          {/* Bio */}
+          <div className="about2-bio">
+            <p>
+              Halo! Saya <strong>Rafi Rachmawan</strong>, seorang Front-End Developer
+              yang fokus membuat UI modern, responsif, dan interaktif.
+            </p>
+            <p>
+              Saya terbiasa menggunakan <strong>React, Tailwind,</strong> dan <strong>Vite</strong>,
+              serta sedang mengembangkan skill Backend untuk menjadi Fullstack Developer.
+            </p>
+          </div>
 
-          {/* <div className="mt-8 flex gap-4">
-            <button className="bg-white text-gray-950 font-bold hover:bg-purple-50 hover:shadow-[0_0_15px_rgba(168,85,247,0.6)] hover:scale-105 transition-all duration-300 px-6 py-2.5 rounded-lg font-medium cursor-pointer">
-              Hire Me
-            </button>
-            <button className="border border-white/30 hover:border-white px-6 py-2.5 rounded-lg text-slate-200 hover:text-white transition hover:scale-105 duration-300 cursor-pointer">
-              Contact
-            </button>
-          </div> */}
+          {/* Tech Stack */}
+          <div className="about2-block">
+            <h3 className="about2-block-title">
+              <span className="about2-block-icon">⚡</span> Tech Stack
+            </h3>
+            <div className="about2-tech-grid">
+              {TECH_STACK.map((t) => (
+                <span
+                  key={t.name}
+                  className="about2-tech-pill"
+                  style={{ "--tc": t.color }}
+                >
+                  <span className="about2-tech-icon">{t.icon}</span>
+                  {t.name}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* My Journey */}
+          <div className="about2-block">
+            <h3 className="about2-block-title">
+              <span className="about2-block-icon">🗺</span> My Journey
+            </h3>
+            <div className="about2-timeline">
+              {JOURNEY.map((j, i) => (
+                <div
+                  key={j.year}
+                  className={`about2-tl-item ${activeJourney === i ? "active" : ""}`}
+                  onMouseEnter={() => setActiveJourney(i)}
+                  onMouseLeave={() => setActiveJourney(null)}
+                >
+                  <div className="about2-tl-dot">
+                    <span>{j.icon}</span>
+                  </div>
+                  <div className="about2-tl-body">
+                    <span className="about2-tl-year">{j.year}</span>
+                    <span className="about2-tl-label">{j.label}</span>
+                    <span className={`about2-tl-detail ${activeJourney === i ? "visible" : ""}`}>
+                      {j.detail}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
 
-        {/* RIGHT */}
-        <div
-          className="w-full lg:w-1/2 flex justify-center lg:justify-end"
-          data-aos="fade-left"
-        >
+        {/* ═══ RIGHT: 3D Photo Card ═══ */}
+        <div className="about2-right" data-aos="fade-left">
           <div
-            className="relative group"
+            className="about2-card-wrapper"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 rounded-xl blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
+            {/* Animated gradient border */}
+            <div className="about2-card-border" />
 
-            {/* SMOOTH 3D CARD */}
-            <div
-              ref={cardRef}
-              className="relative backdrop-blur-md bg-white/10 border border-white/10 rounded-xl p-3 shadow-2xl will-change-transform"
-            >
+            {/* 3D card */}
+            <div ref={cardRef} className="about2-card">
+              {/* Shimmer overlay */}
+              <div className="about2-card-shimmer" />
+
               <img
                 src={ProfileImage}
                 alt="Rafi Rachmawan"
-                className="rounded-lg w-full max-w-xs lg:max-w-sm"
+                className="about2-card-img"
               />
 
-              <p className="text-center text-sm text-gray-300 mt-2 font-semibold">
-                Rafi Rachmawan ✨
-              </p>
+              {/* Bottom info bar */}
+              <div className="about2-card-bar">
+                <div className="about2-card-bar-dot" />
+                <span>Rafi Rachmawan</span>
+                <span className="about2-card-bar-role">Dev & Designer</span>
+              </div>
+            </div>
+
+            {/* Floating badges */}
+            <div className="about2-float about2-float-tl">
+              <span>⚛ React</span>
+            </div>
+            <div className="about2-float about2-float-tr">
+              <span>🚀 Vite</span>
+            </div>
+            <div className="about2-float about2-float-bl">
+              <span>💡 UI/UX</span>
+            </div>
+            <div className="about2-float about2-float-br">
+              <span>🌐 Web</span>
+            </div>
+
+            {/* Stats bubble */}
+            <div className="about2-stat-bubble">
+              <span className="about2-stat-n">3+</span>
+              <span className="about2-stat-l">Tahun</span>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

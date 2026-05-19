@@ -1,7 +1,296 @@
-nav a {
-  color: white; /* Warna teks link */
+/* ═══════════════════════════════════════════════
+   HERO — Opsi 2: Tech Globe Split Layout
+═══════════════════════════════════════════════ */
+
+.hero2-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-nav a:hover {
-  color: #3b82f6; /* Warna hover (biru) */
+.hero2-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 7rem 2rem 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── LEFT ──────────────────────────────────── */
+.hero2-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: 500px;
+}
+
+/* Badge */
+.hero2-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.78rem;
+  color: #a5b4fc;
+  letter-spacing: 0.06em;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+
+.hero2-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.5); }
+}
+
+/* Title */
+.hero2-title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #f1f5f9;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.hero2-gradient-text {
+  background: linear-gradient(135deg, #818cf8 0%, #60a5fa 45%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 24px rgba(99, 102, 241, 0.5));
+}
+
+/* Typewriter */
+.hero2-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  font-weight: 500;
+  min-height: 2rem;
+  margin: 0;
+}
+
+/* Desc */
+.hero2-desc {
+  font-size: 0.93rem;
+  color: #64748b;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Skill pills */
+.hero2-skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero2-skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--pill-color);
+  background: color-mix(in srgb, var(--pill-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pill-color) 30%, transparent);
+  transition: all 0.25s ease;
+}
+
+.hero2-skill-pill:hover {
+  background: color-mix(in srgb, var(--pill-color) 22%, transparent);
+  transform: translateY(-2px);
+}
+
+/* Social Icons */
+.hero2-socials {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.hero2-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #94a3b8;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.28s ease;
+  backdrop-filter: blur(8px);
+}
+
+.hero2-social-link:hover {
+  color: #818cf8;
+  border-color: rgba(129, 140, 248, 0.45);
+  background: rgba(129, 140, 248, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(129, 140, 248, 0.2);
+}
+
+/* Stats */
+.hero2-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 0.3rem;
+}
+
+.hero2-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.hero2-stat-num {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  line-height: 1;
+}
+
+.hero2-stat-label {
+  font-size: 0.7rem;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero2-stat-divider {
+  width: 1px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── RIGHT: Globe ──────────────────────────── */
+.hero2-right {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero2-globe-label {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 0.72rem;
+  color: #475569;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+.hero2-globe-container {
+  position: relative;
+  width: 480px;
+  height: 480px;
+}
+
+/* Outer ambient glow */
+.hero2-globe-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+/* ── Tooltip (rendered via drei Html) ──────── */
+.globe-tooltip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(15, 15, 25, 0.85);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: tooltip-in 0.15s ease;
+}
+
+@keyframes tooltip-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+.globe-tooltip-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.globe-tooltip-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.04em;
+}
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media (max-width: 960px) {
+  .hero2-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5.5rem 1.5rem 2.5rem;
+    gap: 1rem;
+  }
+
+  .hero2-left {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .hero2-desc { text-align: center; }
+
+  .hero2-globe-container {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero2-globe-container {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero2-title { font-size: 1.8rem; }
+
+  .hero2-skill-pills { justify-content: center; }
 }

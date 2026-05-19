@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useState } from "react";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,192 +8,299 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { Typewriter } from "react-simple-typewriter";
-import Walpaper from "../../assets/walpaper.jpeg";
-
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, Points, PointMaterial } from "@react-three/drei";
+import { Html, OrbitControls, Points, PointMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
-function TechSphere() {
+/* ─── Skill data on the globe ─────────────────── */
+const SKILLS = [
+  { name: "React.js",    lat:  30, lon:  30, color: "#61dafb", icon: "⚛" },
+  { name: "JavaScript",  lat: -20, lon:  80, color: "#f7df1e", icon: "JS" },
+  { name: "TypeScript",  lat:  60, lon: 120, color: "#3178c6", icon: "TS" },
+  { name: "Node.js",     lat: -50, lon: -30, color: "#68a063", icon: "🟢" },
+  { name: "Three.js",    lat:  10, lon: 150, color: "#ffffff", icon: "3D" },
+  { name: "CSS3",        lat:  50, lon: -60, color: "#264de4", icon: "🎨" },
+  { name: "Git",         lat: -30, lon:-120, color: "#f05032", icon: "⑂"  },
+  { name: "Figma",       lat:  20, lon:-150, color: "#a259ff", icon: "✦"  },
+  { name: "MongoDB",     lat: -60, lon:  60, color: "#4db33d", icon: "🍃" },
+  { name: "Vite",        lat:  40, lon: -90, color: "#646cff", icon: "⚡" },
+  { name: "Tailwind",    lat: -10, lon: -20, color: "#38bdf8", icon: "🌊" },
+  { name: "Laravel",     lat:  70, lon:  -10, color: "#ff2d20", icon: "🔺" },
+];
+
+/* helper: lat/lon → 3D point on sphere */
+function latLonToVec(lat, lon, r = 2.2) {
+  const phi   = (90 - lat) * (Math.PI / 180);
+  const theta = (lon + 180) * (Math.PI / 180);
+  return new THREE.Vector3(
+    -r * Math.sin(phi) * Math.cos(theta),
+     r * Math.cos(phi),
+     r * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+/* ─── Wireframe Sphere ───────────────────────── */
+function WireGlobe() {
   const ref = useRef();
-
-  useFrame(() => {
-    ref.current.rotation.y += 0.003;
-    ref.current.rotation.x += 0.001;
-  });
-
   return (
     <mesh ref={ref}>
-      <sphereGeometry args={[2, 64, 64]} />
-      <meshStandardMaterial color="#00ffff" emissive="#0066ff" wireframe />
+      <sphereGeometry args={[2.2, 32, 32]} />
+      <meshStandardMaterial
+        color="#4f46e5"
+        emissive="#312e81"
+        wireframe
+        transparent
+        opacity={0.18}
+      />
     </mesh>
   );
 }
 
-function OrbitRing() {
-  const ref = useRef();
+/* ─── Latitude / Longitude grid lines ─────────── */
+function GridLines() {
+  const lines = useMemo(() => {
+    const geo = [];
+    const r = 2.21;
+    // Lat lines
+    for (let lat = -60; lat <= 60; lat += 30) {
+      const pts = [];
+      for (let lon = 0; lon <= 360; lon += 4) {
+        pts.push(latLonToVec(lat, lon - 180, r));
+      }
+      geo.push(pts);
+    }
+    // Lon lines
+    for (let lon = 0; lon < 360; lon += 30) {
+      const pts = [];
+      for (let lat = -90; lat <= 90; lat += 4) {
+        pts.push(latLonToVec(lat, lon - 180, r));
+      }
+      geo.push(pts);
+    }
+    return geo;
+  }, []);
 
-  useFrame(() => {
-    ref.current.rotation.z += 0.002;
+  return (
+    <>
+      {lines.map((pts, i) => {
+        const positions = new Float32Array(pts.flatMap(v => [v.x, v.y, v.z]));
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        return (
+          <line key={i} geometry={geo}>
+            <lineBasicMaterial color="#4f46e5" transparent opacity={0.12} />
+          </line>
+        );
+      })}
+    </>
+  );
+}
+
+/* ─── Skill Dot ──────────────────────────────── */
+function SkillDot({ skill }) {
+  const [hovered, setHovered] = useState(false);
+  const meshRef = useRef();
+  const pos = useMemo(() => latLonToVec(skill.lat, skill.lon), [skill]);
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      const scale = hovered ? 1.8 : 1;
+      meshRef.current.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.12);
+    }
   });
 
   return (
-    <mesh ref={ref} rotation={[Math.PI / 2, 0, 0]}>
-      <torusGeometry args={[3, 0.05, 16, 100]} />
-      <meshStandardMaterial color="#00ffff" emissive="#0044ff" />
-    </mesh>
+    <group position={pos}>
+      <mesh
+        ref={meshRef}
+        onPointerEnter={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = "pointer"; }}
+        onPointerLeave={() => { setHovered(false); document.body.style.cursor = "default"; }}
+      >
+        <sphereGeometry args={[0.07, 12, 12]} />
+        <meshStandardMaterial
+          color={skill.color}
+          emissive={skill.color}
+          emissiveIntensity={hovered ? 3 : 1.5}
+        />
+      </mesh>
+
+      {/* Glow ring around dot */}
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.12, 0.012, 8, 24]} />
+        <meshStandardMaterial
+          color={skill.color}
+          emissive={skill.color}
+          emissiveIntensity={hovered ? 2 : 0.4}
+          transparent
+          opacity={hovered ? 0.9 : 0.3}
+        />
+      </mesh>
+
+      {/* HTML Label on hover */}
+      {hovered && (
+        <Html distanceFactor={6} center style={{ pointerEvents: "none" }}>
+          <div className="globe-tooltip">
+            <span className="globe-tooltip-icon">{skill.icon}</span>
+            <span className="globe-tooltip-name">{skill.name}</span>
+          </div>
+        </Html>
+      )}
+    </group>
   );
 }
 
-function Particles() {
+/* ─── Background star particles ─────────────── */
+function Stars() {
   const ref = useRef();
-  const count = 2000;
-
+  const count = 1200;
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
-
     for (let i = 0; i < count; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 20;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      arr[i * 3]     = (Math.random() - 0.5) * 30;
+      arr[i * 3 + 1] = (Math.random() - 0.5) * 30;
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 30;
     }
-
     return arr;
   }, []);
 
-  // animasi otomatis
-  useFrame((state) => {
-    ref.current.rotation.y += 0.0008;
-    ref.current.rotation.x += 0.0004;
+  useFrame(() => {
+    ref.current.rotation.y += 0.0003;
   });
 
   return (
     <Points ref={ref} positions={positions}>
-      <PointMaterial size={0.03} color="#00ffff" transparent opacity={0.9} />
+      <PointMaterial size={0.02} color="#a5b4fc" transparent opacity={0.6} />
     </Points>
   );
 }
 
-function MouseCamera() {
-  const { camera, mouse } = useThree();
-
-  useFrame(() => {
-    camera.position.x = mouse.x * 1.5;
-    camera.position.y = mouse.y * 1.5;
-    camera.lookAt(0, 0, 0);
-  });
-
-  return null;
-}
-
-function Hero3D() {
+/* ─── Full 3D Scene ──────────────────────────── */
+function GlobeScene() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 8] }}
-      style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: 1,
-      }}
+      camera={{ position: [0, 0, 6], fov: 50 }}
+      style={{ width: "100%", height: "100%" }}
+      gl={{ antialias: true, alpha: true }}
     >
-      <ambientLight intensity={0.6} />
-      <pointLight position={[10, 10, 10]} color="#00ffff" />
+      <ambientLight intensity={0.4} />
+      <pointLight position={[10, 10, 10]} color="#6366f1" intensity={3} />
+      <pointLight position={[-10, -10,  5]} color="#a78bfa" intensity={2} />
+      <pointLight position={[  0,  10, -10]} color="#60a5fa" intensity={1.5} />
 
-      <MouseCamera />
+      <Stars />
+      <GridLines />
+      <WireGlobe />
 
-      {/* Particle Galaxy */}
-      <Particles />
+      {SKILLS.map((s) => (
+        <SkillDot key={s.name} skill={s} />
+      ))}
+
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        autoRotate
+        autoRotateSpeed={0.6}
+        rotateSpeed={0.5}
+      />
     </Canvas>
   );
 }
 
+/* ─── Main Hero ──────────────────────────────── */
 const Index = () => {
   return (
-    <div className="bg-transparent text-white">
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* CONTENT */}
-        <div className="relative z-10 flex flex-col items-center mt-48 text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-wide leading-tight">
-            RAFI{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-              RACHMAWAN
-            </span>
+    <div className="hero2-wrapper">
+      <section className="hero2-section">
+
+        {/* ── LEFT ── */}
+        <div className="hero2-left">
+          <div className="hero2-badge">
+            <span className="hero2-badge-dot" />
+            Available for work
+          </div>
+
+          <h1 className="hero2-title">
+            Hi, I'm <br />
+            <span className="hero2-gradient-text">Rafi Rachmawan</span>
           </h1>
 
-          <p className="text-lg md:text-xl mt-4 font-body text-slate-200">
+          <p className="hero2-subtitle">
             <Typewriter
               words={[
                 "Full Stack Developer",
                 "React Enthusiast",
                 "UI/UX Learner",
+                "Frontend Engineer",
               ]}
               loop
               cursor
-              cursorStyle="_"
-              typeSpeed={80}
-              deleteSpeed={60}
-              delaySpeed={1000}
+              cursorStyle="|"
+              typeSpeed={75}
+              deleteSpeed={55}
+              delaySpeed={1500}
             />
           </p>
 
-<<<<<<< HEAD
+          <p className="hero2-desc">
+            Crafting modern web experiences with clean code and creative design.
+            Hover the globe to explore my tech stack ✨
+          </p>
 
-          <div className="mt-8 flex gap-6 text-2xl">
-            <a href="https://www.facebook.com/profile.php?id=100081122267497&locale=id_ID" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+          {/* Skill legend pills */}
+          <div className="hero2-skill-pills">
+            {SKILLS.slice(0, 6).map((s) => (
+              <span key={s.name} className="hero2-skill-pill" style={{ "--pill-color": s.color }}>
+                {s.icon} {s.name}
+              </span>
+            ))}
+          </div>
+
+          <div className="hero2-socials">
+            <a href={"https://www.facebook.com/profile.php?id=100081122267497&locale=id_ID"} target="_blank" rel="noopener noreferrer" className="hero2-social-link" aria-label="Facebook">
               <FontAwesomeIcon icon={faFacebook} />
             </a>
-
-            <a href="https://www.linkedin.com/in/rafi-rachmawan-2a8728233/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+            <a href="https://www.linkedin.com/in/rafi-rachmawan-2a8728233/" target="_blank" rel="noopener noreferrer" className="hero2-social-link" aria-label="LinkedIn">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
-
-            <a href="https://www.instagram.com/rrrafi.rachmawan/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+            <a href="https://www.instagram.com/rrrafi.rachmawan/" target="_blank" rel="noopener noreferrer" className="hero2-social-link" aria-label="Instagram">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
-
-            <a href="https://github.com/rafirachmawan" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
+            <a href="https://github.com/rafirachmawan" target="_blank" rel="noopener noreferrer" className="hero2-social-link" aria-label="GitHub">
               <FontAwesomeIcon icon={faGithub} />
-=======
-          {/* <div className="mt-8 flex gap-4">
-            <button className="px-8 py-3 bg-white text-gray-950 font-bold rounded-full hover:bg-purple-50 hover:shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
-              Resume
-            </button>
-
-            <button className="px-8 py-3 border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
-              Portfolio
-            </button>
-          </div> */}
-
-          <div className="mt-8 flex gap-6 text-2xl">
-            <a
-              href="#"
-              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-
-            <a
-              href="#"
-              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
-            </a>
-
-            <a
-              href="#"
-              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-
-            <a
-              href="#"
-              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faTwitter} />
->>>>>>> 5e6c7142b38db71ad9e95eee5bc614c3a28ae1c7
             </a>
           </div>
+
+          <div className="hero2-stats">
+            <div className="hero2-stat">
+              <span className="hero2-stat-num">3+</span>
+              <span className="hero2-stat-label">Years Coding</span>
+            </div>
+            <div className="hero2-stat-divider" />
+            <div className="hero2-stat">
+              <span className="hero2-stat-num">20+</span>
+              <span className="hero2-stat-label">Projects Built</span>
+            </div>
+            <div className="hero2-stat-divider" />
+            <div className="hero2-stat">
+              <span className="hero2-stat-num">12</span>
+              <span className="hero2-stat-label">Tech Skills</span>
+            </div>
+          </div>
         </div>
+
+        {/* ── RIGHT: Tech Globe ── */}
+        <div className="hero2-right">
+          <div className="hero2-globe-label">
+            <span>⬆ Drag to rotate</span>
+            <span>· Hover dots to explore</span>
+          </div>
+          <div className="hero2-globe-container">
+            {/* Outer glow ring */}
+            <div className="hero2-globe-glow" />
+            <GlobeScene />
+          </div>
+        </div>
+
       </section>
     </div>
   );
