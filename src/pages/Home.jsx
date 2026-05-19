@@ -39,7 +39,7 @@ function Home() {
       <Experience />
 
       {/* PROJECT */}
-      <Project />
+      {/* <Project /> */}
 
       {/* RESUME */}
       <Section />

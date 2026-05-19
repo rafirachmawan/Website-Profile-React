@@ -106,17 +106,17 @@ function Hero3D() {
   );
 }
 
-
 const Index = () => {
   return (
     <div className="bg-transparent text-white">
-      <section
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      >
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
         {/* CONTENT */}
         <div className="relative z-10 flex flex-col items-center mt-48 text-center px-4">
           <h1 className="text-5xl md:text-6xl font-bold tracking-wide leading-tight">
-            RAFI <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,255,255,0.2)]">RACHMAWAN</span>
+            RAFI{" "}
+            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+              RACHMAWAN
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl mt-4 font-body text-slate-200">
@@ -135,6 +135,7 @@ const Index = () => {
             />
           </p>
 
+<<<<<<< HEAD
 
           <div className="mt-8 flex gap-6 text-2xl">
             <a href="https://www.facebook.com/profile.php?id=100081122267497&locale=id_ID" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
@@ -151,6 +152,45 @@ const Index = () => {
 
             <a href="https://github.com/rafirachmawan" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-cyan-400 hover:scale-125 transition-all duration-300">
               <FontAwesomeIcon icon={faGithub} />
+=======
+          {/* <div className="mt-8 flex gap-4">
+            <button className="px-8 py-3 bg-white text-gray-950 font-bold rounded-full hover:bg-purple-50 hover:shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
+              Resume
+            </button>
+
+            <button className="px-8 py-3 border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white hover:scale-105 transition-all duration-300 cursor-pointer text-sm tracking-wide">
+              Portfolio
+            </button>
+          </div> */}
+
+          <div className="mt-8 flex gap-6 text-2xl">
+            <a
+              href="#"
+              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
+            >
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+
+            <a
+              href="#"
+              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+
+            <a
+              href="#"
+              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+
+            <a
+              href="#"
+              className="text-slate-300 hover:text-purple-400 hover:scale-125 transition-all duration-300"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+>>>>>>> 5e6c7142b38db71ad9e95eee5bc614c3a28ae1c7
             </a>
           </div>
         </div>
@@ -160,4 +200,3 @@ const Index = () => {
 };
 
 export default Index;
-

@@ -8,7 +8,7 @@ const Konsep = () => {
       title: "Frontend Developer",
       desc: "React, Tailwind, UI Modern",
       icon: <FaReact />,
-      color: "from-blue-500 to-cyan-400",
+      color: "from-purple-500 to-fuchsia-400",
       company: "Freelance / Client Project",
       impact: "20+ Projects",
       details: ["Landing Page Modern", "Dashboard Admin", "E-commerce UI"],
@@ -141,12 +141,12 @@ const Konsep = () => {
   return (
     <section className="relative py-20 px-4 md:px-6 bg-transparent overflow-hidden">
       {/* BACKGROUND */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 blur-3xl rounded-full"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
 
       <h1 className="text-center text-3xl md:text-4xl font-bold text-white mb-16">
         My{" "}
-        <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,255,255,0.2)]">
+        <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(168,85,247,0.2)]">
           Experience
         </span>
       </h1>
@@ -196,7 +196,7 @@ const Konsep = () => {
                     {exp.desc}
                   </p>
 
-                  <p className="text-xs text-cyan-300 mt-3 font-semibold font-body tracking-wider">
+                  <p className="text-xs text-purple-300 mt-3 font-semibold font-body tracking-wider">
                     {exp.impact}
                   </p>
                 </div>
@@ -221,7 +221,7 @@ const Konsep = () => {
 
             <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-purple-500 to-fuchsia-500 transition-all duration-500"
                 style={{ width: `${skillProgress[i]}%` }}
               />
             </div>
@@ -246,7 +246,7 @@ const Konsep = () => {
               ✕
             </button>
 
-            <div className="text-2xl mb-4 text-blue-400">{selected.icon}</div>
+            <div className="text-2xl mb-4 text-purple-400">{selected.icon}</div>
 
             <h2 className="text-white text-lg md:text-xl font-bold mb-2">
               {selected.title}
@@ -259,7 +259,7 @@ const Konsep = () => {
             <ul className="space-y-2">
               {selected.details.map((item, i) => (
                 <li key={i} className="text-sm text-gray-300 flex gap-2">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mt-1"></span>
+                  <span className="w-2 h-2 bg-purple-500 rounded-full mt-1"></span>
                   {item}
                 </li>
               ))}
