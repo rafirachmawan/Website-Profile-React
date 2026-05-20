@@ -1,2 +1,47 @@
 @import "tailwindcss";
 @import "@fontsource/sora";
+
+/* ── Scrollbar hide ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Card entrance: from right ── */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px) scale(0.98);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ── Card entrance: from left ── */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px) scale(0.98);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.journey-card-enter-right {
+  animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.journey-card-enter-left {
+  animation: slideInLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
