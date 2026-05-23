@@ -1,274 +1,303 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { FaReact, FaDatabase, FaServer, FaPaintBrush, FaMicrochip } from "react-icons/fa";
 import "./style.css";
-import { FaReact, FaDatabase, FaServer, FaCode } from "react-icons/fa";
 
-const Konsep = () => {
-  const experiences = [
-    {
-      title: "Frontend Developer",
-      desc: "React, Tailwind, UI Modern",
-      icon: <FaReact />,
-      color: "from-purple-500 to-fuchsia-400",
-      company: "Freelance / Client Project",
-      impact: "20+ Projects",
-      details: ["Landing Page Modern", "Dashboard Admin", "E-commerce UI"],
-    },
-    {
-      title: "Database",
-      desc: "PostgreSQL, MongoDB",
-      icon: <FaDatabase />,
-      color: "from-green-500 to-emerald-400",
-      company: "Project Internal",
-      impact: "Optimized Queries",
-      details: ["Database Design", "Query Optimization", "Data Modeling"],
-    },
-    {
-      title: "Backend",
-      desc: "Node.js, Express",
-      icon: <FaServer />,
-      color: "from-orange-500 to-yellow-400",
-      company: "API Development",
-      impact: "REST API Systems",
-      details: ["REST API", "Authentication JWT", "Server Architecture"],
-    },
-    {
-      title: "UI/UX Design",
-      desc: "Figma, Design System",
-      icon: <FaCode />,
-      color: "from-purple-500 to-pink-400",
-      company: "UI Research",
-      impact: "Design Systems",
-      details: ["Wireframing", "Design System", "User Research"],
-    },
-  ];
+const TABS = [
+  {
+    id: "frontend",
+    title: "Frontend Developer",
+    short: "Frontend",
+    desc: "Mengembangkan antarmuka modern yang responsif dan interaktif dengan ekosistem React. Berfokus pada performa, aksesibilitas, dan pengalaman pengguna yang luar biasa (UI/UX).",
+    icon: <FaReact />,
+    color: "#a855f7", // purple-500
+    company: "Freelance / Client Project",
+    impact: "20+ Projects Completed",
+    details: ["React & Vite Architecture", "Tailwind CSS Styling", "State Management (Redux/Zustand)", "Responsive Web Design"],
+  },
+  {
+    id: "database",
+    title: "Database Management",
+    short: "Database",
+    desc: "Merancang dan mengelola basis data relasional maupun non-relasional. Mengoptimalkan query untuk memastikan pengambilan data yang cepat, aman, dan efisien.",
+    icon: <FaDatabase />,
+    color: "#10b981", // emerald-500
+    company: "Internal Projects",
+    impact: "Query Optimization",
+    details: ["PostgreSQL & MySQL", "MongoDB", "Data Modeling", "Indexing & Performance"],
+  },
+  {
+    id: "backend",
+    title: "Backend Systems",
+    short: "Backend",
+    desc: "Membangun arsitektur server-side yang tangguh dan scalable. Merancang RESTful API yang aman untuk menghubungkan frontend dengan layanan database.",
+    icon: <FaServer />,
+    color: "#f59e0b", // amber-500
+    company: "API Development",
+    impact: "REST API Architecture",
+    details: ["Node.js & Express", "Authentication (JWT)", "Middleware & Security", "Server Deployment"],
+  },
+  {
+    id: "uiux",
+    title: "UI/UX Research",
+    short: "UI/UX",
+    desc: "Mendesain purwarupa (prototype) dan sistem desain sebelum pengembangan. Memastikan setiap interaksi terasa natural dan memenuhi standar aksesibilitas.",
+    icon: <FaPaintBrush />,
+    color: "#ec4899", // pink-500
+    company: "Design Systems",
+    impact: "Pixel Perfect Interfaces",
+    details: ["Figma Prototyping", "Wireframing", "Design System Creation", "User Flow Mapping"],
+  },
+  {
+    id: "skills",
+    title: "System Specifications",
+    short: "Tech Stack",
+    desc: "Memori sistem dan kapasitas prosesor yang mendukung operasional saat ini. Bar indikator di bawah menunjukkan tingkat penguasaan pada berbagai bahasa pemrograman dan alat.",
+    icon: <FaMicrochip />,
+    color: "#f43f5e", // rose-500
+    company: "Skill Assessment",
+    impact: "Core Capabilities",
+    details: [], // Akan render skill bars di bawah
+  }
+];
 
-  const skills = [
-    { name: "HTML", value: 90 },
-    { name: "JavaScript", value: 85 },
-    { name: "React", value: 88 },
-    { name: "Node.js", value: 75 },
-  ];
+const SKILLS_DATA = [
+  { name: "React / Vite", value: 92, color: "#a855f7" },
+  { name: "Tailwind CSS", value: 95, color: "#c026d3" },
+  { name: "JavaScript", value: 85, color: "#f59e0b" },
+  { name: "Node.js", value: 75, color: "#10b981" },
+  { name: "Figma", value: 80, color: "#ec4899" },
+];
 
-  const refs = useRef([]);
-  const skillRef = useRef(null);
+export default function Experience() {
+  const [activeTab, setActiveTab] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [descText, setDescText] = useState("");
 
-  const [visible, setVisible] = useState([]);
-  const [skillProgress, setSkillProgress] = useState(skills.map(() => 0));
-  const [selected, setSelected] = useState(null); // 🔥 MODAL STATE
-
-  // REVEAL EXPERIENCE
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = Number(entry.target.dataset.index);
-
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              setVisible((prev) =>
-                prev.includes(index) ? prev : [...prev, index],
-              );
-            }, index * 150);
-          } else {
-            setVisible((prev) => prev.filter((i) => i !== index));
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    refs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
+    import("aos").then((AOS) => {
+      AOS.init({ duration: 800, once: true });
+    });
   }, []);
 
-  // SKILL ANIMATION
+  const active = TABS[activeTab];
+
+  // Efek Mesin Ketik (Typewriter) untuk Deskripsi Terminal
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          skills.forEach((skill, i) => {
-            let start = 0;
-
-            const interval = setInterval(() => {
-              start += 2;
-
-              setSkillProgress((prev) => {
-                const updated = [...prev];
-                updated[i] = Math.min(start, skill.value);
-                return updated;
-              });
-
-              if (start >= skill.value) clearInterval(interval);
-            }, 20);
-          });
+    if (isAnimating) {
+      setDescText("");
+    } else {
+      let currentText = "";
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < active.desc.length) {
+          currentText += active.desc[i];
+          setDescText(currentText);
+          i++;
         } else {
-          setSkillProgress(skills.map(() => 0));
+          clearInterval(interval);
         }
-      },
-      { threshold: 0.4 },
-    );
+      }, 10);
+      return () => clearInterval(interval);
+    }
+  }, [isAnimating, active]);
 
-    if (skillRef.current) observer.observe(skillRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  // 3D TILT
-  const handleTilt = (e, el) => {
-    if (window.innerWidth < 768) return; // 🔥 disable di mobile
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-
-    const rx = -((y - cy) / cy) * 10;
-    const ry = ((x - cx) / cx) * 10;
-
-    el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.05)`;
-  };
-
-  const resetTilt = (el) => {
-    el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
-  };
-
-  const handleMouseMove = (e, el) => {
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  const handleTabChange = (index) => {
+    if (activeTab === index) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActiveTab(index);
+      setIsAnimating(false);
+    }, 250); // fade transisi cepat
   };
 
   return (
-    <section className="relative py-20 px-4 md:px-6 bg-transparent overflow-hidden">
-      {/* BACKGROUND */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
-
-      <h1 className="text-center text-3xl md:text-4xl font-bold text-white mb-16">
-        My{" "}
-        <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(168,85,247,0.2)]">
-          Experience
+    <section id="experience" className="relative py-20 sm:py-32 px-4 md:px-6 overflow-hidden font-body text-slate-300">
+      
+      {/* Heading */}
+      <div className="text-center mb-16" data-aos="fade-up">
+        <span className="inline-block px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-[10px] tracking-[0.3em] uppercase font-bold text-purple-400 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+          // Terminal Access
         </span>
-      </h1>
+        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight drop-shadow-lg">
+          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500">Experience</span>
+        </h2>
+      </div>
 
-      {/* EXPERIENCE */}
-      <div className="group max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
-        {experiences.map((exp, index) => {
-          const isVisible = visible.includes(index);
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-8" data-aos="fade-up" data-aos-delay="100">
+        
+        {/* === KIRI: SIDEBAR CONTROL PANEL === */}
+        <div className="w-full lg:w-1/3 flex flex-row lg:flex-col gap-3 z-10 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory scroll-smooth" style={{ scrollbarWidth: 'none' }}>
+          {TABS.map((tab, idx) => {
+            const isActive = activeTab === idx;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabChange(idx)}
+                className={`group relative flex-shrink-0 w-[85%] sm:w-[280px] lg:w-full snap-center flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl border transition-all duration-300 overflow-hidden text-left focus:outline-none bg-transparent
+                  ${isActive 
+                    ? 'border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.05)] scale-100' 
+                    : 'border-white/5 hover:border-white/15 hover:scale-[1.01]'}`}
+                style={{
+                  backgroundColor: isActive ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.02)'
+                }}
+              >
+                {/* Active Glow Background */}
+                {isActive && (
+                  <div 
+                    className="absolute inset-0 opacity-20 pointer-events-none"
+                    style={{ background: `linear-gradient(90deg, ${tab.color}, transparent)` }}
+                  />
+                )}
 
-          return (
-            <div
-              key={index}
-              data-index={index}
-              ref={(el) => (refs.current[index] = el)}
-              className={`transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              } group-hover:opacity-40 hover:!opacity-100`}
-            >
-              <div className="relative p-[1px] rounded-2xl bg-gradient-to-br from-white/10 to-white/5 group hover:scale-[1.05] transition-all duration-500 float cursor-pointer">
-                <div
-                  onClick={() => setSelected(exp)}
-                  onMouseMove={(e) => {
-                    handleTilt(e, e.currentTarget);
-                    handleMouseMove(e, e.currentTarget);
+                {/* Garis Aksen Vertikal (Kiri) */}
+                <div 
+                  className={`absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 scale-y-50 group-hover:opacity-50 group-hover:scale-y-100'}`}
+                  style={{ background: tab.color, boxShadow: `0 0 10px ${tab.color}` }}
+                />
+
+                {/* Ikon */}
+                <div 
+                  className={`flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl text-xl border transition-all duration-300 z-10
+                    ${isActive ? 'border-white/20' : 'border-white/5'}`}
+                  style={{ 
+                    background: isActive ? `${tab.color}30` : 'rgba(255,255,255,0.03)',
+                    color: isActive ? tab.color : 'rgba(255,255,255,0.4)',
+                    boxShadow: isActive ? `0 0 15px ${tab.color}40` : 'none'
                   }}
-                  onMouseLeave={(e) => resetTilt(e.currentTarget)}
-                  className="bg-slate-950/65 backdrop-blur-xl border border-white/10 rounded-2xl p-5 md:p-6 h-full relative overflow-hidden"
                 >
-                  {/* ICON */}
-                  <div
-                    className={`w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-xl bg-gradient-to-r ${exp.color} text-white text-lg md:text-xl mb-4 shadow-lg`}
-                  >
-                    {exp.icon}
-                  </div>
+                  {tab.icon}
+                </div>
 
-                  <h3 className="text-white font-bold text-base md:text-lg">
-                    {exp.title}
-                  </h3>
-
-                  <p className="text-slate-200 text-xs md:text-sm mt-1 font-body">
-                    {exp.company}
-                  </p>
-
-                  <p className="text-slate-100 text-xs md:text-sm mt-3 font-body">
-                    {exp.desc}
-                  </p>
-
-                  <p className="text-xs text-purple-300 mt-3 font-semibold font-body tracking-wider">
-                    {exp.impact}
+                {/* Teks Label */}
+                <div className="z-10 flex-1">
+                  <h4 className={`font-bold transition-colors duration-300 tracking-wide ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
+                    {tab.short}
+                  </h4>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-mono mt-1 opacity-70">
+                    {idx === 4 ? 'SYS.SPECS' : `MOD_0${idx + 1}`}
                   </p>
                 </div>
+                
+                {/* Arrow indicator (hanya tampil jika aktif) */}
+                <div className={`transition-all duration-300 ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+                  <span style={{ color: tab.color }} className="text-sm font-bold">›</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+
+        {/* === KANAN: MAIN TERMINAL === */}
+        <div className="w-full lg:w-2/3 z-10">
+          <div className="relative h-full min-h-[440px] w-full rounded-3xl border border-white/10 bg-[#060411]/60 backdrop-blur-2xl shadow-[0_10px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
+            
+            {/* Terminal Header (Lampu Mac/Windows) */}
+            <div className="flex items-center gap-3 px-6 py-4 border-b border-white/10 bg-white/[0.02]">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.5)] border border-white/10"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.5)] border border-white/10"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.5)] border border-white/10"></div>
+              </div>
+              <div className="flex-1 text-center">
+                <span className="text-[10px] text-slate-400/70 font-mono tracking-[0.3em] uppercase">
+                  user_access // {active.id}.exe
+                </span>
+              </div>
+              {/* Fake Network Status */}
+              <div className="flex gap-1">
+                <div className="w-1 h-3 bg-white/20 rounded-full animate-pulse"></div>
+                <div className="w-1 h-3 bg-white/40 rounded-full animate-pulse delay-75"></div>
+                <div className="w-1 h-3 bg-white/60 rounded-full animate-pulse delay-150"></div>
               </div>
             </div>
-          );
-        })}
-      </div>
 
-      {/* SKILLS */}
-      <div ref={skillRef} className="max-w-3xl mx-auto">
-        <h2 className="text-white text-xl md:text-2xl font-bold mb-6 text-center">
-          Skills
-        </h2>
+            {/* Terminal Content (Dengan Animasi Transisi) */}
+            <div className={`flex-1 p-6 sm:p-8 md:p-10 transition-all duration-300 ${isAnimating ? 'opacity-0 scale-[0.98] blur-sm' : 'opacity-100 scale-100 blur-0'}`}>
+              
+              {/* Header Konten */}
+              <div className="flex items-start gap-5 mb-8">
+                <div 
+                  className="hidden sm:flex flex-shrink-0 w-16 h-16 rounded-2xl items-center justify-center text-3xl border border-white/20"
+                  style={{ background: `${active.color}20`, color: active.color, boxShadow: `0 0 20px ${active.color}40` }}
+                >
+                  {active.icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-heading font-black text-white mb-2 tracking-tight">
+                    {active.title}
+                  </h3>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span 
+                      className="px-2.5 py-1 bg-white/5 border border-white/10 rounded uppercase text-[10px] font-bold tracking-widest"
+                      style={{ color: active.color }}
+                    >
+                      {active.impact}
+                    </span>
+                    <span className="text-xs text-slate-400 font-mono tracking-wide">{active.company}</span>
+                  </div>
+                </div>
+              </div>
 
-        {skills.map((skill, i) => (
-          <div key={i} className="mb-6">
-            <div className="flex justify-between text-gray-300 text-sm mb-1">
-              <span>{skill.name}</span>
-              <span>{skillProgress[i]}%</span>
+              {/* Teks Konsol Hacker (Typewriter) */}
+              <div className="bg-black/50 border border-white/5 rounded-xl p-5 mb-8 font-mono text-sm leading-relaxed relative group shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
+                <div className="absolute top-0 left-0 w-1 h-full rounded-l-xl opacity-70" style={{ background: active.color }} />
+                <p className="text-slate-300">
+                  <span className="mr-2 font-bold" style={{ color: active.color }}>{'>'}</span> 
+                  {descText}
+                  <span className="animate-pulse inline-block ml-1 w-2 h-4 align-middle" style={{ background: active.color }}></span>
+                </p>
+              </div>
+
+              {/* === DYNAMIC CONTENT: SKILLS ATAU DETAIL === */}
+              {activeTab === 4 ? (
+                /* Mode: SYSTEM SPECS (SKILL BARS) */
+                <div className="grid gap-6">
+                  {SKILLS_DATA.map((skill, i) => (
+                    <div key={i} className="w-full">
+                      <div className="flex justify-between text-[11px] mb-2 font-mono uppercase tracking-[0.2em]">
+                        <span className="text-white/80">{skill.name}</span>
+                        <span className="font-bold" style={{ color: skill.color }}>{skill.value}%</span>
+                      </div>
+                      <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div
+                          className="h-full rounded-full transition-all duration-[1200ms] ease-out"
+                          style={{ 
+                            width: isAnimating ? '0%' : `${skill.value}%`, 
+                            background: skill.color, 
+                            boxShadow: `0 0 15px ${skill.color}` 
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                /* Mode: MODULE DETAILS */
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {active.details.map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-3 bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-colors rounded-xl p-3.5">
+                      <div 
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0" 
+                        style={{ background: active.color, boxShadow: `0 0 10px ${active.color}` }} 
+                      />
+                      <span className="text-sm font-medium text-white/90">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
             </div>
 
-            <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-purple-500 to-fuchsia-500 transition-all duration-500"
-                style={{ width: `${skillProgress[i]}%` }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* 🔥 MODAL */}
-      {selected && (
-        <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 px-4"
-          onClick={() => setSelected(null)}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-gray-900 border border-white/10 rounded-2xl p-6 md:p-8 max-w-md w-full animate-fadeIn"
-          >
-            <button
-              onClick={() => setSelected(null)}
-              className="absolute top-3 right-4 text-gray-400 hover:text-white text-xl"
-            >
-              ✕
-            </button>
-
-            <div className="text-2xl mb-4 text-purple-400">{selected.icon}</div>
-
-            <h2 className="text-white text-lg md:text-xl font-bold mb-2">
-              {selected.title}
-            </h2>
-
-            <p className="text-gray-400 text-sm mb-4">{selected.company}</p>
-
-            <p className="text-gray-300 text-sm mb-4">{selected.desc}</p>
-
-            <ul className="space-y-2">
-              {selected.details.map((item, i) => (
-                <li key={i} className="text-sm text-gray-300 flex gap-2">
-                  <span className="w-2 h-2 bg-purple-500 rounded-full mt-1"></span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Glowing Accent di belakang terminal (Pojok Kanan Bawah) */}
+            <div 
+              className="absolute -bottom-32 -right-32 w-80 h-80 blur-[120px] rounded-full pointer-events-none opacity-30 transition-colors duration-700"
+              style={{ background: active.color }}
+            />
           </div>
         </div>
-      )}
+
+      </div>
     </section>
   );
-};
-
-export default Konsep;
+}
