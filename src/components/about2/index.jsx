@@ -5,23 +5,43 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const TECH_STACK = [
-  { name: "React",       color: "#61dafb", icon: "⚛" },
-  { name: "JavaScript",  color: "#f7df1e", icon: "JS" },
-  { name: "TypeScript",  color: "#3178c6", icon: "TS" },
-  { name: "Node.js",     color: "#68a063", icon: "🟢" },
-  { name: "Vite",        color: "#646cff", icon: "⚡" },
-  { name: "Tailwind",    color: "#38bdf8", icon: "🌊" },
-  { name: "HTML5",       color: "#e34c26", icon: "🔸" },
-  { name: "CSS3",        color: "#264de4", icon: "🎨" },
-  { name: "Laravel",     color: "#ff2d20", icon: "🔺" },
-  { name: "MySQL",       color: "#4479a1", icon: "🗄" },
+  { name: "React", color: "#61dafb", icon: "⚛" },
+  { name: "JavaScript", color: "#f7df1e", icon: "JS" },
+  { name: "TypeScript", color: "#3178c6", icon: "TS" },
+  { name: "Node.js", color: "#68a063", icon: "🟢" },
+  { name: "Vite", color: "#646cff", icon: "⚡" },
+  { name: "Tailwind", color: "#38bdf8", icon: "🌊" },
+  { name: "HTML5", color: "#e34c26", icon: "🔸" },
+  { name: "CSS3", color: "#264de4", icon: "🎨" },
+  { name: "Laravel", color: "#ff2d20", icon: "🔺" },
+  { name: "MySQL", color: "#4479a1", icon: "🗄" },
 ];
 
 const JOURNEY = [
-  { year: "2022", label: "Belajar dasar web", icon: "🌱", detail: "HTML, CSS, JavaScript" },
-  { year: "2023", label: "Fokus React & UI",  icon: "⚛",  detail: "React, Tailwind, Figma" },
-  { year: "2024", label: "Freelance project", icon: "💼", detail: "Website & Landing Page" },
-  { year: "2025", label: "Backend & Fullstack",icon: "🚀", detail: "Node.js, Laravel, MySQL" },
+  {
+    year: "2022",
+    label: "Web Fundamentals",
+    icon: "🌱",
+    detail: "HTML, CSS, JavaScript",
+  },
+  {
+    year: "2023",
+    label: "Focus on React & UI",
+    icon: "⚛",
+    detail: "React, Tailwind, Figma",
+  },
+  {
+    year: "2024",
+    label: "Freelance Projects",
+    icon: "💼",
+    detail: "Website & Landing Page",
+  },
+  {
+    year: "2025",
+    label: "Backend & Full-Stack",
+    icon: "🚀",
+    detail: "Node.js, Laravel, MySQL",
+  },
 ];
 
 const Index = () => {
@@ -30,11 +50,16 @@ const Index = () => {
   }, []);
 
   /* ── Typewriter ── */
-  const texts = ["Front-End Developer", "UI/UX Designer", "React Developer", "Fullstack Learner"];
+  const texts = [
+    "Front-End Developer",
+    "UI/UX Designer",
+    "React Developer",
+    "Fullstack Learner",
+  ];
   const [displayText, setDisplayText] = useState("");
-  const [txtIndex, setTxtIndex]       = useState(0);
-  const [charIndex, setCharIndex]     = useState(0);
-  const [isDeleting, setIsDeleting]   = useState(false);
+  const [txtIndex, setTxtIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const speed = isDeleting ? 45 : 90;
@@ -47,17 +72,20 @@ const Index = () => {
       } else {
         setDisplayText(current.substring(0, charIndex - 1));
         setCharIndex(charIndex - 1);
-        if (charIndex === 0) { setIsDeleting(false); setTxtIndex((txtIndex + 1) % texts.length); }
+        if (charIndex === 0) {
+          setIsDeleting(false);
+          setTxtIndex((txtIndex + 1) % texts.length);
+        }
       }
     }, speed);
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, txtIndex]);
 
   /* ── 3D Tilt Card ── */
-  const cardRef   = useRef(null);
-  const frameRef  = useRef(null);
-  const target    = useRef({ x: 0, y: 0 });
-  const currentT  = useRef({ x: 0, y: 0 });
+  const cardRef = useRef(null);
+  const frameRef = useRef(null);
+  const target = useRef({ x: 0, y: 0 });
+  const currentT = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const animate = () => {
@@ -74,10 +102,14 @@ const Index = () => {
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    target.current.x = -((e.clientY - rect.top  - rect.height / 2) / rect.height) * 18;
-    target.current.y =  ((e.clientX - rect.left - rect.width  / 2) / rect.width)  * 18;
+    target.current.x =
+      -((e.clientY - rect.top - rect.height / 2) / rect.height) * 18;
+    target.current.y =
+      ((e.clientX - rect.left - rect.width / 2) / rect.width) * 18;
   };
-  const handleMouseLeave = () => { target.current = { x: 0, y: 0 }; };
+  const handleMouseLeave = () => {
+    target.current = { x: 0, y: 0 };
+  };
 
   /* ── Active journey ── */
   const [activeJourney, setActiveJourney] = useState(null);
@@ -85,15 +117,13 @@ const Index = () => {
   return (
     <section id="about" className="about2-section">
       <div className="about2-container">
-
         {/* ═══ LEFT ═══ */}
         <div className="about2-left" data-aos="fade-right">
-
           {/* Header */}
           <div className="about2-header">
             <span className="about2-tag">About Me</span>
             <h2 className="about2-title">
-              Hi, I'm <span className="about2-name">Rafi</span> 👋
+              Hi, I'm <span className="about2-name">Rafi</span>
             </h2>
             <p className="about2-typewriter">
               <span className="about2-tw-text">{displayText}</span>
@@ -104,12 +134,13 @@ const Index = () => {
           {/* Bio */}
           <div className="about2-bio">
             <p>
-              Halo! Saya <strong>Rafi Rachmawan</strong>, seorang Front-End Developer
-              yang fokus membuat UI modern, responsif, dan interaktif.
+              Hello! I'm <strong>Rafi Rachmawan</strong>, a Front-End
+              Developer focused on building modern, responsive, and interactive UIs.
             </p>
             <p>
-              Saya terbiasa menggunakan <strong>React, Tailwind,</strong> dan <strong>Vite</strong>,
-              serta sedang mengembangkan skill Backend untuk menjadi Fullstack Developer.
+              I specialize in <strong>React, Tailwind,</strong> and{" "}
+              <strong>Vite</strong>, and I am currently expanding my Backend skills
+              to become a Full-Stack Developer.
             </p>
           </div>
 
@@ -151,7 +182,9 @@ const Index = () => {
                   <div className="about2-tl-body">
                     <span className="about2-tl-year">{j.year}</span>
                     <span className="about2-tl-label">{j.label}</span>
-                    <span className={`about2-tl-detail ${activeJourney === i ? "visible" : ""}`}>
+                    <span
+                      className={`about2-tl-detail ${activeJourney === i ? "visible" : ""}`}
+                    >
                       {j.detail}
                     </span>
                   </div>
@@ -159,7 +192,6 @@ const Index = () => {
               ))}
             </div>
           </div>
-
         </div>
 
         {/* ═══ RIGHT: 3D Photo Card ═══ */}
@@ -208,11 +240,10 @@ const Index = () => {
             {/* Stats bubble */}
             <div className="about2-stat-bubble">
               <span className="about2-stat-n">3+</span>
-              <span className="about2-stat-l">Tahun</span>
+              <span className="about2-stat-l">Years</span>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

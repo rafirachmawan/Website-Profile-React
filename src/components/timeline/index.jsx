@@ -7,10 +7,10 @@ const CHAPTERS = [
     year: "2017",
     emoji: "🎓",
     tag: "Education",
-    title: "Lulus SMA",
+    title: "High School Graduation",
     subtitle: "The Beginning",
     story:
-      "Menyelesaikan pendidikan SMA dan untuk pertama kalinya bersentuhan dengan dunia teknologi. Rasa ingin tahu terhadap cara kerja software mulai tumbuh — sebuah percikan kecil yang kelak mengubah segalanya.",
+      "Graduated high school and had my first encounter with the tech world. Curiosity about how software works began to grow—a small spark that would eventually change everything.",
     color: "#a855f7",
     tagBg: "rgba(168,85,247,0.12)",
     tagText: "#c084fc",
@@ -20,10 +20,10 @@ const CHAPTERS = [
     year: "2018",
     emoji: "🏛️",
     tag: "Education",
-    title: "Mulai Kuliah",
+    title: "College Started",
     subtitle: "Foundations Built",
     story:
-      "Resmi masuk jurusan Teknik Informatika. Fundamental programming, algoritma, dan logika komputasi dibentuk satu per satu. Setiap baris kode adalah pelajaran baru yang menyenangkan.",
+      "Officially enrolled in Informatics Engineering. Built the fundamentals of programming, algorithms, and computational logic step by step. Every line of code was a fun new lesson.",
     color: "#c026d3",
     tagBg: "rgba(192,38,211,0.12)",
     tagText: "#e879f9",
@@ -33,10 +33,10 @@ const CHAPTERS = [
     year: "2020",
     emoji: "💼",
     tag: "Career",
-    title: "Magang",
+    title: "Internship",
     subtitle: "Real World Begins",
     story:
-      "Pertama kali terjun ke real-world project. Belajar berkolaborasi dalam tim, menghadapi deadline, dan memahami bahwa coding bukan hanya tentang syntax — tapi tentang solusi nyata untuk manusia nyata.",
+      "First dive into real-world projects. Learned team collaboration, met deadlines, and realized that coding isn't just about syntax—it's about real solutions for real people.",
     color: "#db2777",
     tagBg: "rgba(219,39,119,0.12)",
     tagText: "#f472b6",
@@ -46,10 +46,10 @@ const CHAPTERS = [
     year: "2022",
     emoji: "🏆",
     tag: "Milestone",
-    title: "Lulus Kuliah",
+    title: "Graduated",
     subtitle: "Mission Accomplished",
     story:
-      "Gelar di tangan, semangat membara. Fokus sepenuhnya beralih ke UI/UX dan Frontend Development. Mulai membangun portofolio dan memperdalam React sebagai senjata utama.",
+      "Degree in hand, passion ignited. Fully shifted focus to UI/UX and Front-End Development. Started building a portfolio and mastering React as my primary weapon.",
     color: "#e11d48",
     tagBg: "rgba(225,29,72,0.12)",
     tagText: "#fb7185",
@@ -59,10 +59,10 @@ const CHAPTERS = [
     year: "2023",
     emoji: "🚀",
     tag: "Career",
-    title: "Frontend Dev",
+    title: "Front-End Dev",
     subtitle: "Level Up",
     story:
-      "Berkarir sebagai Frontend Developer profesional. Membangun produk digital untuk berbagai klien — dari landing page premium hingga dashboard aplikasi kompleks.",
+      "Began career as a professional Front-End Developer. Built digital products for various clients—from premium landing pages to complex application dashboards.",
     color: "#ea580c",
     tagBg: "rgba(234,88,12,0.12)",
     tagText: "#fb923c",
@@ -75,7 +75,7 @@ const CHAPTERS = [
     title: "Senior / Lead",
     subtitle: "The Next Chapter",
     story:
-      "Target selanjutnya adalah mencapai posisi Senior atau Lead Developer — merancang arsitektur sistem, memimpin tim, dan menginspirasi developer lain untuk terus berkembang.",
+      "The next target is reaching a Senior or Lead Developer position—designing system architectures, leading teams, and inspiring other developers to keep growing.",
     color: "#ca8a04",
     tagBg: "rgba(202,138,4,0.12)",
     tagText: "#fbbf24",
@@ -115,7 +115,7 @@ export default function Timeline() {
             </span>
           </h2>
           <p className="text-slate-400 mt-5 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
-            Melihat kembali perjalanan dari awal belajar coding hingga menjadi profesional.
+            Looking back at the journey from learning to code to becoming a professional.
           </p>
         </div>
 

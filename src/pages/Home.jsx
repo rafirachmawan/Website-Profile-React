@@ -15,6 +15,7 @@ import Contact from "../components/contact/index";
 import Experience from "../components/experience/index";
 import Timeline from "../components/timeline/index";
 import ThreeBgScene from "../components/ThreeBgScene";
+import Agency from "../components/agency/index";
 
 function Home() {
   return (
@@ -43,6 +44,9 @@ function Home() {
 
       {/* RESUME */}
       <Section />
+
+      {/* AGENCY */}
+      <Agency />
 
       {/* CONTACT */}
       <Contact />

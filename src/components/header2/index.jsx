@@ -216,7 +216,7 @@ const Index = () => {
         <div className="hero2-left">
           <div className="hero2-badge">
             <span className="hero2-badge-dot" />
-            Available for work
+            Available for Freelance & Remote Work (GMT+7)
           </div>
 
           <h1 className="hero2-title">

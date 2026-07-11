@@ -72,7 +72,7 @@ const Resume = () => {
             
             <div className="relative border-l border-white/10 ml-2 space-y-8">
               {[
-                { title: "Staff IT", place: "Rumah Sakit Era Medika", color: "#d946ef" },
+                { title: "Staff IT", place: "Era Medika Hospital", color: "#d946ef" },
                 { title: "Freelance", place: "Web Development", color: "#ec4899" },
                 { title: "Freelance", place: "Full Stack Development", color: "#f43f5e" },
               ].map((exp, i) => (

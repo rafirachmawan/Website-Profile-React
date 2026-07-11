@@ -26,9 +26,18 @@ const ContactMe = () => {
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight drop-shadow-lg">
             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500">Me</span>
           </h2>
-          <p className="text-slate-400 mt-5 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-body">
-            Terbuka untuk kolaborasi, proyek kerja sama, atau sekadar berbincang tentang teknologi.
+          <p className="text-slate-400 mt-5 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-body mb-10">
+            Open for collaborations, remote opportunities, or simply talking about tech.
           </p>
+
+          <a 
+            href="https://wa.me/6285707185783" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all duration-300 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-full hover:shadow-[0_0_20px_rgba(217,70,239,0.5)] hover:scale-105"
+          >
+            <span className="mr-2 text-lg">💬</span> Chat on WhatsApp
+          </a>
         </div>
 
         {/* Cards Grid */}

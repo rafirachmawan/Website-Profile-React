@@ -7,7 +7,7 @@ const TABS = [
     id: "frontend",
     title: "Frontend Developer",
     short: "Frontend",
-    desc: "Mengembangkan antarmuka modern yang responsif dan interaktif dengan ekosistem React. Berfokus pada performa, aksesibilitas, dan pengalaman pengguna yang luar biasa (UI/UX).",
+    desc: "Developing modern, responsive, and interactive interfaces within the React ecosystem. Focused on performance, accessibility, and exceptional user experiences (UI/UX).",
     icon: <FaReact />,
     color: "#a855f7", // purple-500
     company: "Freelance / Client Project",
@@ -18,7 +18,7 @@ const TABS = [
     id: "database",
     title: "Database Management",
     short: "Database",
-    desc: "Merancang dan mengelola basis data relasional maupun non-relasional. Mengoptimalkan query untuk memastikan pengambilan data yang cepat, aman, dan efisien.",
+    desc: "Designing and managing relational and non-relational databases. Optimizing queries to ensure fast, secure, and efficient data retrieval.",
     icon: <FaDatabase />,
     color: "#10b981", // emerald-500
     company: "Internal Projects",
@@ -29,7 +29,7 @@ const TABS = [
     id: "backend",
     title: "Backend Systems",
     short: "Backend",
-    desc: "Membangun arsitektur server-side yang tangguh dan scalable. Merancang RESTful API yang aman untuk menghubungkan frontend dengan layanan database.",
+    desc: "Building robust and scalable server-side architectures. Designing secure RESTful APIs to connect the frontend with database services.",
     icon: <FaServer />,
     color: "#f59e0b", // amber-500
     company: "API Development",
@@ -40,7 +40,7 @@ const TABS = [
     id: "uiux",
     title: "UI/UX Research",
     short: "UI/UX",
-    desc: "Mendesain purwarupa (prototype) dan sistem desain sebelum pengembangan. Memastikan setiap interaksi terasa natural dan memenuhi standar aksesibilitas.",
+    desc: "Designing prototypes and design systems prior to development. Ensuring every interaction feels natural and meets accessibility standards.",
     icon: <FaPaintBrush />,
     color: "#ec4899", // pink-500
     company: "Design Systems",
@@ -51,7 +51,7 @@ const TABS = [
     id: "skills",
     title: "System Specifications",
     short: "Tech Stack",
-    desc: "Memori sistem dan kapasitas prosesor yang mendukung operasional saat ini. Bar indikator di bawah menunjukkan tingkat penguasaan pada berbagai bahasa pemrograman dan alat.",
+    desc: "System memory and processor capacity supporting current operations. The indicator bars below show proficiency levels across various programming languages and tools.",
     icon: <FaMicrochip />,
     color: "#f43f5e", // rose-500
     company: "Skill Assessment",
