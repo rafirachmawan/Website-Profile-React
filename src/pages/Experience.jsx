@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { RiNextjsFill } from "react-icons/ri";
 import { FaVuejs, FaReact, FaLaravel } from "react-icons/fa";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 
 export default function Experience() {
   const experiences = [

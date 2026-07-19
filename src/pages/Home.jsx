@@ -6,7 +6,7 @@ import { faFacebook, faLinkedin, faInstagram, faGithub } from "@fortawesome/free
 import gapaiLogo from "../assets/GapaiDigitalIcon.png";
 import heroImage from "../assets/foto-normal-remove.png";
 import aboutImage from "../assets/profil.jpeg";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   return (

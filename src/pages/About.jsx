@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar';
 import aboutImage from "../assets/profil.jpeg";
 
 export default function About() {
