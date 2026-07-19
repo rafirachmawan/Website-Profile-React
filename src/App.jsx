@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import Lenis from "lenis";
 import CustomCursor from "./components/CustomCursor";
+import Preloader from "./components/Preloader";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -17,6 +18,14 @@ function App() {
     document.body.className = darkMode ? "dark" : "light";
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
+
+  // Force scroll to top on refresh
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   // Global Lenis Smooth Scroll
   useEffect(() => {
@@ -39,9 +48,33 @@ function App() {
     };
   }, []);
 
+  // Global Sound Effect
+  useEffect(() => {
+    const handleGlobalClick = (e) => {
+      const isInteractive = e.target.closest('a') || e.target.closest('button') || e.target.classList.contains('neo-btn');
+      if (isInteractive) {
+        import("./utils/playSound").then((module) => {
+          module.playClickSound();
+        });
+      }
+    };
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
+  }, []);
+
   return (
     <>
+      <Preloader />
       <CustomCursor />
+      
+      {/* Brutalist Floating Dark Mode Toggle */}
+      <button 
+        onClick={() => setDarkMode(!darkMode)}
+        className="fixed bottom-8 right-8 z-[9999] w-16 h-16 border-4 border-black bg-[#ffe600] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center justify-center text-2xl font-black rounded-full"
+      >
+        <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+      </button>
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

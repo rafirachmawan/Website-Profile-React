@@ -1,35 +1,82 @@
 @import "tailwindcss";
 
-.font-heading {
-  font-family: "Sora", sans-serif;
+@theme {
+  --color-neo-bg: #fdfdfd;
+  --color-neo-primary: #ffe600;
+  --color-neo-secondary: #ff4d4d;
+  --color-neo-accent: #0055ff;
+  --color-neo-dark: #1a1a1a;
+  --color-neo-border: #000000;
+
+  --font-heading: "Space Grotesk", "Sora", sans-serif;
+  --font-body: "Space Grotesk", "Inter", sans-serif;
+
+  --shadow-neo: 4px 4px 0px 0px rgba(0,0,0,1);
+  --shadow-neo-lg: 8px 8px 0px 0px rgba(0,0,0,1);
+  --shadow-neo-hover: 2px 2px 0px 0px rgba(0,0,0,1);
 }
 
-.font-body {
-  font-family: "Inter", sans-serif;
-}
-
-/* Global Reset & Base Viewport Page background */
-html,
-body {
+html, body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  background-color: #030712; /* Fallback base color */
-  font-family: "Inter", sans-serif;
+  background-color: #fdfdfd;
+  font-family: "Space Grotesk", sans-serif;
+  color: #1a1a1a;
 }
 
-/* 
- * Perfect Stack Layering:
- * #root sits at z-index 2 (relative) so all text, buttons, and content float
- * perfectly on top of the z-index 1 WebGL canvas, while keeping background transparent.
- */
 #root {
   position: relative;
-  z-index: 2;
   width: 100%;
-  max-width: 100%;
-  background-color: transparent !important;
   min-height: 100vh;
+}
+
+/* Custom Neo Utilities */
+/* Proper Dark Mode Override */
+body.dark {
+  --color-neo-bg: #111111;
+  --color-neo-dark: #fdfdfd;
+  --color-neo-border: #ffffff;
+  --shadow-neo: 4px 4px 0px 0px rgba(255,255,255,1);
+  --shadow-neo-lg: 8px 8px 0px 0px rgba(255,255,255,1);
+  --shadow-neo-hover: 2px 2px 0px 0px rgba(255,255,255,1);
+  
+  background-color: var(--color-neo-bg);
+  color: var(--color-neo-dark);
+}
+
+.neo-box {
+  @apply border-4 border-neo-border bg-neo-bg shadow-neo;
+}
+
+/* Neobrutalist Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-neo-bg);
+  border-left: 4px solid var(--color-neo-border);
+}
+::-webkit-scrollbar-thumb {
+  background: #ffe600; /* Always yellow */
+  border: 4px solid var(--color-neo-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4d4d; /* Red on hover */
+}
+
+/* Glitch Effect */
+.glitch-hover:hover {
+  animation: glitch-anim 0.3s linear infinite;
+}
+
+@keyframes glitch-anim {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
 }
