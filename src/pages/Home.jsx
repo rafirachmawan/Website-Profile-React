@@ -4,26 +4,14 @@ import { portfolioList } from "../components/data/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faLinkedin, faInstagram, faGithub } from "@fortawesome/free-brands-svg-icons";
 import gapaiLogo from "../assets/GapaiDigitalIcon.png";
-import { motion } from "framer-motion";
+import heroImage from "../assets/foto-normal-remove.png";
+import aboutImage from "../assets/profil.jpeg";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black pb-20">
-      {/* NAVBAR */}
-      <nav className="border-b-4 border-neo-border bg-neo-bg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="font-heading font-black text-2xl tracking-tighter uppercase glitch-hover inline-block">
-            Rafi<span className="text-neo-primary" style={{ WebkitTextStroke: "1px black" }}>.</span>
-          </Link>
-          <div className="hidden md:flex gap-8 font-bold uppercase tracking-wider items-center">
-            <a href="#about" className="hover:text-neo-accent transition-colors">About</a>
-            <a href="#projects" className="hover:text-neo-accent transition-colors">Projects</a>
-            <Link to="/experience" className="hover:text-neo-accent transition-colors">Experience</Link>
-            <a href="#contact" className="hover:text-neo-accent transition-colors">Contact</a>
-          </div>
-          <a href="#contact" className="neo-btn hidden md:inline-block">Let's Talk</a>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO */}
       <section className="max-w-7xl mx-auto px-6 mt-16 md:mt-32 mb-32">
@@ -62,8 +50,17 @@ export default function Home() {
             <div className="absolute top-0 right-0 w-72 h-72 md:w-96 md:h-96 bg-neo-primary border-4 border-neo-border shadow-neo translate-x-4 translate-y-4"></div>
             <div className="absolute -top-6 -left-6 w-24 h-24 bg-neo-secondary border-4 border-neo-border shadow-neo rounded-full z-20 animate-bounce" style={{ animationDuration: "3s" }}></div>
             
-            <div className="relative z-10 border-4 border-neo-border bg-neo-bg shadow-neo w-72 h-72 md:w-96 md:h-96 flex items-center justify-center text-9xl select-none">
-              🧑‍💻
+            <div className="relative z-10 border-4 border-neo-border bg-neo-bg shadow-neo w-72 h-72 md:w-96 md:h-96 p-4 md:p-6 group -rotate-2 hover:rotate-0 transition-transform duration-300">
+              <div className="w-full h-[85%] border-4 border-neo-border overflow-hidden bg-neo-primary">
+                <img 
+                  src={heroImage} 
+                  alt="Rafi Rachmawan" 
+                  className="w-full h-full object-cover object-top grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500" 
+                />
+              </div>
+              <div className="w-full h-[15%] flex items-center justify-center font-bold font-heading uppercase tracking-widest mt-2">
+                Rafi.jpeg
+              </div>
             </div>
             
             <div className="absolute -bottom-10 -right-6 bg-neo-accent text-white border-4 border-neo-border px-6 py-4 shadow-neo z-20 font-bold rotate-3 pointer-events-none">
@@ -78,11 +75,11 @@ export default function Home() {
         <div className="grid md:grid-cols-5 gap-8 items-center bg-neo-secondary border-4 border-neo-border p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div className="md:col-span-2">
             <div className="w-full h-64 md:h-full min-h-[300px] border-4 border-neo-border bg-neo-bg shadow-neo relative overflow-hidden group">
-              {/* Fallback pattern if no image */}
-              <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
-              <div className="absolute inset-0 flex items-center justify-center font-heading font-black text-6xl text-neo-secondary rotate-12 group-hover:rotate-0 transition-transform">
-                ABOUT ME
-              </div>
+              <img 
+                src={aboutImage} 
+                alt="Rafi" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+              />
             </div>
           </div>
           <div className="md:col-span-3 text-white">

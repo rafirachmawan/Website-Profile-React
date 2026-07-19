@@ -58,7 +58,7 @@ export default function Preloader() {
             />
           </div>
 
-          <div className="relative z-10 absolute bottom-10 font-bold uppercase tracking-[0.3em] text-black bg-white border-2 border-black px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-pulse mt-20">
+          <div className="z-10 absolute bottom-10 font-bold uppercase tracking-[0.3em] text-black bg-white border-2 border-black px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-pulse mt-20">
             System Initialization...
           </div>
         </motion.div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { RiNextjsFill } from "react-icons/ri";
 import { FaVuejs, FaReact, FaLaravel } from "react-icons/fa";
+import Navbar from "../components/Navbar";
 
 export default function Experience() {
   const experiences = [
@@ -41,18 +42,7 @@ export default function Experience() {
 
   return (
     <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black">
-      {/* NAVBAR */}
-      <nav className="border-b-4 border-neo-border bg-white sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="font-heading font-black text-2xl tracking-tighter uppercase">
-            Rafi<span className="text-neo-primary" style={{ WebkitTextStroke: "1px black" }}>.</span>
-          </Link>
-          <div className="flex gap-8 font-bold uppercase tracking-wider">
-            <Link to="/" className="hover:text-neo-accent transition-colors">Home</Link>
-            <Link to="/experience" className="text-neo-accent underline decoration-4 underline-offset-4">Experience</Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* EXPERIENCE SECTION */}
       <section className="max-w-5xl mx-auto px-6 py-20">
@@ -67,7 +57,7 @@ export default function Experience() {
             <div key={i} className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active`}>
               
               {/* Timeline Icon */}
-              <div className={`flex items-center justify-center w-20 h-20 rounded-full border-4 border-neo-border ${exp.color} shadow-neo text-3xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-10 mx-auto`}>
+              <div className={`flex items-center justify-center w-20 h-20 rounded-full border-4 border-neo-border ${exp.color} shadow-neo text-3xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 mx-auto`}>
                 {exp.icon}
               </div>
 
