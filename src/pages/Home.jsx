@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { portfolioList } from "../components/data/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faLinkedin, faInstagram, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { RiNextjsFill } from "react-icons/ri";
 import { FaVuejs, FaReact, FaLaravel } from "react-icons/fa";
 import gapaiLogo from "../assets/GapaiDigitalIcon.png";
+import gapaiScreenshot from "../assets/gapaidigital/gapaidigital.jpg";
 import heroImage from "../assets/foto-normal-remove.png";
 import aboutImage from "../assets/profil.jpeg";
 import Navbar from "../components/navbar";
@@ -159,42 +161,258 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── GAPAIDIGITAL FOUNDER SPOTLIGHT ── */}
+      <section id="agency" className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 md:mb-32">
+        <div className="border-4 border-neo-border overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col lg:flex-row group" style={{ backgroundColor: '#0f0f0f' }}>
+
+          {/* Left: Screenshot */}
+          <div className="lg:w-3/5 h-64 sm:h-80 lg:h-auto overflow-hidden relative border-b-4 lg:border-b-0 lg:border-r-4 border-neo-border">
+            {/* Orange glow overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#f97316]/0 group-hover:bg-[#f97316]/10 transition-all duration-500 z-10 pointer-events-none" />
+            <img
+              src={gapaiScreenshot}
+              alt="GapaiDigital – Indonesia Digitalization Startup"
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            />
+            {/* Live badge */}
+            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 bg-[#f97316] border-2 border-white px-3 py-1.5 font-black uppercase text-white text-xs shadow-[3px_3px_0px_0px_rgba(255,255,255,0.4)]">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse inline-block" />
+              LIVE STARTUP
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className="lg:w-2/5 p-6 sm:p-10 flex flex-col justify-between" style={{ backgroundColor: '#111111' }}>
+            <div>
+              {/* Founder tag */}
+              <div className="inline-flex items-center gap-2 mb-6 border-2 border-[#f97316] px-3 py-1">
+                <span className="text-[#f97316] font-black text-lg">⚡</span>
+                <span className="text-[#f97316] font-black uppercase text-xs tracking-widest">
+                  {language === 'id' ? 'Saya Adalah Pendiri' : 'I Am The Founder'}
+                </span>
+              </div>
+
+              {/* Logo + Name */}
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-14 h-14 bg-[#f97316] border-4 border-[#f97316] flex items-center justify-center p-1 shadow-[4px_4px_0px_0px_rgba(249,115,22,0.4)]">
+                  <img src={gapaiLogo} alt="GapaiDigital Logo" className="w-full h-full object-contain" />
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading uppercase text-white leading-none" style={{ textShadow: '3px 3px 0px #f97316' }}>
+                  GapaiDigital
+                </h2>
+              </div>
+
+              {/* Tagline */}
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#f97316] mb-3">
+                Indonesia Digitalization Startup
+              </p>
+
+              {/* Description */}
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed border-l-4 border-[#f97316] pl-4 mb-6">
+                {language === 'id'
+                  ? 'Saya mendirikan GapaiDigital — startup digitalisasi yang membantu bisnis berkembang melalui Landing Page, Mobile App, dan Custom Web System yang modern dan skalabel.'
+                  : 'I founded GapaiDigital — a digitalization startup helping businesses grow through modern Landing Pages, Mobile Apps, and Custom Web Systems at scale.'}
+              </p>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-3 gap-3 mb-8">
+                {[
+                  { val: '5.0', label: language === 'id' ? 'Rating' : 'Rating' },
+                  { val: '10+', label: language === 'id' ? 'Proyek' : 'Projects' },
+                  { val: '100%', label: language === 'id' ? 'Klien Puas' : 'Happy Clients' },
+                ].map((stat, i) => (
+                  <div key={i} className="text-center border-2 border-[#f97316]/30 p-2 sm:p-3">
+                    <div className="text-xl sm:text-2xl font-black text-[#f97316] font-heading">{stat.val}</div>
+                    <div className="text-xs text-slate-400 font-bold uppercase">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <a
+              href="https://gapaidigital.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-3 border-4 border-[#f97316] px-6 py-4 font-black uppercase text-sm sm:text-base tracking-wide text-white transition-all duration-200 hover:-translate-y-1"
+              style={{ backgroundColor: '#f97316', boxShadow: '4px 4px 0px 0px rgba(249,115,22,0.5)', color: '#0f0f0f' }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = '2px 2px 0px 0px rgba(249,115,22,0.5)'; e.currentTarget.style.transform = 'translate(2px, 2px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = '4px 4px 0px 0px rgba(249,115,22,0.5)'; e.currentTarget.style.transform = ''; }}
+            >
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              {language === 'id' ? 'Kunjungi GapaiDigital' : 'Visit GapaiDigital'}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── PROJECTS ── */}
       <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 md:mb-32">
-        <div className="inline-block border-4 border-neo-border bg-neo-bg px-4 sm:px-6 py-2 shadow-neo mb-8 sm:mb-12 -rotate-1">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px #ffe600" }}>
-            {t.featuredWork}
-          </h2>
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
+          <div className="inline-block border-4 border-neo-border bg-neo-bg px-4 sm:px-6 py-2 shadow-neo -rotate-1">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px #ffe600" }}>
+              {t.featuredWork}
+            </h2>
+          </div>
+          <Link to="/projects" className="neo-btn self-start sm:self-auto text-sm sm:text-base">
+            {language === 'id' ? 'Semua Proyek →' : 'All Projects →'}
+          </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 sm:gap-10">
-          {portfolioList.map((project, i) => (
-            <div key={project.id} className="neo-box overflow-hidden group flex flex-col">
-              <div className="border-b-4 border-neo-border h-48 sm:h-72 overflow-hidden bg-gray-200">
+        {/* ── FEATURED CARD (project #1) ── */}
+        {(() => {
+          const featured = portfolioList.find(p => p.featured);
+          if (!featured) return null;
+          return (
+            <div className="neo-box overflow-hidden group mb-8 sm:mb-12 flex flex-col lg:flex-row">
+              {/* Image */}
+              <div className="lg:w-3/5 border-b-4 lg:border-b-0 lg:border-r-4 border-neo-border h-64 sm:h-80 lg:h-auto overflow-hidden bg-[#0f0f0f] relative p-4 flex items-center justify-center">
+                {/* Featured badge */}
+                <div className="absolute top-4 left-4 z-10 bg-neo-primary border-4 border-neo-border px-3 py-1 font-black uppercase text-xs sm:text-sm shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] rotate-2">
+                  ★ Featured
+                </div>
+                {/* Project number */}
+                <div className="absolute bottom-4 right-4 z-10 font-black font-heading text-7xl sm:text-9xl text-white/10 leading-none select-none pointer-events-none">
+                  01
+                </div>
                 <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale hover:grayscale-0"
+                  src={featured.image}
+                  alt={featured.title}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0"
                 />
               </div>
-              <div className="p-5 sm:p-8 flex flex-col flex-grow">
-                <h3 className="text-xl sm:text-2xl font-bold font-heading uppercase mb-3 sm:mb-4 leading-tight">{project.title}</h3>
 
-                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8 flex-grow">
-                  {project.skill.split(',').map((skill, j) => (
-                    <span key={j} className="text-xs sm:text-sm font-bold bg-neo-bg border-2 border-neo-border px-2 sm:px-3 py-1 uppercase">
-                      {skill.trim()}
+              {/* Content */}
+              <div className="lg:w-2/5 p-6 sm:p-10 flex flex-col justify-between bg-neo-bg">
+                <div>
+                  {/* Category + Year */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-xs font-black uppercase bg-neo-accent text-white border-2 border-neo-border px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      {featured.category}
                     </span>
-                  ))}
+                    <span className="text-xs font-bold uppercase bg-neo-primary border-2 border-neo-border px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      {featured.year}
+                    </span>
+                  </div>
+
+                  {/* Subtitle */}
+                  <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-neo-dark opacity-50 mb-2">
+                    {featured.subtitle}
+                  </p>
+
+                  {/* Title */}
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black font-heading uppercase leading-tight mb-4" style={{ textShadow: '2px 2px 0px #ffe600' }}>
+                    {featured.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="font-medium text-neo-dark opacity-70 text-sm sm:text-base leading-relaxed border-l-4 border-neo-primary pl-4 mb-6">
+                    {featured.description}
+                  </p>
+
+                  {/* Tech stack */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {featured.skill.split(',').map((skill, j) => {
+                      const colors = [
+                        'bg-[#61dafb] border-neo-border text-black',
+                        'bg-neo-secondary border-neo-border text-white',
+                        'bg-neo-dark border-neo-border text-white',
+                        'bg-[#ff4d4d] border-neo-border text-white',
+                        'bg-[#00d084] border-neo-border text-black',
+                      ];
+                      return (
+                        <span key={j} className={`text-xs font-black uppercase border-2 px-2 sm:px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${colors[j % colors.length]}`}>
+                          {skill.trim()}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <a href={project.link || "#"} target="_blank" rel="noreferrer"
-                   className="text-center bg-neo-secondary text-white border-4 border-neo-border px-5 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all text-sm sm:text-base tracking-wide">
-                  {t.viewLive}
+                {/* CTA */}
+                <a
+                  href={featured.link || '#'}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 bg-neo-dark text-neo-bg border-4 border-neo-border px-6 py-4 font-black uppercase text-sm sm:text-base shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all tracking-wide"
+                >
+                  <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                  {featured.link && featured.link.includes('github.com')
+                    ? (language === 'id' ? 'Lihat di GitHub' : 'View on GitHub')
+                    : (language === 'id' ? 'Kunjungi Aplikasi' : 'Visit App')}
                 </a>
               </div>
             </div>
-          ))}
+          );
+        })()}
+
+        {/* ── GRID (projects #2–6) ── */}
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
+          {portfolioList.filter(p => !p.featured).map((project, i) => {
+            const tagColors = [
+              'bg-[#61dafb] text-black',
+              'bg-neo-secondary text-white',
+              'bg-neo-dark text-white',
+              'bg-[#ff4d4d] text-white',
+              'bg-[#00d084] text-black',
+            ];
+            const catColor = project.category === 'Website' ? 'bg-neo-primary text-black' : 'bg-neo-accent text-white';
+
+            return (
+              <div key={project.id} className="neo-box overflow-hidden group flex flex-col">
+                {/* Image */}
+                <div className="border-b-4 border-neo-border h-48 sm:h-56 overflow-hidden bg-gray-200 relative">
+                  {/* Brutalist number */}
+                  <div className="absolute top-3 left-3 z-10 font-black font-heading text-6xl text-white/15 leading-none select-none pointer-events-none">
+                    {String(i + 2).padStart(2, '0')}
+                  </div>
+                  {/* Category badge */}
+                  <div className={`absolute top-3 right-3 z-10 text-xs font-black uppercase border-2 border-neo-border px-2 py-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${catColor}`}>
+                    {project.category}
+                  </div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-5 sm:p-6 flex flex-col flex-grow">
+                  <p className="text-xs font-bold uppercase tracking-widest text-neo-dark opacity-40 mb-1">
+                    {project.subtitle} · {project.year}
+                  </p>
+                  <h3 className="text-lg sm:text-xl font-black font-heading uppercase leading-tight mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm font-medium text-neo-dark opacity-60 leading-relaxed mb-4 flex-grow">
+                    {project.description}
+                  </p>
+
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.skill.split(',').map((skill, j) => (
+                      <span key={j} className={`text-xs font-black uppercase border-2 border-neo-border px-2 py-0.5 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] ${tagColors[j % tagColors.length]}`}>
+                        {skill.trim()}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <a
+                    href={project.link || '#'}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-center bg-neo-bg text-neo-dark border-4 border-neo-border px-4 py-2.5 font-bold uppercase text-sm shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-neo-primary hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all tracking-wide"
+                  >
+                    {t.viewLive}
+                  </a>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -329,35 +547,6 @@ export default function Home() {
               </ul>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* ── AGENCY ── */}
-      <section id="agency" className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 md:mb-32">
-        <div className="border-4 border-neo-border bg-[#1a1a1a] shadow-neo p-8 sm:p-12 text-white flex flex-col md:flex-row items-center gap-8 sm:gap-12 relative overflow-hidden group">
-          {/* Abstract BG */}
-          <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-neo-accent border-4 border-white rounded-full translate-x-1/3 -translate-y-1/3"></div>
-
-          <div className="flex-1 relative z-10 text-center md:text-left">
-            <div className="inline-block px-4 py-1 font-bold border-2 border-white mb-5 uppercase tracking-wider text-[#ffe600]">
-              {t.founder}
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-heading uppercase mb-5" style={{ textShadow: "3px 3px 0px #0055ff" }}>
-              GapaiDigital
-            </h2>
-            <p className="text-base sm:text-xl font-medium mb-8 max-w-lg border-l-4 border-[#ffe600] pl-6 mx-auto md:mx-0">
-              {t.agencyDesc}
-            </p>
-            <a href="https://gapaidigital.vercel.app/" target="_blank" rel="noreferrer" className="inline-block bg-[#ffe600] text-black border-4 border-white px-6 sm:px-8 py-3 sm:py-4 font-black uppercase shadow-[4px_4px_0px_0px_#ffffff] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#ffffff] transition-all text-sm sm:text-base">
-              {t.exploreAgency}
-            </a>
-          </div>
-
-          <div className="flex-shrink-0 relative z-10">
-            <div className="w-48 h-48 sm:w-64 sm:h-64 bg-neo-bg border-4 border-neo-border p-6 sm:p-8 flex items-center justify-center rotate-3 group-hover:rotate-0 transition-all shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
-              <img src={gapaiLogo} alt="Gapai Digital" className="w-full h-full object-contain filter drop-shadow-md" />
-            </div>
           </div>
         </div>
       </section>
