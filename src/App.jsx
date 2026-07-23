@@ -11,6 +11,7 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import Lenis from "lenis";
 import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
+import { LanguageProvider } from "./context/LanguageContext";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -66,7 +67,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <LanguageProvider>
       <Preloader />
       <CustomCursor />
       
@@ -87,7 +88,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </LanguageProvider>
   );
 }
 

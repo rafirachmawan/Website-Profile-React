@@ -1,8 +1,13 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import aboutImage from "../assets/profil.jpeg";
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../utils/translations';
 
 export default function About() {
+  const { language } = useLanguage();
+  const t = translations[language].about;
+
   return (
     <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black pb-20">
       <Navbar />
@@ -19,21 +24,21 @@ export default function About() {
           </div>
           <div className="md:col-span-3 text-white">
             <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-6" style={{ textShadow: "3px 3px 0px black" }}>
-              Who is Rafi?
+              {t.whoIsRafi}
             </h2>
             <p className="text-xl mb-6 font-bold border-l-4 border-white pl-4">
-              A passionate Front-End Developer with over 3 years of experience in crafting modern, robust, and interactive web applications. 
+              {t.p1}
             </p>
             <p className="text-lg mb-8 font-medium">
-              I specialize in React, JavaScript, and Tailwind CSS. I believe in writing clean code, exploring creative designs (like Neobrutalism!), and delivering seamless user experiences. When I'm not coding, I'm probably experimenting with new web technologies or designing user interfaces.
+              {t.p2}
             </p>
             
             <div className="flex gap-4">
               <div className="bg-neo-bg text-neo-dark border-4 border-neo-border px-4 py-2 font-black uppercase shadow-neo rotate-2">
-                Problem Solver
+                {t.problemSolver}
               </div>
               <div className="bg-neo-primary text-neo-dark border-4 border-neo-border px-4 py-2 font-black uppercase shadow-neo -rotate-2">
-                Creative Coder
+                {t.creativeCoder}
               </div>
             </div>
           </div>

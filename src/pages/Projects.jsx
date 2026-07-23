@@ -1,15 +1,20 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import { portfolioList } from "../components/data/index";
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../utils/translations';
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
   return (
     <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black pb-20">
       <Navbar />
       <section className="max-w-7xl mx-auto px-6 mt-16">
         <div className="inline-block border-4 border-neo-border bg-neo-bg px-6 py-2 shadow-neo mb-12 -rotate-1">
           <h2 className="text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px #ffe600" }}>
-            Featured Work
+            {t.featuredWork}
           </h2>
         </div>
         
@@ -20,7 +25,7 @@ export default function Projects() {
               <div className="w-full h-64 border-b-4 border-neo-border overflow-hidden bg-neo-dark relative">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
                 <div className="absolute top-4 right-4 bg-neo-primary border-4 border-neo-border font-bold px-3 py-1 -rotate-6 shadow-neo">
-                  PRO
+                  {t.pro}
                 </div>
               </div>
 
@@ -36,7 +41,7 @@ export default function Projects() {
                 </div>
 
                 <a href={project.link} target="_blank" rel="noreferrer" className="neo-btn text-center block w-full mt-auto">
-                  View Live
+                  {t.viewLive}
                 </a>
               </div>
 

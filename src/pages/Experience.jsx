@@ -3,42 +3,36 @@ import { Link } from "react-router-dom";
 import { RiNextjsFill } from "react-icons/ri";
 import { FaVuejs, FaReact, FaLaravel } from "react-icons/fa";
 import Navbar from "../components/navbar";
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../utils/translations";
 
 export default function Experience() {
-  const experiences = [
-    {
-      date: "2023 - Present",
-      role: "Staff IT",
-      company: "Rumah Sakit Era Medika",
-      desc: "Bekerja sebagai Staff IT, Maintenance Software maupun Hardware, dan Mengelola Database Rumah Sakit menggunakan Postgres.",
-      icon: <RiNextjsFill />,
-      color: "bg-neo-accent",
-    },
-    {
-      date: "2022 - 2023",
-      role: "Front End Engineer",
-      company: "dirumahrafif Corporation",
-      desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing",
-      icon: <FaVuejs />,
-      color: "bg-neo-primary",
-    },
-    {
-      date: "2021 - 2022",
-      role: "Front End Engineer",
-      company: "dirumahrafif Corporation",
-      desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing",
-      icon: <FaReact />,
-      color: "bg-neo-secondary",
-    },
-    {
-      date: "2020 - 2021",
-      role: "Front End Engineer",
-      company: "dirumahrafif Corporation",
-      desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing",
-      icon: <FaLaravel />,
-      color: "bg-[#00d084]", // Just another bright color
-    },
-  ];
+  const { language } = useLanguage();
+  const t = translations[language].experience;
+  const tHome = translations[language].home;
+
+  const experiences = tHome.experiences.map((exp, index) => {
+    let icon, color;
+    switch(index) {
+      case 0:
+        icon = <RiNextjsFill />;
+        color = "bg-neo-accent";
+        break;
+      case 1:
+        icon = <FaVuejs />;
+        color = "bg-neo-primary";
+        break;
+      case 2:
+        icon = <FaReact />;
+        color = "bg-neo-secondary";
+        break;
+      default:
+        icon = <FaLaravel />;
+        color = "bg-[#00d084]";
+        break;
+    }
+    return { ...exp, icon, color };
+  });
 
   return (
     <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black">
@@ -48,7 +42,7 @@ export default function Experience() {
       <section className="max-w-5xl mx-auto px-6 py-20">
         <div className="inline-block border-4 border-neo-border bg-neo-primary px-6 py-2 shadow-neo mb-16 rotate-1">
           <h1 className="text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px white" }}>
-            My Journey
+            {t.myJourney}
           </h1>
         </div>
 
@@ -81,9 +75,9 @@ export default function Experience() {
       {/* FOOTER */}
       <footer className="border-t-4 border-neo-border bg-neo-primary py-8 mt-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-bold uppercase tracking-wider">© {new Date().getFullYear()} Rafi Rachmawan.</p>
+          <p className="font-bold uppercase tracking-wider">{t.footer.replace('{year}', new Date().getFullYear())}</p>
           <Link to="/" className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-            Back to Home 🏠
+            {t.backToHome}
           </Link>
         </div>
       </footer>
