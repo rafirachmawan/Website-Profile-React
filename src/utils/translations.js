@@ -52,28 +52,28 @@ export const translations = {
       designedWith: "Designed with 🔥 & Neobrutalism",
       experiences: [
         {
-          date: "2023 - Present",
-          role: "Staff IT",
-          company: "Rumah Sakit Era Medika",
-          desc: "Working as IT Staff, maintaining software and hardware, and managing the hospital database using Postgres."
+          date: "Mar 2026 - Present",
+          role: "Programmer",
+          company: "Alam Jaya Textile",
+          desc: "Developing and maintaining software applications as a Programmer at Alam Jaya Textile."
         },
         {
-          date: "2022 - 2023",
-          role: "Front End Engineer",
-          company: "dirumahrafif Corporation",
-          desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
+          date: "May 2025 - Jan 2026",
+          role: "Personal Assistant",
+          company: "Astro Distribusi Mandiri",
+          desc: "Provided administrative and operational support as a Personal Assistant."
         },
         {
-          date: "2021 - 2022",
-          role: "Front End Engineer",
-          company: "dirumahrafif Corporation",
-          desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
+          date: "Jan 2025 - May 2025",
+          role: "IT Staff",
+          company: "RS Era Medika",
+          desc: "Worked as IT Staff, maintaining software and hardware, and managing the hospital database using Postgres."
         },
         {
-          date: "2020 - 2021",
-          role: "Front End Engineer",
-          company: "dirumahrafif Corporation",
-          desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
+          date: "2024 - 2025",
+          role: "Freelance",
+          company: "Web & Mobile Development",
+          desc: "Built various custom web and mobile applications as a freelance developer."
         }
       ]
     },
@@ -156,28 +156,28 @@ export const translations = {
       designedWith: "Didesain dengan 🔥 & Neobrutalism",
       experiences: [
         {
-          date: "2023 - Sekarang",
+          date: "Maret 2026 - Saat ini",
+          role: "Programmer",
+          company: "Alam Jaya Textile",
+          desc: "Mengembangkan dan memelihara aplikasi perangkat lunak sebagai Programmer di Alam Jaya Textile."
+        },
+        {
+          date: "Mei 2025 - Januari 2026",
+          role: "Personal Assistant",
+          company: "Astro Distribusi Mandiri",
+          desc: "Memberikan dukungan administratif dan operasional sebagai Personal Assistant."
+        },
+        {
+          date: "Januari 2025 - Mei 2025",
           role: "Staff IT",
           company: "Rumah Sakit Era Medika",
           desc: "Bekerja sebagai Staff IT, Maintenance Software maupun Hardware, dan Mengelola Database Rumah Sakit menggunakan Postgres."
         },
         {
-          date: "2022 - 2023",
-          role: "Front End Engineer",
-          company: "dirumahrafif Corporation",
-          desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
-        },
-        {
-          date: "2021 - 2022",
-          role: "Front End Engineer",
-          company: "dirumahrafif Corporation",
-          desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
-        },
-        {
-          date: "2020 - 2021",
-          role: "Front End Engineer",
-          company: "dirumahrafif Corporation",
-          desc: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
+          date: "2024 - 2025",
+          role: "Freelance",
+          company: "Web & Mobile Development",
+          desc: "Membangun berbagai aplikasi web dan mobile kustom sebagai pengembang lepas (freelance)."
         }
       ]
     },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { portfolioList } from "../components/data/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,9 @@ import gapaiLogo from "../assets/GapaiDigitalIcon.png";
 import gapaiScreenshot from "../assets/gapaidigital/gapaidigital.jpg";
 import heroImage from "../assets/foto-normal-remove.png";
 import aboutImage from "../assets/profil.jpeg";
+import smanImage from "../assets/sman1boyolangu/sman1boyolangu.jpg";
+import polinemaImage from "../assets/politeknikNegeriMalang/politeknikNegeriMalang.jpg";
+import binarImage from "../assets/binarAcademy/binarAcademy.jpg";
 import Navbar from "../components/navbar";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../utils/translations";
@@ -17,6 +20,60 @@ import { translations } from "../utils/translations";
 export default function Home() {
   const { language } = useLanguage();
   const t = translations[language].home;
+  const [selectedTimelineItem, setSelectedTimelineItem] = useState(null);
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (selectedTimelineItem) {
+      document.documentElement.classList.add('modal-open');
+      document.body.classList.add('modal-open');
+    } else {
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+    }
+    return () => {
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+    };
+  }, [selectedTimelineItem]);
+
+  const timelineData = [
+    {
+      year: "2017 - 2019",
+      title: "SMAN 1 Boyolangu",
+      desc: "Bersekolah di SMAN 1 Boyolangu.",
+      longDesc: "Menempuh pendidikan sekolah menengah atas di SMAN 1 Boyolangu. Masa ini menjadi titik awal perjalanan dan pengembangan diri saya, di mana saya mulai mengenal dunia teknologi dan komputer.",
+      color: "bg-[#00d084]",
+      image: smanImage,
+      link: "https://sman1boyolangu.sch.id/"
+    },
+    {
+      year: "2019 - 2023",
+      title: "Politeknik Negeri Malang",
+      desc: "Kuliah Teknik Informatika.",
+      longDesc: "Menempuh jenjang pendidikan tinggi di Politeknik Negeri Malang, jurusan Teknik Informatika. Di sini saya mempelajari fundamental pemrograman, basis data, rekayasa perangkat lunak, dan memulai membangun proyek-proyek pertama saya.",
+      color: "bg-[#0055ff]",
+      image: polinemaImage,
+      link: "https://ppid.polinema.ac.id/"
+    },
+    {
+      year: "2023 - 2024",
+      title: "Lulus & Bootcamp Binar",
+      desc: "Lulus kuliah dan lanjut Binar Academy.",
+      longDesc: "Setelah lulus dari Politeknik Negeri Malang, saya langsung melanjutkan ke program intensive bootcamp di Binar Academy. Di sini saya memperdalam praktik industri nyata, modern web development, dan kolaborasi tim secara profesional.",
+      color: "bg-[#ff4d4d]",
+      image: binarImage,
+      link: "https://www.binar.co.id/"
+    },
+    {
+      year: "2025 ++",
+      title: "Frontend & Fullstack Dev",
+      desc: "Karir profesional sebagai developer.",
+      longDesc: "Membangun karir profesional sebagai Frontend dan Fullstack Developer. Fokus pada pembuatan aplikasi web modern berskala besar, performa tinggi, dan pengalaman pengguna yang responsif. Juga mendirikan GapaiDigital sebagai startup digitalisasi.",
+      color: "bg-[#ffe600]",
+      image: gapaiScreenshot
+    }
+  ];
 
   const experiences = t.experiences.map((exp, index) => {
     let icon, color;
@@ -42,6 +99,7 @@ export default function Home() {
   });
 
   return (
+    <>
     <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black pb-20">
       <Navbar />
 
@@ -431,25 +489,46 @@ export default function Home() {
 
       {/* ── TIMELINE ── */}
       <section id="timeline" className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 md:mb-32">
-        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-heading uppercase mb-8 sm:mb-12" style={{ textShadow: "4px 4px 0px #ff4d4d" }}>
-          {t.timeline}
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          {[
-            { year: "2017", title: t.highSchool, desc: t.highSchoolDesc },
-            { year: "2018", title: t.college, desc: t.collegeDesc },
-            { year: "2020", title: t.internship, desc: t.internshipDesc },
-            { year: "2022", title: t.graduated, desc: t.graduatedDesc },
-            { year: "2023", title: t.frontEndDev, desc: t.frontEndDevDesc },
-            { year: "2025+", title: t.seniorLead, desc: t.seniorLeadDesc }
-          ].map((item, i) => (
-            <div key={i} className="neo-box p-4 sm:p-6 bg-neo-bg flex flex-col justify-between">
-              <div>
-                <span className="bg-neo-secondary text-white font-black px-2 sm:px-3 py-1 text-xs sm:text-sm border-2 border-neo-border inline-block mb-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                  {item.year}
-                </span>
-                <h3 className="text-lg sm:text-2xl font-black font-heading uppercase mb-1 sm:mb-2 leading-tight">{item.title}</h3>
-                <p className="font-medium text-neo-dark opacity-70 text-sm sm:text-base">{item.desc}</p>
+        <div className="flex justify-center mb-12 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-heading uppercase inline-block border-4 border-neo-border bg-[#ffe600] px-6 py-2 shadow-[8px_8px_0px_0px_#ff4d4d] -rotate-2" style={{ color: '#000' }}>
+            {t.timeline}
+          </h2>
+        </div>
+
+        <div className="relative max-w-5xl mx-auto py-10">
+          {/* Vertical center line */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-2 sm:w-3 bg-neo-border -translate-x-1/2 z-0" />
+
+          {timelineData.map((item, i) => (
+            <div key={i} className={`relative flex items-center mb-12 sm:mb-20 last:mb-0 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+
+              {/* Node */}
+              <div className="absolute left-6 md:left-1/2 w-8 h-8 sm:w-12 sm:h-12 bg-white border-4 border-neo-border rounded-full -translate-x-1/2 z-20 shadow-[4px_4px_0px_0px_#000] flex items-center justify-center">
+                <div className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 border-neo-border ${item.color}`} />
+              </div>
+
+              {/* Content Box */}
+              <div className={`w-full pl-16 md:pl-0 md:w-1/2 ${i % 2 === 0 ? 'md:pr-12 lg:pr-16 md:text-right' : 'md:pl-12 lg:pl-16'}`}>
+                <div
+                  onClick={() => setSelectedTimelineItem(item)}
+                  className="neo-box p-6 sm:p-8 bg-neo-bg relative group hover:-translate-y-2 transition-transform duration-300 cursor-pointer"
+                >
+                  {/* Connecting line */}
+                  <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-12 lg:w-16 h-2 sm:h-3 bg-neo-border z-0 ${i % 2 === 0 ? '-right-12 lg:-right-16' : '-left-12 lg:-left-16'}`} />
+
+                  {/* Arrow indicator */}
+                  <div className={`absolute top-4 ${i % 2 === 0 ? 'left-4' : 'right-4'} opacity-0 group-hover:opacity-100 transition-opacity font-black text-neo-accent text-xl`}>
+                    ↗
+                  </div>
+
+                  {/* Year Badge */}
+                  <span className={`text-black font-black px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base border-4 border-neo-border inline-block mb-4 shadow-[4px_4px_0px_0px_#000] ${item.color} ${i % 2 === 0 ? 'md:ml-auto' : ''}`}>
+                    {item.year}
+                  </span>
+
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black font-heading uppercase mb-2 sm:mb-3 leading-tight text-neo-border">{item.title}</h3>
+                  <p className="font-medium text-neo-dark opacity-80 text-sm sm:text-base leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -594,5 +673,60 @@ export default function Home() {
         </div>
       </footer>
     </div>
+
+    {/* ── TIMELINE MODAL ── */}
+    {selectedTimelineItem && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm"
+        onClick={() => setSelectedTimelineItem(null)}
+      >
+        <div
+          className="bg-neo-bg border-4 border-neo-border shadow-[12px_12px_0px_0px_#000] max-w-2xl w-full relative max-h-[90vh] overflow-y-auto flex flex-col"
+          onClick={e => e.stopPropagation()}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setSelectedTimelineItem(null)}
+            className="absolute top-4 right-4 z-10 bg-[#ff4d4d] text-white w-10 h-10 flex items-center justify-center border-4 border-neo-border font-black text-xl shadow-[2px_2px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
+          >
+            ✕
+          </button>
+
+          {/* Image */}
+          <div className="w-full h-32 sm:h-48 border-b-4 border-neo-border bg-[#111111] overflow-hidden flex-shrink-0">
+            <img
+              src={selectedTimelineItem.image}
+              alt={selectedTimelineItem.title}
+              className="w-full h-full object-cover object-top opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="p-5 sm:p-6">
+            <span className={`text-black font-black px-3 py-1 border-4 border-neo-border inline-block mb-3 shadow-[3px_3px_0px_0px_#000] ${selectedTimelineItem.color}`}>
+              {selectedTimelineItem.year}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black font-heading uppercase mb-2 text-neo-border leading-tight">
+              {selectedTimelineItem.title}
+            </h2>
+            <div className="w-12 h-1.5 bg-neo-border mb-4" />
+            <p className="text-neo-dark opacity-80 font-medium text-sm sm:text-base leading-relaxed mb-4">
+              {selectedTimelineItem.longDesc}
+            </p>
+            {selectedTimelineItem.link && (
+              <a 
+                href={selectedTimelineItem.link} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="inline-flex items-center gap-2 bg-[#f97316] text-black border-4 border-neo-border px-4 py-2 font-black uppercase text-sm shadow-[3px_3px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+              >
+                Kunjungi Situs <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
