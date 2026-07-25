@@ -100,7 +100,17 @@ export const translations = {
       title3: "Brutal.",
       desc: "I'm always open to discussing product design work or partnership opportunities.",
       sayHello: "Say Hello 🤙",
-      designedWith: "Designed with 🔥 & Neobrutalism"
+      designedWith: "Designed with 🔥 & Neobrutalism",
+      founderTag: "Founder & CEO",
+      founderOf: "GapaiDigital",
+      founderDesc: "I founded GapaiDigital — a digitalization startup that helps businesses grow through Landing Pages, Mobile Apps, and scalable Custom Web Systems.",
+      visitAgency: "Visit GapaiDigital →",
+      orReach: "Or reach me directly:",
+      linkedin: "LinkedIn",
+      email: "Email",
+      availableFor: "Available for Freelance",
+      status: "Open to Work ✅",
+      location: "📍 Indonesia"
     }
   },
   id: {
@@ -204,7 +214,17 @@ export const translations = {
       title3: "Luar Biasa.",
       desc: "Saya selalu terbuka untuk mendiskusikan pekerjaan desain produk atau peluang kemitraan.",
       sayHello: "Sapa Saya 🤙",
-      designedWith: "Didesain dengan 🔥 & Neobrutalism"
+      designedWith: "Didesain dengan 🔥 & Neobrutalism",
+      founderTag: "Founder & CEO",
+      founderOf: "GapaiDigital",
+      founderDesc: "Saya mendirikan GapaiDigital — startup digitalisasi yang membantu bisnis berkembang melalui Landing Page, Mobile App, dan Custom Web System yang modern dan skalabel.",
+      visitAgency: "Kunjungi GapaiDigital →",
+      orReach: "Atau hubungi saya langsung:",
+      linkedin: "LinkedIn",
+      email: "Email",
+      availableFor: "Tersedia untuk Freelance",
+      status: "Siap Bekerja ✅",
+      location: "📍 Indonesia"
     }
   }
 };

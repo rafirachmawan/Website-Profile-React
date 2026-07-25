@@ -108,7 +108,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black pb-20">
+      <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black">
         <Navbar />
 
         {/* ── HERO ── */}
@@ -296,138 +296,127 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── GAPAIDIGITAL FOUNDER SPOTLIGHT (LOUD & GRID COMBINED) ── */}
+        {/* ── GAPAIDIGITAL FOUNDER SPOTLIGHT (BENTO GRID) ── */}
         <section
           id="agency"
           className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 md:mb-32"
         >
-          <div className="border-4 border-neo-border flex flex-col group relative bg-[#0f0f0f] shadow-[12px_12px_0px_0px_#f97316]">
-            {/* Top Marquee Bar */}
-            <div className="w-full bg-[#f97316] border-b-4 border-neo-border py-2 overflow-hidden flex items-center">
-              <div className="whitespace-nowrap animate-marquee flex gap-4 text-black font-black uppercase text-sm tracking-widest">
-                {Array(10)
-                  .fill(
-                    "⚡ FOUNDER & CEO • GAPAIDIGITAL • DIGITALIZATION STARTUP ",
-                  )
-                  .map((text, i) => (
-                    <span key={i}>{text}</span>
-                  ))}
+          {/* Top Marquee Bar */}
+          <div className="w-full bg-[#f97316] border-4 border-b-0 border-neo-border py-2 overflow-hidden flex items-center shadow-none">
+            <div className="whitespace-nowrap animate-marquee flex gap-4 text-black font-black uppercase text-sm tracking-widest">
+              {Array(10)
+                .fill(
+                  "⚡ FOUNDER & CEO • GAPAIDIGITAL • DIGITALIZATION STARTUP ",
+                )
+                .map((text, i) => (
+                  <span key={i}>{text}</span>
+                ))}
+            </div>
+          </div>
+
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-4 border-neo-border shadow-[12px_12px_0px_0px_#f97316]">
+
+            {/* Row 1: Screenshot (2/3) + Founder Info (1/3) */}
+            {/* Screenshot Box */}
+            <div className="md:col-span-2 relative overflow-hidden h-64 sm:h-80 md:h-[380px] border-b-4 md:border-b-0 md:border-r-4 border-neo-border group/img">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-[#f97316]/0 group-hover/img:bg-[#f97316]/15 transition-all duration-500 z-10 pointer-events-none mix-blend-overlay" />
+              {/* Star */}
+              <div className="absolute top-4 right-4 z-20 text-[#ffe600] font-black text-5xl drop-shadow-[4px_4px_0px_#000] rotate-12 group-hover/img:rotate-45 transition-transform duration-500 pointer-events-none select-none">
+                ✦
+              </div>
+              <img
+                src={gapaiScreenshot}
+                alt="GapaiDigital – Indonesia Digitalization Startup"
+                className="w-full h-full object-cover object-top group-hover/img:scale-105 transition-transform duration-700"
+              />
+              {/* Live badge */}
+              <div className="absolute bottom-5 left-5 z-20 flex items-center gap-2 bg-[#f97316] border-4 border-neo-border px-4 py-2 font-black uppercase text-black text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse inline-block border border-black" />
+                LIVE STARTUP
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row w-full">
-              {/* Left: Screenshot */}
-              <div className="lg:w-3/5 h-64 sm:h-80 lg:h-auto overflow-hidden relative border-b-4 lg:border-b-0 lg:border-r-4 border-neo-border z-10">
-                {/* Orange glow overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-0 bg-[#f97316]/0 group-hover:bg-[#f97316]/20 transition-all duration-500 z-10 pointer-events-none mix-blend-overlay" />
-
-                {/* Floating Star */}
-                <div className="absolute top-4 right-4 z-20 text-[#ffe600] font-black text-4xl sm:text-6xl drop-shadow-[4px_4px_0px_#000] rotate-12 group-hover:rotate-45 transition-transform duration-500 pointer-events-none">
-                  ✦
-                </div>
-
-                <img
-                  src={gapaiScreenshot}
-                  alt="GapaiDigital – Indonesia Digitalization Startup"
-                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
-                />
-                {/* Live badge */}
-                <div className="absolute bottom-6 left-6 z-20 flex items-center gap-2 bg-[#f97316] border-4 border-neo-border px-4 py-2 font-black uppercase text-black text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform">
-                  <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse inline-block border border-black" />
-                  LIVE STARTUP
-                </div>
-              </div>
-
-              {/* Right: Content with Dot Pattern */}
-              <div
-                className="lg:w-2/5 p-6 sm:p-10 flex flex-col justify-between relative z-0"
-                style={{
-                  backgroundColor: "#111111",
-                  backgroundImage: "radial-gradient(#333 2px, transparent 2px)",
-                  backgroundSize: "24px 24px",
-                }}
-              >
-                <div className="relative z-10 bg-[#111111]/80 p-2 -m-2 rounded">
-                  {/* Logo + Name */}
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-5">
-                    <div className="w-16 h-16 bg-[#f97316] border-4 border-neo-border flex items-center justify-center p-1.5 shadow-[4px_4px_0px_0px_#ffe600] -rotate-3 hover:rotate-0 transition-transform">
-                      <img
-                        src={gapaiLogo}
-                        alt="GapaiDigital Logo"
-                        className="w-full h-full object-contain filter drop-shadow-md"
-                      />
-                    </div>
-                    <h2
-                      className="text-4xl sm:text-5xl font-black font-heading uppercase text-white leading-none tracking-tight"
-                      style={{ textShadow: "4px 4px 0px #f97316" }}
-                    >
-                      GapaiDigital
-                    </h2>
+            {/* Founder Info Box */}
+            <div
+              className="flex flex-col justify-between p-7 sm:p-8 border-b-4 md:border-b-0 border-neo-border"
+              style={{
+                backgroundColor: "#111111",
+                backgroundImage: "radial-gradient(#2a2a2a 2px, transparent 2px)",
+                backgroundSize: "22px 22px",
+              }}
+            >
+              {/* Logo + Tag */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-14 h-14 bg-[#f97316] border-4 border-neo-border flex items-center justify-center p-1.5 shadow-[4px_4px_0px_0px_#ffe600] -rotate-3 hover:rotate-0 transition-transform flex-shrink-0">
+                    <img src={gapaiLogo} alt="GapaiDigital Logo" className="w-full h-full object-contain" />
                   </div>
-
-                  {/* Description */}
-                  <p className="text-white font-medium text-sm sm:text-base leading-relaxed border-l-4 border-[#f97316] pl-4 mb-8 shadow-sm">
-                    {language === "id"
-                      ? "Saya mendirikan GapaiDigital — startup digitalisasi yang membantu bisnis berkembang melalui Landing Page, Mobile App, dan Custom Web System yang modern dan skalabel."
-                      : "I founded GapaiDigital — a digitalization startup helping businesses grow through modern Landing Pages, Mobile Apps, and Custom Web Systems at scale."}
-                  </p>
-
-                  {/* Stats row (Overlapping cards) */}
-                  <div className="flex flex-wrap gap-y-4 mb-10 pl-2">
-                    <div className="text-center border-4 border-neo-border p-3 sm:p-4 bg-[#ffe600] text-black shadow-[4px_4px_0px_0px_#f97316] rotate-2 -mr-3 z-10 min-w-[90px] hover:z-40 hover:-translate-y-2 transition-all">
-                      <div className="text-2xl sm:text-3xl font-black font-heading">
-                        5.0
-                      </div>
-                      <div className="text-[10px] sm:text-xs font-black uppercase">
-                        Rating
-                      </div>
-                    </div>
-                    <div className="text-center border-4 border-neo-border p-3 sm:p-4 bg-[#0055ff] text-white shadow-[4px_4px_0px_0px_#f97316] -rotate-2 -mr-3 z-20 min-w-[90px] hover:z-40 hover:-translate-y-2 transition-all">
-                      <div className="text-2xl sm:text-3xl font-black font-heading">
-                        10+
-                      </div>
-                      <div className="text-[10px] sm:text-xs font-black uppercase">
-                        Projects
-                      </div>
-                    </div>
-                    <div className="text-center border-4 border-neo-border p-3 sm:p-4 bg-[#ff4d4d] text-white shadow-[4px_4px_0px_0px_#f97316] rotate-1 z-30 min-w-[90px] hover:z-40 hover:-translate-y-2 transition-all">
-                      <div className="text-2xl sm:text-3xl font-black font-heading">
-                        100%
-                      </div>
-                      <div className="text-[10px] sm:text-xs font-black uppercase">
-                        Clients
-                      </div>
-                    </div>
-                  </div>
+                  <span className="bg-[#ffe600] border-2 border-neo-border px-3 py-1 text-xs font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black">
+                    Founder &amp; CEO
+                  </span>
                 </div>
-
-                {/* CTA */}
-                <a
-                  href="https://gapaidigital.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="relative z-10 flex items-center justify-center gap-3 border-4 border-neo-border px-6 py-4 font-black uppercase text-sm sm:text-base tracking-widest text-black transition-all duration-200"
-                  style={{
-                    backgroundColor: "#f97316",
-                    boxShadow: "6px 6px 0px 0px #ffe600",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = "2px 2px 0px 0px #ffe600";
-                    e.currentTarget.style.transform = "translate(4px, 4px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = "6px 6px 0px 0px #ffe600";
-                    e.currentTarget.style.transform = "";
-                  }}
+                <h2
+                  className="text-3xl sm:text-4xl font-black font-heading uppercase text-white leading-none tracking-tight mb-4"
+                  style={{ textShadow: "3px 3px 0px #f97316" }}
                 >
-                  <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                  GapaiDigital
+                </h2>
+                <p className="text-white/80 font-medium text-sm leading-relaxed border-l-4 border-[#f97316] pl-3">
                   {language === "id"
-                    ? "Kunjungi GapaiDigital"
-                    : "Visit GapaiDigital"}
-                </a>
+                    ? "Saya mendirikan GapaiDigital — startup digitalisasi yang membantu bisnis berkembang melalui Landing Page, Mobile App, dan Custom Web System yang modern dan skalabel."
+                    : "I founded GapaiDigital — a digitalization startup helping businesses grow through modern Landing Pages, Mobile Apps, and Custom Web Systems at scale."}
+                </p>
               </div>
             </div>
+
+            {/* Row 2: Stats (1/3) + CTA wide (2/3) */}
+            {/* Stats Box */}
+            <div
+              className="border-t-4 md:border-r-4 border-neo-border p-6 sm:p-8 flex flex-col justify-center gap-3"
+              style={{ backgroundColor: "#0f0f0f" }}
+            >
+              <p className="text-[#f97316] font-black uppercase text-xs tracking-widest mb-2">— Stats</p>
+              <div className="flex gap-3 flex-wrap">
+                <div className="flex-1 min-w-[70px] text-center border-4 border-neo-border p-3 bg-[#ffe600] text-black shadow-[4px_4px_0px_0px_#f97316] rotate-2 hover:-translate-y-2 hover:rotate-0 transition-all">
+                  <div className="text-2xl font-black font-heading">5.0</div>
+                  <div className="text-[10px] font-black uppercase">Rating</div>
+                </div>
+                <div className="flex-1 min-w-[70px] text-center border-4 border-neo-border p-3 bg-[#0055ff] text-white shadow-[4px_4px_0px_0px_#f97316] -rotate-2 hover:-translate-y-2 hover:rotate-0 transition-all">
+                  <div className="text-2xl font-black font-heading">10+</div>
+                  <div className="text-[10px] font-black uppercase">Projects</div>
+                </div>
+                <div className="flex-1 min-w-[70px] text-center border-4 border-neo-border p-3 bg-[#ff4d4d] text-white shadow-[4px_4px_0px_0px_#f97316] rotate-1 hover:-translate-y-2 hover:rotate-0 transition-all">
+                  <div className="text-2xl font-black font-heading">100%</div>
+                  <div className="text-[10px] font-black uppercase">Clients</div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Box — spans 2 cols */}
+            <div className="md:col-span-2 border-t-4 border-neo-border bg-[#f97316] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+              <div>
+                <p className="text-black/60 font-bold uppercase text-xs tracking-widest mb-1">
+                  {language === "id" ? "Ingin kolaborasi?" : "Want to collaborate?"}
+                </p>
+                <p className="text-black font-black text-xl sm:text-2xl uppercase leading-tight">
+                  {language === "id"
+                    ? "Kunjungi startup saya →"
+                    : "Check out my startup →"}
+                </p>
+              </div>
+              <a
+                href="https://gapaidigital.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex-shrink-0 flex items-center justify-center gap-3 border-4 border-neo-border bg-black px-8 py-4 font-black uppercase text-sm tracking-widest text-white transition-all duration-200 hover:translate-x-1 hover:translate-y-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none whitespace-nowrap"
+              >
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                {language === "id" ? "Kunjungi GapaiDigital" : "Visit GapaiDigital"}
+              </a>
+            </div>
+
           </div>
         </section>
 
@@ -514,7 +503,7 @@ export default function Home() {
                         const colors = [
                           "bg-[#61dafb] border-neo-border text-black",
                           "bg-neo-secondary border-neo-border text-white",
-                          "bg-neo-dark border-neo-border text-white",
+                          "bg-neo-dark border-neo-border text-neo-bg",
                           "bg-[#ff4d4d] border-neo-border text-white",
                           "bg-[#00d084] border-neo-border text-black",
                         ];
@@ -559,7 +548,7 @@ export default function Home() {
                 const tagColors = [
                   "bg-[#61dafb] text-black",
                   "bg-neo-secondary text-white",
-                  "bg-neo-dark text-white",
+                  "bg-neo-dark text-neo-bg",
                   "bg-[#ff4d4d] text-white",
                   "bg-[#00d084] text-black",
                 ];
@@ -855,31 +844,77 @@ export default function Home() {
         {/* ── CONTACT ── */}
         <section
           id="contact"
-          className="max-w-4xl mx-auto px-4 sm:px-6 mb-20 md:mb-32 text-center"
+          className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 md:mb-32"
         >
-          <div className="bg-neo-accent border-4 border-neo-border p-8 sm:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative rotate-1">
-            <div className="absolute -top-5 -left-5 bg-neo-primary border-4 border-neo-border w-12 h-12 sm:w-16 sm:h-16 rounded-full shadow-neo flex items-center justify-center text-2xl sm:text-3xl">
-              💬
+          {/* Top Row: Big CTA + Status Stack */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-4 md:mb-5">
+
+            {/* Main CTA Box — 2 cols */}
+            <div className="md:col-span-2 border-4 border-neo-border bg-neo-secondary p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between min-h-[260px] relative overflow-hidden">
+              {/* decorative corner */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-neo-primary border-l-4 border-b-4 border-neo-border flex items-center justify-center text-3xl select-none">
+                ✦
+              </div>
+              <div>
+                <p className="text-white/60 font-bold uppercase tracking-widest text-sm mb-3">— Let's collaborate</p>
+                <h2
+                  className="text-4xl sm:text-5xl md:text-7xl font-black font-heading uppercase text-white leading-none"
+                  style={{ textShadow: "4px 4px 0px black" }}
+                >
+                  {t.contactTitle.split("!")[0]}
+                  <span className="text-neo-primary">!</span>
+                </h2>
+              </div>
+              <p className="text-white font-bold text-lg border-l-4 border-neo-primary pl-4 max-w-lg mt-6">
+                {t.contactDesc}
+              </p>
             </div>
 
-            <h2
-              className="text-3xl sm:text-5xl md:text-6xl font-black font-heading uppercase text-white mb-5"
-              style={{ textShadow: "4px 4px 0px black" }}
-            >
-              {t.contactTitle}
-            </h2>
-            <p className="text-base sm:text-xl text-white font-medium mb-8 max-w-2xl mx-auto">
-              {t.contactDesc}
-            </p>
+            {/* Right: Status + Location stacked */}
+            <div className="flex flex-col gap-4 md:gap-5">
+              {/* Status */}
+              <div className="border-4 border-neo-border bg-neo-primary p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex-1 flex flex-col justify-center">
+                <p className="font-bold uppercase tracking-widest text-xs text-neo-dark/60 mb-2">
+                  {language === "id" ? "Tersedia untuk Freelance" : "Available for Freelance"}
+                </p>
+                <p className="font-black text-2xl text-neo-dark uppercase">
+                  {language === "id" ? "Siap Bekerja ✅" : "Open to Work ✅"}
+                </p>
+              </div>
+              {/* Location */}
+              <div className="border-4 border-neo-border bg-neo-bg p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex-1 flex flex-col justify-center">
+                <p className="font-bold uppercase tracking-widest text-xs text-neo-dark/60 mb-2">Based In</p>
+                <p className="font-black text-2xl text-neo-dark uppercase">📍 Indonesia</p>
+              </div>
+            </div>
+          </div>
 
-            <a
-              href="https://www.linkedin.com/in/rafi-rachmawan-2a8728233/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block bg-[#fdfdfd] text-[#1a1a1a] border-4 border-[#1a1a1a] px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-xl font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] transition-all -rotate-2"
-            >
-              {t.sayHello}
-            </a>
+          {/* Bottom Row: Say Hello dark box (full width) */}
+          <div className="border-4 border-neo-border bg-neo-dark p-7 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-neo-bg/60 font-bold uppercase text-xs tracking-widest mb-1">
+                {language === "id" ? "Atau hubungi saya langsung:" : "Or reach me directly:"}
+              </p>
+              <p className="text-neo-bg font-black text-xl sm:text-2xl uppercase">
+                {language === "id" ? "WhatsApp · Email" : "WhatsApp · Email"}
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <a
+                href="https://wa.me/6285707185783?text=Halo%20Rafi%2C%20saya%20melihat%20website%20Anda%20dan%20tertarik%20untuk%20berdiskusi%20lebih%20lanjut."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-neo-primary border-4 border-neo-border px-6 py-3 font-black uppercase tracking-wide shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-neo-dark text-sm"
+              >
+                {t.sayHello} — WhatsApp
+              </a>
+              <a
+                href="mailto:rafirachmawan1987@gmail.com"
+                className="inline-flex items-center justify-center gap-2 bg-neo-bg border-4 border-neo-border px-6 py-3 font-black uppercase tracking-wide shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-neo-dark text-sm"
+              >
+                Email ✉️
+              </a>
+            </div>
           </div>
         </section>
 
