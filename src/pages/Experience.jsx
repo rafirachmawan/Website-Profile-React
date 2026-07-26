@@ -76,7 +76,7 @@ export default function Experience() {
       <footer className="border-t-4 border-neo-border bg-neo-primary py-8 mt-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-bold uppercase tracking-wider">{t.footer.replace('{year}', new Date().getFullYear())}</p>
-          <Link to="/" className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
             {t.backToHome}
           </Link>
         </div>

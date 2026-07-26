@@ -12,6 +12,7 @@ import Lenis from "lenis";
 import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
 import { LanguageProvider } from "./context/LanguageContext";
+import ScrollToTop from "./components/scrolltop";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -40,6 +41,8 @@ function App() {
       touchMultiplier: 1.5,
     });
 
+    window.__lenis = lenis;
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -49,6 +52,7 @@ function App() {
 
     return () => {
       lenis.destroy();
+      window.__lenis = null;
     };
   }, []);
 
@@ -80,6 +84,7 @@ function App() {
       </button>
 
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

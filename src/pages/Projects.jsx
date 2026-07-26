@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import { portfolioList } from "../components/data/index";
 import { useLanguage } from '../context/LanguageContext';
@@ -7,11 +8,12 @@ import { translations } from '../utils/translations';
 export default function Projects() {
   const { language } = useLanguage();
   const t = translations[language].projects;
+  const tExp = translations[language].experience;
 
   return (
-    <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black pb-20">
+    <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black flex flex-col">
       <Navbar />
-      <section className="max-w-7xl mx-auto px-6 mt-16">
+      <section className="max-w-7xl mx-auto px-6 mt-16 mb-20">
         <div className="inline-block border-4 border-neo-border bg-neo-bg px-6 py-2 shadow-neo mb-12 -rotate-1">
           <h2 className="text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px #ffe600" }}>
             {t.featuredWork}
@@ -49,6 +51,16 @@ export default function Projects() {
           ))}
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="border-t-4 border-neo-border bg-neo-primary py-8 mt-auto">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-bold uppercase tracking-wider">© {new Date().getFullYear()} Rafi Rachmawan.</p>
+          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+            {tExp.backToHome}
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
