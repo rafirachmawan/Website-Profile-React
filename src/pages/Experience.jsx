@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { RiNextjsFill } from "react-icons/ri";
-import { FaVuejs, FaReact, FaLaravel } from "react-icons/fa";
 import Navbar from "../components/navbar";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../utils/translations";
@@ -11,74 +9,33 @@ export default function Experience() {
   const t = translations[language].experience;
   const tHome = translations[language].home;
 
-  const experiences = tHome.experiences.map((exp, index) => {
-    let icon, color;
-    switch(index) {
-      case 0:
-        icon = <RiNextjsFill />;
-        color = "bg-neo-accent";
-        break;
-      case 1:
-        icon = <FaVuejs />;
-        color = "bg-neo-primary";
-        break;
-      case 2:
-        icon = <FaReact />;
-        color = "bg-neo-secondary";
-        break;
-      default:
-        icon = <FaLaravel />;
-        color = "bg-[#00d084]";
-        break;
-    }
-    return { ...exp, icon, color };
-  });
-
   return (
-    <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black">
+    <div className="bg-[#fffaf0] min-h-screen font-body text-[#161616]">
       <Navbar />
-
-      {/* EXPERIENCE SECTION */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="inline-block border-4 border-neo-border bg-neo-primary px-6 py-2 shadow-neo mb-16 rotate-1">
-          <h1 className="text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px white" }}>
-            {t.myJourney}
-          </h1>
-        </div>
-
-        <div className="space-y-12 relative before:absolute before:inset-0 before:ml-10 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-neo-border before:z-0">
-          {experiences.map((exp, i) => (
-            <div key={i} className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active`}>
-              
-              {/* Timeline Icon */}
-              <div className={`flex items-center justify-center w-20 h-20 rounded-full border-4 border-neo-border ${exp.color} shadow-neo text-3xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 mx-auto`}>
-                {exp.icon}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+        <p className="text-[12px] font-bold text-black/40 mb-2">Career</p>
+        <h1 className="font-heading font-extrabold text-4xl sm:text-6xl tracking-tight mb-10">{t.myJourney}</h1>
+        <div className="flex flex-col gap-3">
+          {tHome.experiences.map((exp, i) => (
+            <div key={i} className="bg-white border border-black/10 rounded-3xl p-6 flex gap-5 items-start hover:border-[#ff9e00] transition-colors">
+              <span className="w-11 h-11 rounded-2xl bg-[#161616] text-[#ff9e00] font-heading font-extrabold flex items-center justify-center flex-shrink-0">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="flex-1">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#e98a00]">{exp.date}</span>
+                <h3 className="font-heading font-bold text-xl mt-1 leading-snug">{exp.role}</h3>
+                <p className="text-sm font-semibold text-black/50 mt-0.5">{exp.company}</p>
+                <div className="w-10 h-[3px] bg-[#ff9e00] rounded-full my-3" />
+                <p className="text-sm text-black/55 leading-relaxed">{exp.desc}</p>
               </div>
-
-              {/* Card */}
-              <div className="w-[calc(100%-6rem)] md:w-[calc(50%-4rem)] p-6 neo-box">
-                <div className="flex flex-col mb-4">
-                  <span className="font-bold text-neo-accent uppercase tracking-wider mb-1">{exp.date}</span>
-                  <h3 className="text-3xl font-black font-heading uppercase leading-none">{exp.role}</h3>
-                  <h4 className="text-lg font-bold mt-2">{exp.company}</h4>
-                </div>
-                <p className="font-medium text-gray-700 leading-relaxed border-t-2 border-dashed border-neo-border pt-4">
-                  {exp.desc}
-                </p>
-              </div>
-
             </div>
           ))}
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="border-t-4 border-neo-border bg-neo-primary py-8 mt-20">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-bold uppercase tracking-wider">{t.footer.replace('{year}', new Date().getFullYear())}</p>
-          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-            {t.backToHome}
-          </Link>
+      <footer className="border-t border-black/10 py-8 mt-10">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-bold text-sm">{t.footer.replace('{year}', new Date().getFullYear())}</p>
+          <Link to="/" className="font-bold text-sm bg-[#161616] text-white rounded-full px-5 py-2.5">{t.backToHome}</Link>
         </div>
       </footer>
     </div>

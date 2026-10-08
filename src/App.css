@@ -1,19 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-neo-bg: #fdfdfd;
-  --color-neo-primary: #ffe600;
-  --color-neo-secondary: #ff4d4d;
-  --color-neo-accent: #0055ff;
-  --color-neo-dark: #1a1a1a;
-  --color-neo-border: #000000;
+  /* ── Jenny-Scott soft portfolio tokens (replaces brutalism) ── */
+  --color-cream: #fffaf0;
+  --color-cream-dark: #f5eddc;
+  --color-ink: #161616;
+  --color-accent: #ff9e00;
+  --color-accent-dark: #e98a00;
 
-  --font-heading: "Space Grotesk", "Sora", sans-serif;
-  --font-body: "Space Grotesk", "Inter", sans-serif;
+  /* backward-compat: old neo-* classes map to new palette */
+  --color-neo-bg: #fffaf0;
+  --color-neo-primary: #ff9e00;
+  --color-neo-secondary: #161616;
+  --color-neo-accent: #ff9e00;
+  --color-neo-dark: #161616;
+  --color-neo-border: #161616;
 
-  --shadow-neo: 4px 4px 0px 0px rgba(0,0,0,1);
-  --shadow-neo-lg: 8px 8px 0px 0px rgba(0,0,0,1);
-  --shadow-neo-hover: 2px 2px 0px 0px rgba(0,0,0,1);
+  --font-heading: "Sora", "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", "Plus Jakarta Sans", sans-serif;
+
+  --shadow-neo: 0 8px 24px rgba(22, 22, 22, 0.08);
+  --shadow-neo-lg: 0 16px 40px rgba(22, 22, 22, 0.12);
+  --shadow-neo-hover: 0 4px 12px rgba(22, 22, 22, 0.1);
 }
 
 html, body {
@@ -22,9 +30,10 @@ html, body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  background-color: #fdfdfd;
-  font-family: "Space Grotesk", sans-serif;
-  color: #1a1a1a;
+  background-color: #fffaf0;
+  font-family: "Inter", "Plus Jakarta Sans", sans-serif;
+  color: #161616;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
@@ -33,18 +42,18 @@ html, body {
   min-height: 100vh;
 }
 
-/* ── Custom Neo Utilities ── */
+/* ── Custom Neo Utilities (soft reinterpretation) ── */
 .neo-box-hover {
-  @apply hover:translate-x-1 hover:translate-y-1 hover:shadow-neo-hover transition-all duration-200;
+  @apply hover:-translate-y-0.5 hover:shadow-neo-lg transition-all duration-200;
 }
 
-/* neo-btn: always black text on yellow — readable in both modes */
+/* neo-btn: now soft black pill w/ orange hover — readable in both modes */
 .neo-btn {
-  @apply border-4 border-neo-border bg-neo-primary text-black font-bold px-6 py-3 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-neo-hover transition-all duration-200 uppercase tracking-wider;
+  @apply bg-neo-dark text-white font-bold px-6 py-3 rounded-full shadow-neo hover:bg-neo-primary hover:text-black transition-all duration-200 tracking-wide;
 }
 
 .neo-box {
-  @apply border-4 border-neo-border bg-neo-bg shadow-neo;
+  @apply bg-white rounded-3xl shadow-neo border border-black/5;
 }
 
 /* ── Marquee animation ── */
@@ -57,18 +66,18 @@ html, body {
 }
 
 /* ─────────────────────────────────────────
-   DARK MODE
+   DARK MODE (soft)
 ───────────────────────────────────────── */
 body.dark {
-  --color-neo-bg: #111111;
-  --color-neo-dark: #fdfdfd;
-  --color-neo-border: #ffffff;
-  --shadow-neo: 4px 4px 0px 0px rgba(255,255,255,1);
-  --shadow-neo-lg: 8px 8px 0px 0px rgba(255,255,255,1);
-  --shadow-neo-hover: 2px 2px 0px 0px rgba(255,255,255,1);
+  --color-neo-bg: #141414;
+  --color-neo-dark: #fffaf0;
+  --color-neo-border: #2a2a2a;
+  --shadow-neo: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-neo-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-neo-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
 
-  background-color: var(--color-neo-bg);
-  color: var(--color-neo-dark);
+  background-color: #141414;
+  color: #fffaf0;
 }
 
 /* Fix hardcoded Tailwind gray shades — invisible on dark bg */
@@ -87,20 +96,20 @@ body.dark .bg-gray-200 {
   background-color: #2a2a2a;
 }
 
-/* ── Neobrutalist Scrollbar ── */
+/* ── Soft Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-neo-bg);
-  border-left: 4px solid var(--color-neo-border);
+  background: #fffaf0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #ffe600;
-  border: 4px solid var(--color-neo-border);
+  background: #161616;
+  border-radius: 999px;
+  border: 2px solid #fffaf0;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff4d4d;
+  background: #ff9e00;
 }
 
 /* ── Glitch Effect ── */

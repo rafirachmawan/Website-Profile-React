@@ -11,67 +11,35 @@ export default function About() {
   const tExp = translations[language].experience;
 
   return (
-    <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black flex flex-col">
+    <div className="bg-[#fffaf0] min-h-screen font-body text-[#161616] flex flex-col">
       <Navbar />
-      <section className="max-w-7xl mx-auto px-6 mt-16 mb-20">
-        <div className="grid md:grid-cols-5 gap-8 items-center bg-neo-secondary border-4 border-neo-border p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <div className="md:col-span-2">
-            <div className="w-full h-64 md:h-full min-h-[300px] border-4 border-neo-border bg-neo-bg shadow-neo relative overflow-hidden group">
-              <img 
-                src={aboutImage} 
-                alt="Rafi" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
-              />
-            </div>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16 w-full">
+        <div className="bg-[#161616] text-white rounded-[2rem] p-6 sm:p-10 grid md:grid-cols-[300px_1fr] gap-8 items-center">
+          <div className="rounded-3xl overflow-hidden bg-[#ff9e00] p-2 -rotate-2">
+            <img src={aboutImage} alt="Rafi" className="w-full h-80 object-cover rounded-2xl" />
           </div>
-          <div className="md:col-span-3 text-white relative">
-            {/* Decorative Element */}
-            <div className="absolute -top-6 -right-6 md:-top-12 md:-right-12 w-16 h-16 md:w-24 md:h-24 bg-neo-primary border-4 border-neo-border flex items-center justify-center rounded-full z-0 opacity-80 animate-[spin_10s_linear_infinite] shadow-neo">
-               <span className="text-4xl md:text-5xl text-black">❋</span>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-6 w-max relative z-10 glitch-hover transition-all cursor-default" style={{ textShadow: "3px 3px 0px black" }}>
+          <div>
+            <p className="text-[12px] font-bold text-white/40 mb-2">About Me</p>
+            <h1 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight mb-5">
               {t.whoIsRafi}
-            </h2>
-            <p className="text-xl mb-6 font-bold border-l-4 border-white pl-4 relative z-10 bg-neo-dark/20 p-2">
-              {t.p1}
-            </p>
-            <p className="text-lg mb-8 font-medium relative z-10">
-              {t.p2}
-            </p>
-            
-            <div className="flex flex-col gap-8 relative z-10">
-              <div className="flex gap-4 flex-wrap">
-                <div className="bg-neo-bg text-neo-dark border-4 border-neo-border px-4 py-2 font-black uppercase shadow-neo rotate-2 hover:-translate-y-2 hover:-translate-x-1 hover:shadow-neo-lg hover:rotate-0 transition-all cursor-default">
-                  {t.problemSolver}
-                </div>
-                <div className="bg-neo-primary text-neo-dark border-4 border-neo-border px-4 py-2 font-black uppercase shadow-neo -rotate-2 hover:-translate-y-2 hover:-translate-x-1 hover:shadow-neo-lg hover:rotate-0 transition-all cursor-default">
-                  {t.creativeCoder}
-                </div>
-              </div>
-
-              <div className="w-max">
-                <a href="/CV RAFI RACHMAWAN  TERBARU.pdf" target="_blank" rel="noopener noreferrer">
-                  <button className="neo-btn flex items-center gap-2 group text-lg">
-                    DOWNLOAD CV
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                  </button>
-                </a>
-              </div>
+            </h1>
+            <p className="text-white/60 text-sm sm:text-base leading-relaxed border-l-2 border-[#ff9e00] pl-4 mb-4">{t.p1}</p>
+            <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-7">{t.p2}</p>
+            <div className="flex flex-wrap gap-2 mb-7">
+              {[t.problemSolver, t.creativeCoder].map((b) => (
+                <span key={b} className="text-[12px] font-bold bg-white/10 rounded-full px-4 py-2">✦ {b}</span>
+              ))}
             </div>
+            <a href="/CV RAFI RACHMAWAN  TERBARU.pdf" target="_blank" rel="noreferrer" className="inline-flex bg-[#ff9e00] text-black font-bold rounded-full px-6 py-3 text-sm">
+              DOWNLOAD CV ↓
+            </a>
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="border-t-4 border-neo-border bg-neo-primary py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-bold uppercase tracking-wider">© {new Date().getFullYear()} Rafi Rachmawan.</p>
-          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-            {tExp.backToHome}
-          </Link>
+      <footer className="border-t border-black/10 py-8 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-bold text-sm">© {new Date().getFullYear()} Rafi Rachmawan.</p>
+          <Link to="/" className="font-bold text-sm bg-[#161616] text-white rounded-full px-5 py-2.5">{tExp.backToHome}</Link>
         </div>
       </footer>
     </div>

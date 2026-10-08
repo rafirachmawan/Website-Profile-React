@@ -9,7 +9,6 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import Lenis from "lenis";
-import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
 import { LanguageProvider } from "./context/LanguageContext";
 import ScrollToTop from "./components/scrolltop";
@@ -73,12 +72,12 @@ function App() {
   return (
     <LanguageProvider>
       <Preloader />
-      <CustomCursor />
       
-      {/* Brutalist Floating Dark Mode Toggle */}
+      {/* Soft Floating Dark Mode Toggle */}
       <button 
         onClick={() => setDarkMode(!darkMode)}
-        className="fixed bottom-8 right-8 z-[9999] w-16 h-16 border-4 border-black bg-[#ffe600] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center justify-center text-2xl font-black rounded-full"
+        className="fixed bottom-6 right-6 z-[9999] w-12 h-12 bg-[#161616] dark:bg-[#ff9e00] text-white dark:text-black shadow-[0_12px_32px_rgba(0,0,0,0.2)] hover:scale-105 transition-all flex items-center justify-center text-lg rounded-full"
+        aria-label="Toggle dark mode"
       >
         <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
       </button>

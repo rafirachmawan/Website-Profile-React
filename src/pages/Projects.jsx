@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import { portfolioList } from "../components/data/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../utils/translations';
 
@@ -11,54 +13,37 @@ export default function Projects() {
   const tExp = translations[language].experience;
 
   return (
-    <div className="bg-neo-bg min-h-screen font-body text-neo-dark selection:bg-neo-primary selection:text-black flex flex-col">
+    <div className="bg-[#fffaf0] min-h-screen font-body text-[#161616] flex flex-col">
       <Navbar />
-      <section className="max-w-7xl mx-auto px-6 mt-16 mb-20">
-        <div className="inline-block border-4 border-neo-border bg-neo-bg px-6 py-2 shadow-neo mb-12 -rotate-1">
-          <h2 className="text-5xl md:text-7xl font-black font-heading uppercase" style={{ textShadow: "3px 3px 0px #ffe600" }}>
-            {t.featuredWork}
-          </h2>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-12">
-          {portfolioList.map((project, i) => (
-            <div key={i} className="group flex flex-col h-full border-4 border-neo-border bg-neo-bg shadow-neo hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-              
-              <div className="w-full h-64 border-b-4 border-neo-border overflow-hidden bg-neo-dark relative">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
-                <div className="absolute top-4 right-4 bg-neo-primary border-4 border-neo-border font-bold px-3 py-1 -rotate-6 shadow-neo">
-                  {t.pro}
-                </div>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16 w-full">
+        <h1 className="font-heading font-extrabold text-4xl sm:text-6xl tracking-tight mb-8">{t.featuredWork}</h1>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {portfolioList.map((project) => (
+            <article key={project.id} className="group bg-white border border-black/10 rounded-3xl overflow-hidden hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all">
+              <div className="h-60 overflow-hidden bg-[#f3ede0]">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
-
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-2xl font-black uppercase font-heading mb-4">{project.title}</h3>
-                
-                <div className="flex flex-wrap gap-2 mb-8 flex-grow">
-                  {project.skill.split(',').map((skill, j) => (
-                    <span key={j} className="text-sm font-bold bg-neo-bg border-2 border-neo-border px-3 py-1 uppercase">
-                      {skill.trim()}
-                    </span>
+              <div className="p-6">
+                <p className="text-[11px] font-bold uppercase tracking-widest text-[#e98a00] mb-1">{project.subtitle} · {project.year}</p>
+                <h3 className="font-heading font-bold text-xl mb-3">{project.title}</h3>
+                <p className="text-sm text-black/55 leading-relaxed mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.skill.split(',').map((s) => (
+                    <span key={s} className="text-[11px] font-semibold bg-[#fff3dd] rounded-full px-2.5 py-1">{s.trim()}</span>
                   ))}
                 </div>
-
-                <a href={project.link} target="_blank" rel="noreferrer" className="neo-btn text-center block w-full mt-auto">
-                  {t.viewLive}
+                <a href={project.link} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 bg-[#161616] text-white rounded-full py-3 text-sm font-bold group-hover:bg-[#ff9e00] group-hover:text-black transition-colors">
+                  {t.viewLive} <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[11px]" />
                 </a>
               </div>
-
-            </div>
+            </article>
           ))}
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="border-t-4 border-neo-border bg-neo-primary py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-bold uppercase tracking-wider">© {new Date().getFullYear()} Rafi Rachmawan.</p>
-          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-bold uppercase bg-white border-2 border-neo-border px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-            {tExp.backToHome}
-          </Link>
+      <footer className="border-t border-black/10 py-8 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-bold text-sm">© {new Date().getFullYear()} Rafi Rachmawan.</p>
+          <Link to="/" className="font-bold text-sm bg-[#161616] text-white rounded-full px-5 py-2.5">{tExp.backToHome}</Link>
         </div>
       </footer>
     </div>

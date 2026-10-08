@@ -14,182 +14,126 @@ const getNavLinks = (t) => [
 export default function Navbar() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language].nav;
   const navLinks = getNavLinks(t);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Close menu on route change
-  useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const getLinkClass = (path) => {
-    return location.pathname === path
-      ? 'text-neo-accent underline decoration-4 underline-offset-4'
-      : 'hover:text-neo-accent transition-colors';
-  };
-
   return (
     <>
-      {/* ── MAIN NAVBAR ── */}
-      <nav
-        className={`border-b-4 border-neo-border bg-neo-bg sticky top-0 z-[200] transition-shadow duration-300 ${
-          scrolled ? 'shadow-[0_4px_0px_0px_rgba(0,0,0,1)]' : ''
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+      <div className="sticky top-3 sm:top-5 z-[200] px-3 sm:px-6">
+        <nav className="max-w-6xl mx-auto bg-[#161616] text-white rounded-full pl-4 pr-2 sm:pl-6 sm:pr-2 py-2 flex items-center justify-between shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
           {/* LOGO */}
-          <Link
-            to="/"
-            className="font-heading font-black text-2xl tracking-tighter uppercase glitch-hover inline-block"
-          >
-            Rafi<span className="text-neo-primary" style={{ WebkitTextStroke: '1px black' }}>.</span>
+          <Link to="/" className="flex items-center gap-2 font-heading font-extrabold text-base sm:text-lg tracking-tight">
+            <span className="w-8 h-8 rounded-full bg-[#ff9e00] flex items-center justify-center text-black text-sm font-black">
+              R
+            </span>
+            <span className="hidden xs:inline sm:inline">Rafi<span className="text-[#ff9e00]">.</span></span>
           </Link>
 
           {/* DESKTOP LINKS */}
-          <div className="hidden md:flex gap-8 font-bold uppercase tracking-wider items-center">
-            {navLinks.slice(1).map((link) => (
-              <Link key={link.path} to={link.path} className={getLinkClass(link.path)}>
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-4">
-            {/* LANGUAGE TOGGLE */}
-            <button
-              onClick={toggleLanguage}
-              className="border-2 border-neo-border bg-white text-black font-bold px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all text-sm flex items-center gap-1"
-            >
-              <span className={language === 'en' ? 'text-neo-accent' : 'opacity-50'}>EN</span>
-              <span>/</span>
-              <span className={language === 'id' ? 'text-neo-accent' : 'opacity-50'}>ID</span>
-            </button>
-
-            {/* DESKTOP CTA */}
-            <Link to="/contact" className="neo-btn">
-              {t.letsTalk}
-            </Link>
-          </div>
-
-          {/* MOBILE HAMBURGER */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative w-12 h-12 border-4 border-neo-border bg-neo-primary shadow-neo flex flex-col items-center justify-center gap-[5px] transition-all active:translate-x-1 active:translate-y-1 active:shadow-neo-hover"
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`block w-5 h-[3px] bg-black transition-all duration-300 origin-center ${
-                menuOpen ? 'rotate-45 translate-y-[8px]' : ''
-              }`}
-            />
-            <span
-              className={`block w-5 h-[3px] bg-black transition-all duration-300 ${
-                menuOpen ? 'opacity-0 scale-x-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-5 h-[3px] bg-black transition-all duration-300 origin-center ${
-                menuOpen ? '-rotate-45 -translate-y-[8px]' : ''
-              }`}
-            />
-          </button>
-        </div>
-      </nav>
-
-      {/* ── MOBILE DRAWER OVERLAY ── */}
-      <div
-        className={`fixed inset-0 z-[190] md:hidden transition-all duration-300 ${
-          menuOpen ? 'visible' : 'invisible'
-        }`}
-      >
-        {/* Backdrop */}
-        <div
-          onClick={() => setMenuOpen(false)}
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-            menuOpen ? 'opacity-50' : 'opacity-0'
-          }`}
-        />
-
-        {/* Drawer panel */}
-        <div
-          className={`absolute top-0 left-0 h-full w-[80vw] max-w-xs bg-neo-bg border-r-4 border-neo-border shadow-[8px_0px_0px_0px_rgba(0,0,0,1)] transition-transform duration-300 ease-in-out ${
-            menuOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
-        >
-          {/* Drawer header */}
-          <div className="border-b-4 border-neo-border px-6 py-4 bg-neo-primary flex items-center justify-between">
-            <Link to="/" className="font-heading font-black text-2xl uppercase">
-              Rafi<span style={{ WebkitTextStroke: '1px black' }}>.</span>
-            </Link>
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="w-9 h-9 border-2 border-neo-border bg-neo-bg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center font-black text-lg"
-            >
-              ✕
-            </button>
-          </div>
-
-          {/* Nav links */}
-          <nav className="flex flex-col px-6 pt-6 gap-1">
-            {navLinks.map((link, i) => {
-              const isActive = location.pathname === link.path;
+          <div className="hidden md:flex items-center gap-7 text-[13px] font-medium text-white/70">
+            {navLinks.map((link) => {
+              const active =
+                location.pathname === link.path ||
+                (link.path === '/' && location.pathname === '/');
+              // Home link anchors to top on landing, others route
+              if (link.path === '/') {
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`transition-colors hover:text-white ${active ? 'text-white font-semibold' : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`flex items-center gap-3 px-4 py-3 border-2 border-neo-border font-bold uppercase tracking-wider transition-all active:translate-x-1 active:translate-y-1 ${
-                    isActive
-                      ? 'bg-neo-accent text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                      : 'bg-neo-bg hover:bg-neo-primary shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]'
-                  }`}
-                  style={{ animationDelay: `${i * 60}ms` }}
+                  className={`transition-colors hover:text-white ${location.pathname === link.path ? 'text-white font-semibold' : ''}`}
                 >
-                  <span className="w-6 h-6 border-2 border-neo-border bg-neo-primary flex items-center justify-center text-xs font-black">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   {link.label}
                 </Link>
               );
             })}
-          </nav>
+          </div>
 
-          {/* CTA & Language inside drawer */}
-          <div className="px-6 pt-8 flex flex-col gap-4">
+          <div className="flex items-center gap-2">
             <button
               onClick={toggleLanguage}
-              className="border-2 border-neo-border bg-white text-black font-bold py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center gap-2"
+              className="hidden sm:flex text-[12px] font-bold text-white/60 hover:text-white border border-white/15 rounded-full px-3 py-1.5 transition-colors"
             >
-              <span className={language === 'en' ? 'text-neo-accent' : 'opacity-50'}>English</span>
-              <span>/</span>
-              <span className={language === 'id' ? 'text-neo-accent' : 'opacity-50'}>Indonesia</span>
+              <span className={language === 'en' ? 'text-[#ff9e00]' : ''}>EN</span>
+              <span className="mx-1 opacity-40">/</span>
+              <span className={language === 'id' ? 'text-[#ff9e00]' : ''}>ID</span>
             </button>
             <Link
               to="/contact"
-              className="neo-btn w-full text-center block"
+              className="bg-[#ff9e00] hover:bg-[#ffb02e] text-black text-[13px] font-bold rounded-full px-5 py-2.5 transition-colors flex items-center gap-1"
             >
+              {t.letsTalk.replace(' 🤙', '')} <span aria-hidden>↗</span>
+            </Link>
+            {/* MOBILE HAMBURGER */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden w-10 h-10 rounded-full bg-white/10 flex flex-col items-center justify-center gap-[5px]"
+              aria-label="Toggle menu"
+            >
+              <span className={`block w-4 h-[2px] bg-white transition-all ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+              <span className={`block w-4 h-[2px] bg-white transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block w-4 h-[2px] bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      {/* MOBILE DRAWER */}
+      <div className={`fixed inset-0 z-[190] md:hidden transition-all ${menuOpen ? 'visible' : 'invisible'}`}>
+        <div
+          onClick={() => setMenuOpen(false)}
+          className={`absolute inset-0 bg-black transition-opacity ${menuOpen ? 'opacity-50' : 'opacity-0'}`}
+        />
+        <div
+          className={`absolute top-0 right-0 h-full w-[82vw] max-w-xs bg-[#161616] text-white rounded-l-3xl p-6 pt-20 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 flex items-center justify-center font-bold"
+          >
+            ✕
+          </button>
+          <nav className="flex flex-col gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`px-4 py-3 rounded-2xl font-semibold text-lg ${location.pathname === link.path ? 'bg-[#ff9e00] text-black' : 'hover:bg-white/10'}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="mt-8 flex flex-col gap-3">
+            <button
+              onClick={toggleLanguage}
+              className="rounded-full border border-white/15 py-2.5 font-bold text-sm"
+            >
+              {language === 'en' ? 'English / Indonesia' : 'Indonesia / English'}
+            </button>
+            <Link to="/contact" className="bg-[#ff9e00] text-black rounded-full py-3 text-center font-bold">
               {t.letsTalk}
             </Link>
-          </div>
-
-          {/* Decorative bottom tag */}
-          <div className="absolute bottom-6 left-6 right-6">
-            <div className="border-2 border-neo-border bg-neo-secondary text-white px-4 py-2 text-xs font-bold uppercase text-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -rotate-1">
-              {t.freelanceTag}
-            </div>
           </div>
         </div>
       </div>

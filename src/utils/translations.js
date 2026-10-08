@@ -46,10 +46,10 @@ export const translations = {
       founder: "Founder",
       agencyDesc: "I founded GapaiDigital to empower global businesses through scalable Web, Mobile, and Custom Software solutions.",
       exploreAgency: "Explore My Agency",
-      contactTitle: "Let's build something crazy!",
+      contactTitle: "Let's build something great!",
       contactDesc: "I'm always open to discussing product design work or partnership opportunities.",
-      sayHello: "Say Hello 🤙",
-      designedWith: "Designed with 🔥 & Neobrutalism",
+      sayHello: "Say Hello",
+      designedWith: "Designed with care",
       experiences: [
         {
           date: "Mar 2026 - Present",
@@ -104,13 +104,13 @@ export const translations = {
       founderTag: "Founder & CEO",
       founderOf: "GapaiDigital",
       founderDesc: "I founded GapaiDigital — a digitalization startup that helps businesses grow through Landing Pages, Mobile Apps, and scalable Custom Web Systems.",
-      visitAgency: "Visit GapaiDigital →",
+      visitAgency: "Visit GapaiDigital",
       orReach: "Or reach me directly:",
       linkedin: "LinkedIn",
       email: "Email",
       availableFor: "Available for Freelance",
-      status: "Open to Work ✅",
-      location: "📍 Indonesia"
+      status: "Open to Work",
+      location: "Indonesia"
     }
   },
   id: {
@@ -162,8 +162,8 @@ export const translations = {
       exploreAgency: "Jelajahi Agensi Saya",
       contactTitle: "Mari buat sesuatu yang luar biasa!",
       contactDesc: "Saya selalu terbuka untuk mendiskusikan pekerjaan desain produk atau peluang kemitraan.",
-      sayHello: "Sapa Saya 🤙",
-      designedWith: "Didesain dengan 🔥 & Neobrutalism",
+      sayHello: "Sapa Saya",
+      designedWith: "Didesain dengan baik",
       experiences: [
         {
           date: "Maret 2026 - Saat ini",
@@ -213,18 +213,18 @@ export const translations = {
       title2: "Sesuatu yang",
       title3: "Luar Biasa.",
       desc: "Saya selalu terbuka untuk mendiskusikan pekerjaan desain produk atau peluang kemitraan.",
-      sayHello: "Sapa Saya 🤙",
-      designedWith: "Didesain dengan 🔥 & Neobrutalism",
+      sayHello: "Sapa Saya",
+      designedWith: "Didesain dengan baik",
       founderTag: "Founder & CEO",
       founderOf: "GapaiDigital",
       founderDesc: "Saya mendirikan GapaiDigital — startup digitalisasi yang membantu bisnis berkembang melalui Landing Page, Mobile App, dan Custom Web System yang modern dan skalabel.",
-      visitAgency: "Kunjungi GapaiDigital →",
+      visitAgency: "Kunjungi GapaiDigital",
       orReach: "Atau hubungi saya langsung:",
       linkedin: "LinkedIn",
       email: "Email",
       availableFor: "Tersedia untuk Freelance",
-      status: "Siap Bekerja ✅",
-      location: "📍 Indonesia"
+      status: "Siap Bekerja",
+      location: "Indonesia"
     }
   }
 };
