@@ -116,8 +116,8 @@ export default function Home() {
 
           {/* Center photo */}
           <div className="order-1 md:order-2 justify-self-center relative">
-            <div className="w-64 h-72 sm:w-80 sm:h-[22rem] rounded-t-full rounded-b-[2rem] overflow-hidden bg-[#ffe3b3] border-[6px] border-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] mx-auto">
-              <img src={heroImage} alt="Rafi Rachmawan" className="w-full h-full object-cover object-top" />
+            <div className="w-72 sm:w-96 aspect-[406/614] rounded-t-full rounded-b-[2rem] overflow-hidden bg-[#ffe3b3] border-[6px] border-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] mx-auto">
+              <img src={heroImage} alt="Rafi Rachmawan" className="w-full h-full object-cover object-top scale-[0.94] origin-top" />
             </div>
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-white rounded-full pl-2 pr-2 py-1.5 shadow-lg border border-black/5 whitespace-nowrap">
               <a href="#projects" className="bg-[#ff9e00] text-black text-[13px] font-bold rounded-full px-5 py-2">
