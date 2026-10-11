@@ -31,7 +31,7 @@ const ContactMe = () => {
           </p>
 
           <a 
-            href="https://wa.me/6285707185783" 
+            href="https://wa.me/6285196221716" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all duration-300 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-full hover:shadow-[0_0_20px_rgba(217,70,239,0.5)] hover:scale-105"
@@ -45,7 +45,7 @@ const ContactMe = () => {
           
           {/* WhatsApp Card */}
           <a 
-            href="https://wa.me/6285707185783" 
+            href="https://wa.me/6285196221716" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group relative flex flex-col items-center text-center rounded-3xl border border-white/10 bg-white/[0.015] backdrop-blur-xl p-10 hover:bg-white/[0.04] hover:border-fuchsia-500/40 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(217,70,239,0.15)] overflow-hidden"
@@ -66,7 +66,7 @@ const ContactMe = () => {
             
             <h3 className="text-2xl font-bold text-white font-heading mb-2">WhatsApp</h3>
             <p className="text-fuchsia-400 text-[10px] font-mono uppercase tracking-[0.2em] mb-4">Direct Message</p>
-            <p className="text-slate-300 font-medium font-body group-hover:text-white transition-colors">+62 857 0718 5783</p>
+            <p className="text-slate-300 font-medium font-body group-hover:text-white transition-colors">+62 851 9622 1716</p>
           </a>
 
           {/* Email Card */}

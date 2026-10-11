@@ -21,7 +21,7 @@ export default function Contact() {
           </h1>
           <p className="text-black/60 text-sm max-w-lg mx-auto mt-4">{t.desc}</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mt-7">
-            <a href="https://wa.me/6285707185783" target="_blank" rel="noreferrer" className="bg-[#161616] text-white font-bold rounded-full px-7 py-3.5 text-sm min-w-[200px]">
+            <a href="https://wa.me/6285196221716" target="_blank" rel="noreferrer" className="bg-[#161616] text-white font-bold rounded-full px-7 py-3.5 text-sm min-w-[200px]">
               {t.sayHello} via WhatsApp
             </a>
             <a href="mailto:rafirachmawan1987@gmail.com" className="bg-white font-bold rounded-full px-7 py-3.5 text-sm border border-black/10 min-w-[200px]">

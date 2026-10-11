@@ -55,26 +55,26 @@ export default function Home() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-6 text-center">
-        <div className="inline-flex items-center gap-2 bg-white border border-black/10 rounded-full pl-1.5 pr-4 py-1.5 text-[12px] font-semibold shadow-sm mb-6">
-          <span className="bg-[#161616] text-white rounded-full px-2.5 py-1 text-[11px]">✦</span>
-          {t.freelance}
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-6 text-center overflow-x-clip">
+        <div className="inline-flex items-center gap-2 bg-white border border-black/10 rounded-full pl-1.5 pr-4 py-1.5 text-[12px] font-semibold shadow-sm mb-6 max-w-full">
+          <span className="bg-[#161616] text-white rounded-full px-2.5 py-1 text-[11px] shrink-0">✦</span>
+          <span className="truncate">{t.freelance}</span>
         </div>
 
-        <h1 className="font-heading font-extrabold tracking-tight leading-[1.02] text-4xl sm:text-6xl md:text-7xl">
-          I&apos;m <span className="text-[#ff9e00]">Rafi Rachmawan</span>
+        <h1 className="font-heading font-extrabold tracking-tight leading-[1.08] text-balance text-[1.75rem] min-[400px]:text-4xl sm:text-6xl md:text-7xl px-1">
+          I&apos;m <span className="text-[#ff9e00] whitespace-nowrap sm:whitespace-normal">Rafi Rachmawan</span>
         </h1>
-        <p className="mt-3 text-sm sm:text-base text-black/60 font-medium">
+        <p className="mt-3 text-[13px] sm:text-base text-black/60 font-medium px-4 text-balance">
           {t.rolePrefix} {t.roleSuffix} based in Indonesia
         </p>
 
         {/* Hero 3-col */}
-        <div className="mt-10 grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center text-left">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 md:gap-8 items-center md:items-center text-center md:text-left">
           {/* Left */}
-          <div className="order-2 md:order-1 flex md:flex-col items-center md:items-start justify-between md:justify-center gap-6">
-            <div>
+          <div className="order-2 md:order-1 flex flex-col items-center md:items-start justify-center gap-6 w-full">
+            <div className="flex flex-col items-center md:items-start">
               <p className="text-[11px] font-bold uppercase tracking-widest text-black/40 mb-3">Follow Me On</p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 justify-center md:justify-start">
                 {[
                   { icon: faGithub, link: "https://github.com/rafirachmawan" },
                   { icon: faLinkedin, link: "https://www.linkedin.com/in/rafi-rachmawan-2a8728233/" },
@@ -85,15 +85,15 @@ export default function Home() {
                     href={s.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-9 h-9 rounded-full bg-white border border-black/10 flex items-center justify-center hover:bg-[#161616] hover:text-white transition-colors"
+                    className="w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white border border-black/10 flex items-center justify-center hover:bg-[#161616] hover:text-white transition-colors"
                   >
                     <FontAwesomeIcon icon={s.icon} />
                   </a>
                 ))}
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-2">
+            <div className="flex items-center gap-3 justify-center md:justify-start text-left">
+              <div className="flex -space-x-2 shrink-0">
                 {[0, 1, 2].map((n) => (
                   <img
                     key={n}
@@ -115,36 +115,40 @@ export default function Home() {
           </div>
 
           {/* Center photo */}
-          <div className="order-1 md:order-2 justify-self-center relative">
-            <div className="w-72 sm:w-96 aspect-[406/614] rounded-t-full rounded-b-[2rem] overflow-hidden bg-[#ffe3b3] border-[6px] border-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] mx-auto">
-              <img src={heroImage} alt="Rafi Rachmawan" className="w-full h-full object-cover object-top scale-[0.94] origin-top" />
-            </div>
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-white rounded-full pl-2 pr-2 py-1.5 shadow-lg border border-black/5 whitespace-nowrap">
-              <a href="#projects" className="bg-[#ff9e00] text-black text-[13px] font-bold rounded-full px-5 py-2">
-                {language === "id" ? "Portofolio" : "Portfolio"}
-              </a>
-              <a
-                href="https://wa.me/6285707185783"
-                target="_blank"
-                rel="noreferrer"
-                className="text-[13px] font-bold rounded-full px-5 py-2 border border-black/10 hover:bg-black hover:text-white transition-colors"
-              >
-                Hire Me
-              </a>
-            </div>
-            <div className="absolute top-6 -right-3 sm:-right-8 w-14 h-14 rounded-full bg-[#161616] text-[#ff9e00] hidden sm:flex items-center justify-center text-[10px] font-bold text-center leading-tight rotate-12">
-              3+ YEARS ● CODE ●
+          <div className="order-1 md:order-2 justify-self-center relative w-full flex justify-center pb-6 md:pb-0">
+            <div className="relative">
+              <div className="w-[min(17.5rem,78vw)] sm:w-96 aspect-[406/614] rounded-t-full rounded-b-[2rem] overflow-hidden bg-[#ffe3b3] border-[6px] border-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] mx-auto">
+                <img src={heroImage} alt="Rafi Rachmawan" className="w-full h-full object-cover object-top scale-[0.94] origin-top" />
+              </div>
+              <div className="absolute inset-x-0 -bottom-5 flex justify-center pointer-events-none">
+                <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2 bg-white rounded-full p-1.5 shadow-lg border border-black/5 w-max max-w-[92vw]">
+                  <a href="#projects" className="bg-[#ff9e00] text-black text-[12px] sm:text-[13px] font-bold rounded-full px-4 sm:px-5 py-2 shrink-0 whitespace-nowrap">
+                    {language === "id" ? "Portofolio" : "Portfolio"}
+                  </a>
+                  <a
+                    href="https://wa.me/6285196221716"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[12px] sm:text-[13px] font-bold rounded-full px-4 sm:px-5 py-2 border border-black/10 bg-white hover:bg-black hover:text-white transition-colors shrink-0 whitespace-nowrap"
+                  >
+                    Hire Me
+                  </a>
+                </div>
+              </div>
+              <div className="absolute top-6 -right-3 sm:-right-8 w-14 h-14 rounded-full bg-[#161616] text-[#ff9e00] hidden sm:flex items-center justify-center text-[10px] font-bold text-center leading-tight rotate-12">
+                3+ YEARS ● CODE ●
+              </div>
             </div>
           </div>
 
           {/* Right */}
-          <div className="order-3 flex md:flex-col gap-4 justify-center">
-            <p className="text-[13px] text-black/60 leading-relaxed max-w-[240px]">{t.description}</p>
-            <div className="flex flex-col gap-2">
+          <div className="order-3 flex flex-col items-center md:items-start gap-4 justify-center w-full">
+            <p className="text-[13px] sm:text-sm text-black/60 leading-relaxed max-w-[340px] md:max-w-[240px] mx-auto md:mx-0 text-center md:text-left text-balance">{t.description}</p>
+            <div className="flex flex-row flex-wrap md:flex-col gap-2 justify-center md:justify-start items-center md:items-start">
               {["Highly Professional", "Clean Code & Creative Design"].map((b, i) => (
                 <span
                   key={i}
-                  className={`text-[11px] font-bold rounded-full px-3 py-1.5 border w-max ${i === 0 ? "bg-[#161616] text-white" : "bg-white border-black/10"}`}
+                  className={`text-[11px] font-bold rounded-full px-3 py-1.5 border w-max max-w-full ${i === 0 ? "bg-[#161616] text-white border-[#161616]" : "bg-white border-black/10"}`}
                 >
                   ✦ {b}
                 </span>
@@ -335,15 +339,15 @@ export default function Home() {
 
       {/* ── EXPERIENCE PREVIEW ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        <div className="flex items-end justify-between mb-6">
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl tracking-tight">{t.workHistory}</h2>
-          <Link to="/experience" className="text-sm font-bold underline underline-offset-4 decoration-[#ff9e00] decoration-2">{t.seeFullExperience}</Link>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-6">
+          <h2 className="font-heading font-extrabold tracking-tight text-balance leading-[1.1] text-[1.65rem] sm:text-4xl">{t.workHistory}</h2>
+          <Link to="/experience" className="text-[13px] sm:text-sm font-bold underline underline-offset-4 decoration-[#ff9e00] decoration-2 shrink-0 w-fit">{t.seeFullExperience}</Link>
         </div>
-        <div className="grid sm:grid-cols-2 gap-4 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 items-stretch">
           {t.experiences.slice(0, 4).map((exp, i) => (
-            <div key={i} className="bg-white border border-black/10 rounded-3xl p-6 flex flex-col h-full hover:border-[#ff9e00] transition-colors">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#e98a00]">{exp.date}</span>
-              <h3 className="font-heading font-bold text-lg mt-2 leading-snug">{exp.role}</h3>
+            <div key={i} className="bg-white border border-black/10 rounded-3xl p-5 sm:p-6 flex flex-col h-full hover:border-[#ff9e00] transition-colors">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#e98a00] leading-relaxed">{exp.date}</span>
+              <h3 className="font-heading font-bold text-[17px] sm:text-lg mt-1.5 leading-snug text-balance">{exp.role}</h3>
               <p className="text-[13px] font-semibold text-black/50 mt-0.5">{exp.company}</p>
               <div className="w-10 h-[3px] bg-[#ff9e00] rounded-full my-3" />
               <p className="text-[13px] text-black/55 leading-relaxed flex-grow">{exp.desc}</p>
@@ -354,22 +358,21 @@ export default function Home() {
 
       {/* ── CONTACT CTA ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 pb-16">
-        <div className="bg-[#ff9e00] rounded-[2rem] px-6 py-10 sm:p-12 text-center relative overflow-hidden">
-          <div className="absolute inset-x-0 top-0 h-16 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.4),transparent)] pointer-events-none" />
-          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-black/50 mb-3">Let&apos;s collaborate</p>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-4">
-            Let&apos;s build something great!
+        <div className="bg-[#161616] text-white rounded-[2rem] px-6 py-10 sm:p-12 text-center relative overflow-hidden">
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">Let&apos;s collaborate</p>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight leading-tight mb-4">
+            Let&apos;s build <span className="text-[#ff9e00]">something great!</span>
           </h2>
-          <p className="text-black/60 text-sm max-w-lg mx-auto mb-8">{t.contactDesc}</p>
+          <p className="text-white/60 text-sm max-w-lg mx-auto mb-8">{t.contactDesc}</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
-            <a href="https://wa.me/6285707185783" target="_blank" rel="noreferrer" className="bg-[#161616] text-white font-bold rounded-full px-8 py-3.5 text-sm hover:bg-black min-w-[200px]">
+            <a href="https://wa.me/6285196221716" target="_blank" rel="noreferrer" className="bg-[#ff9e00] text-black font-bold rounded-full px-8 py-3.5 text-sm hover:bg-[#ffb02e] transition-colors min-w-[200px]">
               {t.sayHello} via WhatsApp
             </a>
-            <a href="mailto:rafirachmawan1987@gmail.com" className="bg-white text-black font-bold rounded-full px-8 py-3.5 text-sm border border-black/10 min-w-[200px]">
+            <a href="mailto:rafirachmawan1987@gmail.com" className="border border-white/20 text-white font-bold rounded-full px-8 py-3.5 text-sm hover:bg-white hover:text-black transition-colors min-w-[200px]">
               Email
             </a>
           </div>
-          <div className="mt-7 inline-flex items-center rounded-full bg-black/10 px-5 py-2 text-[12px] font-bold text-black/70">
+          <div className="mt-7 inline-flex items-center rounded-full bg-white/10 px-5 py-2 text-[12px] font-bold text-white/70">
             Open to Work · Indonesia
           </div>
         </div>
