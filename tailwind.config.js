@@ -4,23 +4,46 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ── Soft Minimal Warm (synced with App.css @theme, replaces brutalism) ──
+        cream: {
+          DEFAULT: "#fffaf0",
+          dark: "#f5eddc",
+        },
+        ink: "#161616",
+        accent: {
+          DEFAULT: "#ff9e00",
+          dark: "#e98a00",
+        },
+        soft: {
+          bg: "#fffaf0",
+          primary: "#ff9e00",
+          secondary: "#161616",
+          accent: "#ff9e00",
+          dark: "#161616",
+          border: "#161616",
+        },
+        // backward-compat alias: neo-* maps to soft palette
         neo: {
-          bg: "#fdfdfd",
-          primary: "#ffe600",
-          secondary: "#ff4d4d",
-          accent: "#0055ff",
-          dark: "#1a1a1a",
-          border: "#000000",
+          bg: "#fffaf0",
+          primary: "#ff9e00",
+          secondary: "#161616",
+          accent: "#ff9e00",
+          dark: "#161616",
+          border: "#161616",
         }
       },
       boxShadow: {
-        'neo': '4px 4px 0px 0px rgba(0,0,0,1)',
-        'neo-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
-        'neo-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+        // soft blur shadows (was 4px 4px 0px hard brutalist)
+        'soft': '0 8px 24px rgba(22, 22, 22, 0.08)',
+        'soft-lg': '0 16px 40px rgba(22, 22, 22, 0.12)',
+        'soft-hover': '0 4px 12px rgba(22, 22, 22, 0.1)',
+        'neo': '0 8px 24px rgba(22, 22, 22, 0.08)',
+        'neo-lg': '0 16px 40px rgba(22, 22, 22, 0.12)',
+        'neo-hover': '0 4px 12px rgba(22, 22, 22, 0.1)',
       },
       fontFamily: {
-        heading: ["Space Grotesk", "Sora", "sans-serif"],
-        body: ["Space Grotesk", "Inter", "sans-serif"],
+        heading: ["Sora", "Plus Jakarta Sans", "sans-serif"],
+        body: ["Inter", "Plus Jakarta Sans", "sans-serif"],
       },
     },
   },

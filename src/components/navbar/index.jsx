@@ -30,38 +30,24 @@ export default function Navbar() {
   return (
     <>
       <div className="sticky top-3 sm:top-5 z-[200] px-3 sm:px-6">
-        <nav className="max-w-6xl mx-auto bg-[#161616] text-white rounded-full pl-4 pr-2 sm:pl-6 sm:pr-2 py-2 flex items-center justify-between shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
+        <nav className="navbar-soft max-w-6xl mx-auto rounded-full pl-4 pr-2 sm:pl-6 sm:pr-2 py-2 flex items-center justify-between shadow-soft">
           {/* LOGO */}
           <Link to="/" className="flex items-center gap-2 font-heading font-extrabold text-base sm:text-lg tracking-tight">
             <span className="w-8 h-8 rounded-full bg-[#ff9e00] flex items-center justify-center text-black text-sm font-black">
               R
             </span>
-            <span className="hidden xs:inline sm:inline">Rafi<span className="text-[#ff9e00]">.</span></span>
+            <span className="hidden xs:inline sm:inline">Rafi</span>
           </Link>
 
           {/* DESKTOP LINKS */}
-          <div className="hidden md:flex items-center gap-7 text-[13px] font-medium text-white/70">
+          <div className="hidden md:flex items-center gap-1 text-[13px] font-medium">
             {navLinks.map((link) => {
-              const active =
-                location.pathname === link.path ||
-                (link.path === '/' && location.pathname === '/');
-              // Home link anchors to top on landing, others route
-              if (link.path === '/') {
-                return (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`transition-colors hover:text-white ${active ? 'text-white font-semibold' : ''}`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              }
+              const active = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`transition-colors hover:text-white ${location.pathname === link.path ? 'text-white font-semibold' : ''}`}
+                  className={`nav-link transition-colors rounded-full px-3.5 py-2 ${active ? 'nav-link-active font-semibold' : ''}`}
                 >
                   {link.label}
                 </Link>
@@ -72,11 +58,11 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <button
               onClick={toggleLanguage}
-              className="hidden sm:flex text-[12px] font-bold text-white/60 hover:text-white border border-white/15 rounded-full px-3 py-1.5 transition-colors"
+              className="hidden sm:flex text-[12px] font-bold opacity-60 hover:opacity-100 border border-black/10 rounded-full px-3 py-1.5 transition-opacity"
             >
-              <span className={language === 'en' ? 'text-[#ff9e00]' : ''}>EN</span>
+              <span className={language === 'en' ? 'text-[#e98a00]' : ''}>EN</span>
               <span className="mx-1 opacity-40">/</span>
-              <span className={language === 'id' ? 'text-[#ff9e00]' : ''}>ID</span>
+              <span className={language === 'id' ? 'text-[#e98a00]' : ''}>ID</span>
             </button>
             <Link
               to="/contact"
@@ -87,12 +73,12 @@ export default function Navbar() {
             {/* MOBILE HAMBURGER */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-10 h-10 rounded-full bg-white/10 flex flex-col items-center justify-center gap-[5px]"
+              className="md:hidden w-10 h-10 rounded-full bg-black/5 flex flex-col items-center justify-center gap-[5px]"
               aria-label="Toggle menu"
             >
-              <span className={`block w-4 h-[2px] bg-white transition-all ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-              <span className={`block w-4 h-[2px] bg-white transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block w-4 h-[2px] bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+              <span className={`block w-4 h-[2px] bg-current transition-all ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+              <span className={`block w-4 h-[2px] bg-current transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block w-4 h-[2px] bg-current transition-all ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
             </button>
           </div>
         </nav>
@@ -102,14 +88,14 @@ export default function Navbar() {
       <div className={`fixed inset-0 z-[190] md:hidden transition-all ${menuOpen ? 'visible' : 'invisible'}`}>
         <div
           onClick={() => setMenuOpen(false)}
-          className={`absolute inset-0 bg-black transition-opacity ${menuOpen ? 'opacity-50' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-black transition-opacity ${menuOpen ? 'opacity-40' : 'opacity-0'}`}
         />
         <div
-          className={`absolute top-0 right-0 h-full w-[82vw] max-w-xs bg-[#161616] text-white rounded-l-3xl p-6 pt-20 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`drawer-soft absolute top-0 right-0 h-full w-[82vw] max-w-xs rounded-l-3xl border-l border-black/10 p-6 pt-20 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <button
             onClick={() => setMenuOpen(false)}
-            className="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 flex items-center justify-center font-bold"
+            className="absolute top-6 right-6 w-9 h-9 rounded-full bg-black/5 flex items-center justify-center font-bold"
           >
             ✕
           </button>
@@ -118,7 +104,7 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-3 rounded-2xl font-semibold text-lg ${location.pathname === link.path ? 'bg-[#ff9e00] text-black' : 'hover:bg-white/10'}`}
+                className={`px-4 py-3 rounded-2xl font-semibold text-lg ${location.pathname === link.path ? 'bg-[#ff9e00] text-black' : 'hover:bg-black/5'}`}
               >
                 {link.label}
               </Link>
@@ -127,7 +113,7 @@ export default function Navbar() {
           <div className="mt-8 flex flex-col gap-3">
             <button
               onClick={toggleLanguage}
-              className="rounded-full border border-white/15 py-2.5 font-bold text-sm"
+              className="rounded-full border border-black/10 py-2.5 font-bold text-sm"
             >
               {language === 'en' ? 'English / Indonesia' : 'Indonesia / English'}
             </button>

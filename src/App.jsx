@@ -5,23 +5,20 @@ import Experience from "./pages/Experience";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Lenis from "lenis";
 import Preloader from "./components/Preloader";
 import { LanguageProvider } from "./context/LanguageContext";
 import ScrollToTop from "./components/scrolltop";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("darkMode") === "true";
-  });
-
+  // Hapus dark mode — paksa light mode
   useEffect(() => {
-    document.body.className = darkMode ? "dark" : "light";
-    localStorage.setItem("darkMode", darkMode);
-  }, [darkMode]);
+    document.body.className = "light";
+    localStorage.removeItem("darkMode");
+  }, []);
 
   // Force scroll to top on refresh
   useEffect(() => {
@@ -58,7 +55,7 @@ function App() {
   // Global Sound Effect
   useEffect(() => {
     const handleGlobalClick = (e) => {
-      const isInteractive = e.target.closest('a') || e.target.closest('button') || e.target.classList.contains('neo-btn');
+      const isInteractive = e.target.closest('a') || e.target.closest('button') || e.target.classList.contains('soft-btn') || e.target.classList.contains('neo-btn');
       if (isInteractive) {
         import("./utils/playSound").then((module) => {
           module.playClickSound();
@@ -73,14 +70,16 @@ function App() {
     <LanguageProvider>
       <Preloader />
       
-      {/* Soft Floating Dark Mode Toggle */}
-      <button 
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed bottom-6 right-6 z-[9999] w-12 h-12 bg-[#161616] dark:bg-[#ff9e00] text-white dark:text-black shadow-[0_12px_32px_rgba(0,0,0,0.2)] hover:scale-105 transition-all flex items-center justify-center text-lg rounded-full"
-        aria-label="Toggle dark mode"
+      {/* Floating WhatsApp Chat */}
+      <a
+        href="https://wa.me/6285196221716?text=Halo%20Rafi%2C%20saya%20tertarik%20untuk%20berdiskusi%20lebih%20lanjut."
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-[#25D366] text-white shadow-[0_12px_32px_rgba(37,211,102,0.4)] hover:scale-110 hover:bg-[#1ebe5b] transition-all flex items-center justify-center text-3xl rounded-full"
+        aria-label="Chat WhatsApp"
       >
-        <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-      </button>
+        <FontAwesomeIcon icon={faWhatsapp} />
+      </a>
 
       <BrowserRouter>
         <ScrollToTop />

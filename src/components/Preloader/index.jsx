@@ -27,7 +27,7 @@ export default function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.5 } }}
         >
-          <div className="font-heading font-extrabold text-6xl md:text-8xl tracking-tight">
+          <div className="font-heading font-extrabold text-5xl md:text-7xl tracking-tight">
             {progress > 100 ? 100 : progress}<span className="text-[#ff9e00]">%</span>
           </div>
           <div className="w-56 md:w-72 h-2 bg-black/10 rounded-full mt-6 overflow-hidden">

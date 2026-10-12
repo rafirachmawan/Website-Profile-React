@@ -10,7 +10,7 @@ export const translations = {
       freelanceTag: "Full Stack Developer ★ Available for Freelance"
     },
     home: {
-      freelance: "Available for Freelance ✌️",
+      freelance: "Available for Freelance",
       rolePrefix: "Full Stack",
       roleSuffix: "Developer",
       description: "Hi, I'm Rafi Rachmawan. Crafting modern web experiences with clean code and creative design.",
@@ -80,7 +80,7 @@ export const translations = {
     about: {
       whoIsRafi: "Who is Rafi?",
       p1: "A passionate Front-End Developer with over 3 years of experience in crafting modern, robust, and interactive web applications.",
-      p2: "I specialize in React, JavaScript, and Tailwind CSS. I believe in writing clean code, exploring creative designs (like Neobrutalism!), and delivering seamless user experiences. When I'm not coding, I'm probably experimenting with new web technologies or designing user interfaces.",
+      p2: "I specialize in React, JavaScript, and Tailwind CSS. I believe in writing clean code, exploring creative designs, and delivering seamless user experiences. When I'm not coding, I'm probably experimenting with new web technologies or designing user interfaces.",
       problemSolver: "Problem Solver",
       creativeCoder: "Creative Coder"
     },
@@ -97,10 +97,10 @@ export const translations = {
     contact: {
       title1: "Let's Build",
       title2: "Something",
-      title3: "Brutal.",
+      title3: "Great.",
       desc: "I'm always open to discussing product design work or partnership opportunities.",
       sayHello: "Say Hello 🤙",
-      designedWith: "Designed with 🔥 & Neobrutalism",
+      designedWith: "Designed with care",
       founderTag: "Founder & CEO",
       founderOf: "GapaiDigital",
       founderDesc: "I founded GapaiDigital — a digitalization startup that helps businesses grow through Landing Pages, Mobile Apps, and scalable Custom Web Systems.",
@@ -124,7 +124,7 @@ export const translations = {
       freelanceTag: "Full Stack Developer ★ Tersedia untuk Freelance"
     },
     home: {
-      freelance: "Tersedia untuk Freelance ✌️",
+      freelance: "Tersedia untuk Freelance",
       rolePrefix: "Full Stack",
       roleSuffix: "Developer",
       description: "Hai, saya Rafi Rachmawan. Menciptakan pengalaman web modern dengan kode bersih dan desain kreatif.",
@@ -194,7 +194,7 @@ export const translations = {
     about: {
       whoIsRafi: "Siapa Rafi?",
       p1: "Seorang Front-End Developer yang bersemangat dengan lebih dari 3 tahun pengalaman dalam membuat aplikasi web modern, tangguh, dan interaktif.",
-      p2: "Saya berspesialisasi dalam React, JavaScript, dan Tailwind CSS. Saya percaya dalam menulis kode yang bersih, mengeksplorasi desain kreatif (seperti Neobrutalism!), dan memberikan pengalaman pengguna yang mulus. Saat tidak sedang coding, saya mungkin sedang bereksperimen dengan teknologi web baru atau merancang antarmuka pengguna.",
+      p2: "Saya berspesialisasi dalam React, JavaScript, dan Tailwind CSS. Saya percaya dalam menulis kode yang bersih, mengeksplorasi desain kreatif, dan memberikan pengalaman pengguna yang mulus. Saat tidak sedang coding, saya mungkin sedang bereksperimen dengan teknologi web baru atau merancang antarmuka pengguna.",
       problemSolver: "Problem Solver",
       creativeCoder: "Creative Coder"
     },

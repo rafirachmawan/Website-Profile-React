@@ -1,14 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Jenny-Scott soft portfolio tokens (replaces brutalism) ── */
+  /* ── Soft Minimal Warm tokens ── */
   --color-cream: #fffaf0;
   --color-cream-dark: #f5eddc;
   --color-ink: #161616;
   --color-accent: #ff9e00;
   --color-accent-dark: #e98a00;
 
-  /* backward-compat: old neo-* classes map to new palette */
+  --color-soft-bg: #fffaf0;
+  --color-soft-primary: #ff9e00;
+  --color-soft-secondary: #161616;
+  --color-soft-accent: #ff9e00;
+  --color-soft-dark: #161616;
+  --color-soft-border: #161616;
+
+  /* backward-compat: old neo-* classes map to soft palette */
   --color-neo-bg: #fffaf0;
   --color-neo-primary: #ff9e00;
   --color-neo-secondary: #161616;
@@ -18,6 +25,10 @@
 
   --font-heading: "Sora", "Plus Jakarta Sans", sans-serif;
   --font-body: "Inter", "Plus Jakarta Sans", sans-serif;
+
+  --shadow-soft: 0 8px 24px rgba(22, 22, 22, 0.08);
+  --shadow-soft-lg: 0 16px 40px rgba(22, 22, 22, 0.12);
+  --shadow-soft-hover: 0 4px 12px rgba(22, 22, 22, 0.1);
 
   --shadow-neo: 0 8px 24px rgba(22, 22, 22, 0.08);
   --shadow-neo-lg: 0 16px 40px rgba(22, 22, 22, 0.12);
@@ -42,36 +53,55 @@ html, body {
   min-height: 100vh;
 }
 
-/* ── Custom Neo Utilities (soft reinterpretation) ── */
+/* ── Soft card + button system ── */
+.soft-box-hover,
 .neo-box-hover {
-  @apply hover:-translate-y-0.5 hover:shadow-neo-lg transition-all duration-200;
+  @apply hover:-translate-y-0.5 hover:shadow-soft-lg transition-all duration-200;
 }
 
-/* neo-btn: now soft black pill w/ orange hover — readable in both modes */
+/* soft-btn: pill, ink base w/ warm accent hover — readable in both modes */
+.soft-btn,
 .neo-btn {
-  @apply bg-neo-dark text-white font-bold px-6 py-3 rounded-full shadow-neo hover:bg-neo-primary hover:text-black transition-all duration-200 tracking-wide;
+  @apply bg-soft-dark text-white font-bold px-6 py-3 rounded-full shadow-soft hover:bg-soft-primary hover:text-black transition-all duration-200 tracking-wide;
 }
 
+.soft-box,
 .neo-box {
-  @apply bg-white rounded-3xl shadow-neo border border-black/5;
+  @apply bg-white rounded-3xl shadow-soft border border-black/5;
 }
 
-/* ── Marquee animation ── */
+.soft-card {
+  @apply bg-white border border-black/10 rounded-3xl shadow-soft;
+}
+
+/* ── Soft marquee (slow, straight, no tilt) ── */
 @keyframes marquee {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 15s linear infinite;
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* ─────────────────────────────────────────
    DARK MODE (soft)
 ───────────────────────────────────────── */
 body.dark {
+  --color-soft-bg: #141414;
+  --color-soft-dark: #fffaf0;
+  --color-soft-border: #2a2a2a;
   --color-neo-bg: #141414;
   --color-neo-dark: #fffaf0;
   --color-neo-border: #2a2a2a;
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-soft-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-soft-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-neo: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-neo-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
   --shadow-neo-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -96,6 +126,58 @@ body.dark .bg-gray-200 {
   background-color: #2a2a2a;
 }
 
+/* Soft dark-mode surfaces for shared shells */
+body.dark .soft-surface {
+  background-color: #1e1e1e !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #fffaf0 !important;
+}
+body.dark .soft-surface-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Navbar: light glass -> dark glass */
+.navbar-soft {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #161616;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+body.dark .navbar-soft {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #fffaf0;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.navbar-soft .nav-link {
+  color: rgba(22, 22, 22, 0.6);
+}
+.navbar-soft .nav-link:hover {
+  color: #161616;
+}
+.navbar-soft .nav-link-active {
+  color: #161616;
+  background-color: rgba(22, 22, 22, 0.06);
+}
+body.dark .navbar-soft .nav-link {
+  color: rgba(255, 250, 240, 0.6);
+}
+body.dark .navbar-soft .nav-link:hover,
+body.dark .navbar-soft .nav-link-active {
+  color: #fffaf0;
+}
+body.dark .navbar-soft .nav-link-active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.drawer-soft {
+  background-color: #fffaf0;
+  color: #161616;
+}
+body.dark .drawer-soft {
+  background-color: #1e1e1e;
+  color: #fffaf0;
+}
+
 /* ── Soft Scrollbar ── */
 ::-webkit-scrollbar {
   width: 12px;
@@ -112,17 +194,4 @@ body.dark .bg-gray-200 {
   background: #ff9e00;
 }
 
-/* ── Glitch Effect ── */
-.glitch-hover:hover {
-  animation: glitch-anim 0.3s linear infinite;
-}
-
-@keyframes glitch-anim {
-  0%   { transform: translate(0) }
-  20%  { transform: translate(-2px, 2px) }
-  40%  { transform: translate(-2px, -2px) }
-  60%  { transform: translate(2px, 2px) }
-  80%  { transform: translate(2px, -2px) }
-  100% { transform: translate(0) }
-}
 html.modal-open, body.modal-open { overflow: hidden !important; touch-action: none; }

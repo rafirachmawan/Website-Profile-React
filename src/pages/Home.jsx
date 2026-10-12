@@ -11,6 +11,7 @@ import gapaiScreenshot from "../assets/gapaidigital/gapaidigital.jpg";
 import Navbar from "../components/navbar";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../utils/translations";
+import { Footer } from "../components/layout/PageShell";
 
 const services = [
   {
@@ -61,10 +62,10 @@ export default function Home() {
           <span className="truncate">{t.freelance}</span>
         </div>
 
-        <h1 className="font-heading font-extrabold tracking-tight leading-[1.08] text-balance text-[1.75rem] min-[400px]:text-4xl sm:text-6xl md:text-7xl px-1">
+        <h1 className="font-heading font-extrabold tracking-tight leading-[1.08] text-balance text-4xl sm:text-5xl lg:text-6xl px-1">
           I&apos;m <span className="text-[#ff9e00] whitespace-nowrap sm:whitespace-normal">Rafi Rachmawan</span>
         </h1>
-        <p className="mt-3 text-[13px] sm:text-base text-black/60 font-medium px-4 text-balance">
+        <p className="mt-3 text-sm sm:text-base text-black/55 font-normal px-4 text-balance max-w-xl mx-auto leading-relaxed">
           {t.rolePrefix} {t.roleSuffix} based in Indonesia
         </p>
 
@@ -73,7 +74,7 @@ export default function Home() {
           {/* Left */}
           <div className="order-2 md:order-1 flex flex-col items-center md:items-start justify-center gap-6 w-full">
             <div className="flex flex-col items-center md:items-start">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-black/40 mb-3">Follow Me On</p>
+              <p className="text-[13px] font-semibold text-black/40 mb-3">Follow me</p>
               <div className="flex gap-2 justify-center md:justify-start">
                 {[
                   { icon: faGithub, link: "https://github.com/rafirachmawan" },
@@ -117,7 +118,7 @@ export default function Home() {
           {/* Center photo */}
           <div className="order-1 md:order-2 justify-self-center relative w-full flex justify-center pb-6 md:pb-0">
             <div className="relative">
-              <div className="w-[min(17.5rem,78vw)] sm:w-96 aspect-[406/614] rounded-t-full rounded-b-[2rem] overflow-hidden bg-[#ffe3b3] border-[6px] border-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] mx-auto">
+              <div className="w-[min(17.5rem,78vw)] sm:w-96 aspect-[406/614] rounded-t-full rounded-b-[2rem] overflow-hidden bg-[#ffe3b3] border-4 border-white ring-1 ring-black/10 shadow-[0_24px_60px_rgba(0,0,0,0.12)] mx-auto">
                 <img src={heroImage} alt="Rafi Rachmawan" className="w-full h-full object-cover object-top scale-[0.94] origin-top" />
               </div>
               <div className="absolute inset-x-0 -bottom-5 flex justify-center pointer-events-none">
@@ -135,8 +136,8 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="absolute top-6 -right-3 sm:-right-8 w-14 h-14 rounded-full bg-[#161616] text-[#ff9e00] hidden sm:flex items-center justify-center text-[10px] font-bold text-center leading-tight rotate-12">
-                3+ YEARS ● CODE ●
+              <div className="absolute top-6 -right-3 sm:-right-8 rounded-full bg-white border border-black/10 shadow-soft hidden sm:flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold text-[#161616] leading-tight">
+                <span className="text-[#ff9e00]">★</span> 3+ yrs experience
               </div>
             </div>
           </div>
@@ -148,7 +149,7 @@ export default function Home() {
               {["Highly Professional", "Clean Code & Creative Design"].map((b, i) => (
                 <span
                   key={i}
-                  className={`text-[11px] font-bold rounded-full px-3 py-1.5 border w-max max-w-full ${i === 0 ? "bg-[#161616] text-white border-[#161616]" : "bg-white border-black/10"}`}
+                  className={`text-[11px] font-bold rounded-full px-3 py-1.5 border w-max max-w-full ${i === 0 ? "bg-[#fff3dd] text-black/70 border-[#ff9e00]/30" : "bg-white border-black/10 text-black/70"}`}
                 >
                   ✦ {b}
                 </span>
@@ -159,8 +160,8 @@ export default function Home() {
       </header>
 
       {/* ── MARQUEE STRIP ── */}
-      <div className="mt-14 bg-[#161616] text-white py-3.5 overflow-hidden -rotate-[0.5deg] scale-[1.01]">
-        <div className="flex whitespace-nowrap animate-marquee gap-8 text-[13px] font-bold uppercase tracking-widest">
+      <div className="mt-14 bg-[#f5eddc] text-[#161616] border-y border-black/10 py-3.5 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee gap-8 text-[13px] font-semibold tracking-wide text-black/60">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex gap-8 items-center" aria-hidden={dup === 1}>
               {["React.js", "Next.js", "Tailwind CSS", "Fullstack Apps", "Dashboard Systems", "Landing Pages"].map((s) => (
@@ -178,12 +179,15 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-8">
         <div className="flex items-end justify-between gap-4 mb-8">
           <div>
-            <p className="text-[12px] font-bold text-black/40 flex items-center gap-2 mb-2">
+            <p className="text-[13px] font-semibold text-black/40 flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#ff9e00]" /> My Services
             </p>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight">
-              How I Bring <span className="text-[#ff9e00]">Ideas to Life</span>
+            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight leading-[1.15]">
+              How I Bring <span className="text-[#e98a00]">Ideas to Life</span>
             </h2>
+            <p className="mt-2.5 font-body text-sm leading-relaxed text-black/55 max-w-lg">
+              {language === "id" ? "Layanan end-to-end — dari landing page sampai dashboard." : "End-to-end services — from landing pages to dashboards."}
+            </p>
           </div>
           <div className="hidden sm:flex items-center gap-2 bg-white border border-black/10 rounded-full p-1.5 pl-4 text-[12px] font-bold">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Available
@@ -197,15 +201,15 @@ export default function Home() {
             return (
               <div
                 key={s.id}
-                className={`rounded-3xl border transition-all overflow-hidden ${open ? "bg-[#161616] text-white border-[#161616]" : "bg-white border-black/10 hover:border-black/25"}`}
+                className={`rounded-3xl border transition-all overflow-hidden ${open ? "bg-white border-[#ff9e00]/60 shadow-soft" : "bg-white border-black/10 hover:border-black/25"}`}
               >
                 <button
                   onClick={() => setOpenService(open ? -1 : i)}
                   className="w-full flex items-center justify-between gap-4 px-5 sm:px-7 py-5 text-left"
                 >
                   <div className="flex items-center gap-4">
-                    <span className={`text-[12px] font-bold ${open ? "text-[#ff9e00]" : "text-black/30"}`}>{s.id}</span>
-                    <span className="font-heading font-bold text-base sm:text-xl">{s.title}</span>
+                    <span className={`text-[12px] font-bold ${open ? "text-[#e98a00]" : "text-black/30"}`}>{s.id}</span>
+                    <span className="font-heading font-bold text-base sm:text-xl text-[#161616]">{s.title}</span>
                   </div>
                   <span
                     className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${open ? "bg-[#ff9e00] text-black" : "bg-[#fff3dd] text-black"}`}
@@ -215,10 +219,10 @@ export default function Home() {
                 </button>
                 {open && (
                   <div className="px-5 sm:px-7 pb-6 sm:pl-[4.2rem]">
-                    <p className="text-white/60 text-sm leading-relaxed max-w-xl mb-4">{s.desc}</p>
+                    <p className="text-black/55 text-sm leading-relaxed max-w-xl mb-4">{s.desc}</p>
                     <div className="flex flex-wrap gap-2">
                       {s.tags.map((tag) => (
-                        <span key={tag} className="text-[11px] font-bold bg-white/10 border border-white/10 rounded-full px-3 py-1">
+                        <span key={tag} className="text-[11px] font-bold bg-[#fff3dd] border border-[#ff9e00]/20 rounded-full px-3 py-1 text-black/70">
                           {tag}
                         </span>
                       ))}
@@ -240,14 +244,14 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-black animate-pulse" /> LIVE STARTUP
             </span>
           </div>
-          <div className="bg-[#161616] text-white rounded-3xl p-7 sm:p-9 flex flex-col justify-between">
+          <div className="bg-[#f5eddc] text-[#161616] rounded-3xl p-7 sm:p-9 flex flex-col justify-between border border-black/5">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <img src={gapaiLogo} alt="GapaiDigital" className="w-11 h-11 rounded-2xl bg-white p-1.5 object-contain ring-2 ring-[#ff9e00]/60" />
-                <span className="text-[11px] font-bold uppercase tracking-widest bg-white/10 rounded-full px-3 py-1.5">Founder & CEO</span>
+                <img src={gapaiLogo} alt="GapaiDigital" className="w-11 h-11 rounded-2xl bg-white p-1.5 object-contain ring-1 ring-[#ff9e00]/50" />
+                <span className="text-[12px] font-semibold bg-black/5 rounded-full px-3 py-1.5">Founder & CEO</span>
               </div>
-              <h3 className="font-heading font-extrabold text-3xl sm:text-4xl mb-3">GapaiDigital</h3>
-              <p className="text-white/60 text-sm leading-relaxed border-l-2 border-[#ff9e00] pl-4">
+              <h3 className="font-heading font-extrabold text-2xl sm:text-3xl leading-tight mb-3">GapaiDigital</h3>
+              <p className="text-black/60 text-sm leading-relaxed border-l-2 border-[#ff9e00] pl-4">
                 {language === "id"
                   ? "Startup digitalisasi yang membantu bisnis berkembang melalui Landing Page, Mobile App, dan Custom Web System."
                   : "A digitalization startup helping businesses grow through Landing Pages, Mobile Apps, and Custom Web Systems."}
@@ -255,8 +259,8 @@ export default function Home() {
               <div className="flex gap-6 mt-6">
                 {[["10+", "Projects"], ["5.0", "Rating"], ["100%", "Commitment"]].map(([n, l]) => (
                   <div key={l}>
-                    <div className="font-heading font-extrabold text-2xl text-[#ff9e00]">{n}</div>
-                    <div className="text-[11px] uppercase tracking-widest text-white/40 font-bold">{l}</div>
+                    <div className="font-heading font-extrabold text-2xl text-[#e98a00]">{n}</div>
+                    <div className="text-[12px] font-semibold text-black/45">{l}</div>
                   </div>
                 ))}
               </div>
@@ -275,8 +279,13 @@ export default function Home() {
 
       {/* ── PROJECTS ── */}
       <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        <div className="flex items-end justify-between mb-8">
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight">{t.featuredWork}</h2>
+        <div className="flex items-end justify-between gap-4 mb-8">
+          <div className="max-w-2xl">
+            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight leading-[1.15]">{t.featuredWork}</h2>
+            <p className="mt-2.5 font-body text-sm leading-relaxed text-black/55">
+              {language === "id" ? "Pilihan proyek web dan aplikasi yang pernah saya bangun." : "A selection of web and app projects I've built."}
+            </p>
+          </div>
           <Link to="/projects" className="hidden sm:inline-flex text-sm font-bold bg-[#161616] text-white rounded-full px-5 py-2.5 hover:bg-black">
             {language === "id" ? "Semua Proyek →" : "All Projects →"}
           </Link>
@@ -292,7 +301,7 @@ export default function Home() {
                 <span className="absolute top-3 right-3 bg-[#161616] text-white text-[11px] font-bold rounded-full px-3 py-1">{p.year}</span>
               </div>
               <div className="p-5">
-                <p className="text-[11px] font-bold uppercase tracking-widest text-[#e98a00] mb-1">{p.subtitle}</p>
+                <p className="text-[12px] font-semibold text-[#e98a00] mb-1">{p.subtitle}</p>
                 <h3 className="font-heading font-bold text-lg leading-snug mb-2">{p.title}</h3>
                 <p className="text-[13px] text-black/55 leading-relaxed line-clamp-2 mb-4">{p.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
@@ -309,27 +318,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ABOUT (dark) ── */}
+      {/* ── ABOUT ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        <div className="bg-[#161616] text-white rounded-[2rem] p-6 sm:p-10 grid md:grid-cols-[280px_1fr] gap-8 items-center overflow-hidden relative">
-          <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#ff9e00]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="rounded-3xl overflow-hidden bg-[#ff9e00] p-2 rotate-[-2deg]">
+        <div className="bg-white border border-black/10 rounded-[2rem] p-6 sm:p-10 grid md:grid-cols-[280px_1fr] gap-8 items-center overflow-hidden relative shadow-soft">
+          <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#ff9e00]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="rounded-3xl overflow-hidden bg-[#ffe3b3] p-2 ring-1 ring-black/10">
             <img src={aboutImage} alt="Rafi" className="w-full h-72 object-cover rounded-2xl" />
           </div>
           <div>
-            <p className="text-[12px] font-bold text-white/40 flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#ff9e00]" /> About Me
+            <p className="text-[13px] font-semibold text-black/40 flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-[#ff9e00]" /> About me
             </p>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl mb-4">
-              Who is <span className="text-[#ff9e00]">Rafi Rachmawan?</span>
+            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl leading-[1.15] mb-3 text-[#161616]">
+              Who is <span className="text-[#e98a00]">Rafi Rachmawan?</span>
             </h2>
-            <p className="text-white/60 text-sm leading-relaxed mb-3 border-l-2 border-[#ff9e00] pl-4">{t.about1}</p>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">{t.about2}</p>
+            <p className="text-black/60 text-sm leading-relaxed mb-3 border-l-2 border-[#ff9e00] pl-4">{t.about1}</p>
+            <p className="text-black/60 text-sm leading-relaxed mb-6">{t.about2}</p>
             <div className="flex flex-wrap gap-3">
-              <Link to="/about" className="bg-[#ff9e00] text-black font-bold rounded-full px-6 py-3 text-sm">
+              <Link to="/about" className="bg-[#ff9e00] text-black font-bold rounded-full px-6 py-3 text-sm hover:bg-[#ffb02e] transition-colors">
                 More About Me
               </Link>
-              <a href="/CV RAFI RACHMAWAN  TERBARU.pdf" target="_blank" rel="noreferrer" className="border border-white/20 rounded-full px-6 py-3 text-sm font-bold hover:bg-white hover:text-black transition-colors">
+              <a href="/CV RAFI RACHMAWAN  TERBARU.pdf" target="_blank" rel="noreferrer" className="border border-black/15 rounded-full px-6 py-3 text-sm font-bold hover:bg-[#161616] hover:text-white transition-colors">
                 Download CV ↓
               </a>
             </div>
@@ -339,14 +348,19 @@ export default function Home() {
 
       {/* ── EXPERIENCE PREVIEW ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-6">
-          <h2 className="font-heading font-extrabold tracking-tight text-balance leading-[1.1] text-[1.65rem] sm:text-4xl">{t.workHistory}</h2>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-6">
+          <div className="max-w-2xl">
+            <h2 className="font-heading font-extrabold tracking-tight leading-[1.15] text-balance text-2xl sm:text-3xl">{t.workHistory}</h2>
+            <p className="mt-2 font-body text-sm leading-relaxed text-black/55">
+              {language === "id" ? "Ringkasan peran dan tempat saya bekerja." : "A summary of my roles and where I've worked."}
+            </p>
+          </div>
           <Link to="/experience" className="text-[13px] sm:text-sm font-bold underline underline-offset-4 decoration-[#ff9e00] decoration-2 shrink-0 w-fit">{t.seeFullExperience}</Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 items-stretch">
           {t.experiences.slice(0, 4).map((exp, i) => (
             <div key={i} className="bg-white border border-black/10 rounded-3xl p-5 sm:p-6 flex flex-col h-full hover:border-[#ff9e00] transition-colors">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#e98a00] leading-relaxed">{exp.date}</span>
+              <span className="text-[12px] font-semibold text-[#e98a00] leading-relaxed">{exp.date}</span>
               <h3 className="font-heading font-bold text-[17px] sm:text-lg mt-1.5 leading-snug text-balance">{exp.role}</h3>
               <p className="text-[13px] font-semibold text-black/50 mt-0.5">{exp.company}</p>
               <div className="w-10 h-[3px] bg-[#ff9e00] rounded-full my-3" />
@@ -360,10 +374,10 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 pb-16">
         <div className="bg-[#161616] text-white rounded-[2rem] px-6 py-10 sm:p-12 text-center relative overflow-hidden">
           <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">Let&apos;s collaborate</p>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight leading-tight mb-4">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl tracking-tight leading-[1.15] mb-3">
             Let&apos;s build <span className="text-[#ff9e00]">something great!</span>
           </h2>
-          <p className="text-white/60 text-sm max-w-lg mx-auto mb-8">{t.contactDesc}</p>
+          <p className="font-body text-sm leading-relaxed text-white/60 max-w-lg mx-auto mb-8">{t.contactDesc}</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
             <a href="https://wa.me/6285196221716" target="_blank" rel="noreferrer" className="bg-[#ff9e00] text-black font-bold rounded-full px-8 py-3.5 text-sm hover:bg-[#ffb02e] transition-colors min-w-[200px]">
               {t.sayHello} via WhatsApp
@@ -378,12 +392,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-black/10 py-8">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-center">
-          <p className="font-bold text-sm">© {new Date().getFullYear()} Rafi Rachmawan.</p>
-          <p className="text-[12px] text-black/40 font-medium">{t.designedWith}</p>
-        </div>
-      </footer>
+      <Footer note={t.designedWith} />
     </div>
   );
 }
